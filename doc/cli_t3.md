@@ -1,0 +1,171 @@
+# Fiber Tracking
+
+use --action=`trk` to initiate fiber tracking in DSI Studio
+
+## Examples
+
+*Track the left arcuate fasciculus a fib files and save them in tractography and NIFTI format*
+```
+dsi_studio --action=trk --source=subject001.fib.gz --track_id=Arcuate_Fasciculus_L --output=subject001.AF.tt.gz,subject001.AF.nii.gz
+```
+*Perform fiber tracking with all fiber tracking parameters assigned by a parameter ID*
+```
+dsi_studio --action=trk --source=subject001.fib.gz --parameter_id=c9A99193Fba3F2EFF013Fcb2041b96438813dcb
+```
+*Use the left and right precentral region from FreeSurferDKT atlas as the ROIs. Dilate them twice and smooth them for fiber tracking*
+```
+dsi_studio --action=trk --source=subject001.fib.gz --roi=FreeSurferDKT:left_precentral,dilate,dilate,smoothing --roi2=FreeSurferDKT:right_precentral,dilate,dilate,smoothing
+```
+*Fiber tracking using two MNI-space ROIs (include MNI in the file name) and subject-space whole-brain seeding (from wholeBrain.nii)*
+```
+dsi_studio --action=trk --source=subject001.fib.gz --seed=wholeBrain.nii --roi=mni_roi1.nii --roi2=mni_roi2.nii
+```
+*Perform fiber tracking and output connectivity matrix using HCP-MMP and AAL3 parcellation, respectively. Specify --output=no_file to skip saving the large tractography file*
+```
+dsi_studio --action=trk --source=subject001.fib.gz --fiber_count=1000000 --output=no_file --connectivity=HCP-MMP,AAL3
+```
+*Perform fiber tracking and export track-specific statistics and TDI*
+```
+dsi_studio --action=trk --source=subject001.fib.gz --output=tracks.tt.gz --export=stat,tdi
+```
+*Perform fiber tracking and insert other metrics (DKI, FW_FA...etc) and export track-specific statistics*
+```
+dsi_studio --action=trk --source=subject001.fib.gz --other_slices=./other/*.nii.gz --output=tracks.tt.gz --export=stat
+```
+*Perform differential tractography by comparing MNI-space FA map (include MNI in the file name) and subject's fa and tracking the decreased FA at 10%*
+```
+dsi_studio --action=trk --source=subject001.fib.gz --other_slices=mni_fa.nii.gz --dt_threshold_index=mni_fa-dti_fa --dt_threshold=0.1 --output=tracks.tt.gz
+```
+*(Windows System) Search for all fib files under the current directory and perform fiber tracking to get the FreeSurferDKT connectivity matrix*
+```
+path=C:\dsi_studio_64
+for /f "delims=" %%x in ('dir *.fib.gz /b /d /s') do (
+call dsi_studio.exe --action=trk --source="%%x" --seed_count=1000000 --thread_count=8 --output=no_file --connectivity=FreeSurferDKT > "%%x.log.txt"
+)
+```
+
+## Core Functions
+
+| Parameters            | Default | Description                                                                 |
+|:-----------------|:--------|:------------------------------------------------------------------------------|
+| source         |  | specify the fib file |                  
+| thread_count   | system thread | specify the thread count. |
+| track_id       |  | specify which track to map using automatic fiber tracking.The value lookup list is the text file included in the DSI Studio package under the "track" folder.
+| ref | optional | output track coordinate based on a reference image (e.g. T1w or T2w).|
+
+
+## Conventional Tracking
+> Specify the tracking parameters below or replace them by using a single `--parameter_id`, which can be found at the method text under Step T3d after running fiber tracking.
+
+| Parameters            | Default | Description                                                                 |
+|:-----------------|:--------|:------------------------------------------------------------------------------|
+| method | `0` |  tracking methods 0:streamline , 1:rk4 |
+| fa_threshold   | `0` | which means it is randomized): threshold for fiber tracking. In QBI, DSI, and GQI, "fa_threshold" will be applied to the QA threshold. To use other index as the threshold, add "threshold_index=[name of the index]" (e.g. "--threshold_index=nqa --fa_threshold=0.01" sets a threshold of 0.01 on nqa for tract termination). If fa_threshold is not assigned, then DSI Studio will select a random value between 0.5Otsu and 0.7 Otsu threshold using a uniform distribution.
+| otsu_threshold | `0.6` | The default Otsu's threshold can be adjusted to any ratio.
+| fiber_count or seed_count | `100000`| specify the number of fibers to be generated. If seed number is preferred, use seed_count instead. If DSI Studio cannot find a track connecting the ROI, then the program may run forever. To avoid this problem, you may assign fiber_count and seed_count at the same time so that DSI Studio can terminate if the seed count reaches a large number.
+| random_seed | `0`  | specify whether a timer is used for generating seed points. Setting it on (--random_seed=1) will make tracking random. The default is off.
+| step_size | `0` |    |
+| seed_plan | `0` | specify the seeding strategy 0:subvoxel random, 1:voxelwise center
+| initial_dir | `0` | initial propagation direction 0:primary fiber, 1:random, 2:all fiber orientations
+| interpolation | `0` | interpolation methods (0:trilinear, 1:gaussian radial, 2:nearest neighbor)
+| turning_angle | `0` |    |
+| interpo_angle | `0` |    |
+| smoothing | `0` |    |
+| min_length | `30` (mm)|    |
+| max_length | `300` (mm) |    |
+| tip_iteration | `0` | specify pruning iterations. If --track_id or --dt_threshold_index is specified, the default value is `16` |
+
+> Please note that parameter ID does not override ROI settings, dt_threshold_index, or threshold_index settings. You may still need to assign ROI/ROA...etc. in the command line.
+
+
+## ROI Settings
+
+| Parameters            | Description                                                                 |
+|:-----------------|:------------------------------------------------------------------------------|
+| seed |  specify the seeding file. Supported file format includes text files and nifti files. |
+| roi roi2 roi3 roi4 roi5 |  specify the roi files. Supported file format includes text files and nifti files. |
+| roa roa2 roa3 roa4 roa5 |  specify the roa files. |
+| end end2 |  specify the endpoint files. |
+| ter ter2 ter3 ter4 ter5 |  specify the terminative region. |
+| t1t2 | specify t1w or t2w images as the ROI reference image |
+
+> Multiple input is supported. You may use atlas regions as the roi, roa, end, or ter regions. Specify the atlas and region name (case sensitive!) as follows:
+```
+--roi=FreeSurferDKT:left_precentral  
+```
+
+> An ROI (and also other region types) can be modified by the following action code: "smoothing", "erosion", "dilation",  "defragment", "negate", "flipx", "flipy", "flipz", "shiftx" (shift the roi by 1 in x direction), "shiftnx" (shift the roi by -1 in x direction), "shifty", "shiftny", "shiftz", "shiftnz".
+```
+--roi=region.nii.gz, dilate,dilate, smoothing   #This dilates the region in the region.nii.gz file twice and smooth it
+```
+> You can assign the region value to be loaded
+```
+--roi=multiplre_region_nifti.gz:1    # only loads regions with value=1
+```
+
+> You can assign an MNI space NIFTI file. Just make sure to have MNI in the file name
+```
+--roi=mni_broca1.nii.gz
+```
+
+## Differential tracking settings
+
+| Parameters            | Description                                                                 |
+|:-----------------|:------------------------------------------------------------------------------|
+| other_slices     |  specify the NIFTI file of slices to be inserted for differential tractography (e.g., --other_slices=pre.nii.gz,post.nii.gz) |
+| dt_threshold_index | specify the metrics for differential tracking (e.g., --dt_threshold_index=post-pre)  |
+| dt_threshold | assign percentage threshold for differential tractography. assign --dt_threshold=0.1 to detect more than 10% change. |
+
+> To load slices as "MNI images", please include "mni" in the file name
+```
+--other_slices=mni_qa.nii.gz
+```
+
+
+## Tract-related post-processing and analysis
+
+| Parameters            | Description                                                                 |
+|:-----------------|:------------------------------------------------------------------------------|
+| delete_repeat  | assign the distance for removing repeat tracks (e.g. --delete_repeat=1 removes repeat tracks with distance smaller than 1 mm) |
+| output | specify the output directory or output file name (tt.gz, trk.gz, or nii.gz ). Specify `no_file` to disable tractography output. |
+| end_point | specify file name for output endpoint coordinates (.txt or .mat) |
+| export | export along-track indices, statistics, TDI, or track analysis report. See the export option at --action=ana (below) for detail |
+
+
+
+## Connectivity analysis
+
+| Parameters   | Default         | Description                                                                 |
+|:-------------|:-------|:------------------------------------------------------------------------------|
+| connectivity |   |output connectivity matrix using ROIs or atlas as the matrix entry. |
+| connectivity_threshold | `0.001` | specify the threshold ( in relative ratio to the max value) for calculating binarized graph measures and connectivity values. This means if the maximum connectivity count is 1000 tracks in the connectivity matrix, then at least 1000 x 0.001 = 1 track is needed to pass the threshold. Otherwise, the values will be set to zero.|
+| connectivity_type | `end` | specify whether to use "pass" or "end" to count the tracks. |
+| connectivity_value | `count` | specify the way to calculate the matrix value. `count` outputs the number of tracks passing/ending in the regions. `ncount` outputs the number of tracks normalized by the median length. `mean_length` outputs the mean length of the tracks. `trk` outputs a trk file each connectivity matrix entry. `dti_fa` outputs mean FA  `qa` outputs mean QA. You can output any metrics or even metrics added using --other_slice. You can output multiple results by separating the parameters with ",". (e.g. `--connectivity_value=count,ncount,trk`) |
+
+> If you would like to use the built-in atlas, please specify the atlas name.
+```
+--connectivity=FreeSurferDKT_cortical,HCP-MMP
+```
+> If you would like to use subject space ROIs, specify the file name
+```
+--connectivity=/subject01/segmentation_in_dwi_space.nii.gz
+```
+> If you would like to use your customized MNI space atlas, specify the file name (must have `mni` in the file name)
+```
+--connectivity=mni_space_parcellations.nii.gz
+```
+> If the ROIs is segmented based on T1W, you will need to specify the original t1w file using --t1t2
+```
+--t1t2=subject_t1w.nii.gz --connectivity=parcellation_based_on_subject_t1w.nii.gz
+```
+> Please note that if the number of the connecting tracks is not enough (determined by connectivity_threshold), the connectivity value will not be calculated. This strategy is used to avoid the inclusion of accidental connections due to false tracks.
+
+## Clustering settings
+   
+| Parameters   | Default         | Description                                                                 |
+|:-------------|:-------|:------------------------------------------------------------------------------|
+| cluster | optional | run track clustering after fiber tracking. 4 parameters separated by comma are needed: --cluster=METHOD_ID,CLUSTER_COUNT,RESOLUTION,OUTPUT FILENAME       METHOD_ID: 0=single-linkage clustering 1=k means 2=EM        CLUSTER_COUNT: The total number of clusters. In k-means or EM, this is the total number of clusters assigned. In single-linkage, it is the maximum number of clusters allowed to avoid over-segmentation (the remaining small clusters will be grouped in the last clusters).       RESOLUTION: only used in single-linkage clustering. The value is the mini meter resolution for merging the clusters.       OUTPUT FILENAME: the file name for output the cluster label (should be a text file). The file name should not contain a space. |
+
+```
+--cluster=0,500,2,label.txt  #run a single-linkage cluster with 500 maximum cluster count and 2-mm resolution, saved as label.txt
+```
