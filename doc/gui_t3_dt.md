@@ -46,13 +46,16 @@ The followings are steps for cross-sectional and longitudinal studies, respectiv
 
 ## 2. Compare Metrics
 
-Assuming that the NIFTI file you added from previous step generated a new qa metrics named `follow_up_qa` and the FIB file already has a `qa` metrics, which is the baseline qa map.
+Add a new tracking metric at **[Analysis][Add Tracking Metrics]** and input the names of two comparing metrics connected by a minus sign. For example, ***qa-followup_qa*** compres **qa** and **followup_qa** and the minus sign *-* signals DSI Studio to calculate the decreased value in **followup_qa**. For calculating the increase of QA in the followup, input input ***followup_qa-qa***.
 
-A new tracking metric can be created using **[Analysis][Add Tracking Metrics]** and input ***qa-follow_up_qa*** for mapping decrease of QA in the follow-up. For mapping the increase of QA in the follow-up, input input ***follow_up_qa-qa***.
+A new differential tracking metrics will be added to the **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics]**
 
 We can compare any inserted NIFTI metrics (e.g, for DKI_base.nii.gz and DKI_followup.nii.gz, the comparison metric due mapping decreased DKI is 'DKI_base-DKI_followup'). 
 
-A new differential tracking metrics will be added to the **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics]**
+Tutorial:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RkWui6NlLqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## 3. Tracking the difference
 
