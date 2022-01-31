@@ -50,7 +50,7 @@ call dsi_studio.exe --action=trk --source="%%x" --seed_count=1000000 --thread_co
 |:-----------------|:--------|:------------------------------------------------------------------------------|
 | source         |  | specify the fib file |                  
 | thread_count   | system thread | specify the thread count. |
-| track_id       |  | specify which track to map using automatic fiber tracking.The value lookup list is the text file included in the DSI Studio package under the "track" folder.
+| track_id       |  | specify which ID of the track to track using automatic fiber tracking. The complete list of ID is found in ICBM152.tt.gz.txt in the DSI Studio package under the \atlas\ICBM152 folder (On Mac, right click to show content).
 | ref | optional | output track coordinate based on a reference image (e.g. T1w or T2w).|
 
 
