@@ -20,11 +20,9 @@ If missing too many branches, considers lowering the **[Step T3c: Options][Trac
 
 You may also need to adjust other parameters (check out [Step T3 Whole brain fiber tracking](/doc/gui_t3_whole_brain.html) ) until you get a good quality of the whole-brain track.
 
-## 1. Load comparison data
+## 1. Load metrics
 
-We can compare any voxel-based metrics, including those from other modalities. My recommended list for dMRI metrics includes qa, fa, iso, rdi. 
-
-The FIB file may include metrics from one scan, and we may need to load metrics from scans in the nifti file format, which can be exported from a FIB file using [**Step T3**][**Export**].
+A FIB file opened in **[Step T3: Fiber Tracking]** includes a list of metrics under the **[Slices]** droplist on the top of the 3D window. The **[Export]** menu allows for exporting a  metric as a NIFTI file. The exported NIFTI files of the same subject can be imported using **[Slices][Insert Other Images]**. For loading metrics in the template space, use **[Slices][Insert MNI images]**. 
 
 The followings are steps for cross-sectional and longitudinal studies, respectively.
 
@@ -38,11 +36,9 @@ The followings are steps for cross-sectional and longitudinal studies, respectiv
 
 - **for longitudinal studies**
 
-    The FIB file you opened in Step T3 already include voxel-based metrics (check the [Slices] droplist on the top of the 3D window), and you will need to load the baseline or followup metrics from nii.gz file using **[Slices][Insert Other Images]**. 
+    Export metrics from the follow-up FIB files using the **[Step T3][Export]**, and rename the exported files (e.g. followup_xxx.nii.gz) so that it won't be confused with the baseline metrics.
     
-    If your FIB file is the baseline study, load NIFTI files exported from the follow-up FIB file. If FIB is follow-up, load the baseline. 
-
-    If you want to compare between two follow-up data, you may load both of their nii.gz files for comparison.
+    Open the FIB file of the baseline study and load NIFTI files from the follow-up study. Now in the **[Slices]** droplist on the top of the 3D window will have both the metrics in the baseline and followup study 
 
 ## 2. Compare Metrics
 
