@@ -22,13 +22,15 @@ You may also need to adjust other parameters (check out [Step T3 Whole brain fi
 
 ## 1. Load metrics
 
-A FIB file opened in **[Step T3: Fiber Tracking]** includes a list of metrics under the **[Slices]** droplist on the top of the 3D window. The **[Export]** menu allows for exporting a  metric as a NIFTI file. The exported NIFTI files of the same subject can be imported using **[Slices][Insert Other Images]**. For loading metrics in the template space, use **[Slices][Insert MNI images]**. 
+A FIB file opened in **[Step T3: Fiber Tracking]** includes a list of metrics under the **[Slices]** droplist on the top of the 3D window. The **[Export]** menu allows for exporting a  metric as a NIFTI file, whereas the exported NIFTI files can be imported using **[Slices][Insert Other Images]**. 
+
+For loading template metrics, use **[Slices][Insert MNI images]**. 
 
 The followings are steps for cross-sectional and longitudinal studies, respectively.
 
 - **for cross-sectional studies**
 
-    We will compare subject's metrics with a group average (template) in the nifti format. Ideally the template should be averaged from your control subject data. To create group-average images from a control group, open [**Tools**][**P1: Create template/skeleton**] and include the FIB files of the control subjects reconstructed by **[Step C1: Reconstruct SRC files for connectometry]** to create a group-average FIB file. Open the FIB file in **[Step T3 Fiber Tracking]** and export metrics using **[Export].**
+    We will compare subject's metrics with a group average (template) in the nifti format. Ideally the template metrics should be averaged from your control subject data. To create group-average images from a control group, open [**Tools**][**P1: Create template/skeleton**] and include the FIB files of the control subjects reconstructed by **[Step C1: Reconstruct SRC files for connectometry]** to create a group-average FIB file. Open the FIB file in **[Step T3 Fiber Tracking]** and export metrics using **[Export].**
     
     Load the template (*.nii.gz) using **[Slices][Insert MNI Images]**. The newly added metrics will be listed in the [Slices] droplist on the top of the 3D window.   
     
