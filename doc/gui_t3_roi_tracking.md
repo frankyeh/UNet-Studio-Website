@@ -87,7 +87,7 @@ DSI Studio can load ROIs from a text file of the ROI coordinates. The coordinate
 - Assign `ROA` to eliminate unwanted pathways.
 - Assign `End` ***only if*** you have tried assigning it as `ROI` and want more restricted results in the endpoints.
 - Assign `Terminative` ***only if*** you specifically want tracks to stop at a certain location.
-- Assign `Seed` ***only if*** you want to speed up fiber tracking.
+- Assign `Seed` ***only if*** you want to speed up fiber tracking by limiting the starting region of fiber tracking. 
 
 There are several region types available to control fiber tracking, including ROI, ROA, Seed, End, Terminative. Each of them is explained in the following sections.
 
