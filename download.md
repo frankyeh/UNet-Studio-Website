@@ -38,9 +38,9 @@ $ singularity exec dsistudio_latest.sif dsi_studio --action=rec --source=my.src.
 
 # License
 
-DSI Studio is free for research purposes under the [Attribution-NonCommercial-ShareAlike 2.0 Generic (CC BY-NC-SA 2.0)](https://creativecommons.org/licenses/by-nc-sa/2.0/) license. Please mention the usage of DSI Studio in your academic publications.
+DSI Studio is free for research purposes.
 
-DSI Studio is NOT FDA-approved/cleared and provided "AS-IS." Using it on clinical research requires your institution's IRB approval. Users should be attentive to issues reported on the user support forum and be responsible for timely software updates. 
+Unless required by applicable law or agreed to in writing, DSI Studio program and source code are distributed under [Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
 
 # Optional Package
 
