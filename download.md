@@ -20,7 +20,7 @@
 
 ## DSI Studio with GPU support (Windows Version Only)
 
-The FSL eddy correction and DSI Studio's atlas functions use GPU computation (~x5 to x10 acceleration).
+The FSL eddy correction and DSI Studio's atlas functions use GPU computation to achieve ~x5 to x10 accelerations.
 
 ***If you are not sure which one to use, just download any of them to run. DSI Studio will check your graphic card and tell the correct one you should use.*** 
 
