@@ -4,8 +4,9 @@
 
 <a href="https://github.com/frankyeh/DSI-Studio/releases"><img src="https://img.shields.io/github/v/release/frankyeh/DSI-Studio"></a><a href="https://github.com/frankyeh/DSI-Studio/releases"><img src="https://img.shields.io/github/downloads/frankyeh/DSI-STUDIO/total?style=social"></a>
 
+## DSI Studio
 
-Download and unzip to run the executive. No installation needed
+***Download and unzip to run the executive. No installation needed***
 
 | OS      | File     | Note      |
 |------|----------|-------|
@@ -17,7 +18,12 @@ Download and unzip to run the executive. No installation needed
 
 ---
 
-DSI Studio with GPU support (eddy and registrations)
+## DSI Studio with GPU support
+
+The FSL eddy correction and DSI Studio's atlas functions use GPU computation (~x5 to x10 acceleration).
+
+***If you are not sure which one to use, just download any of them to run. DSI Studio will check your graphic card and tell the correct one you should use.*** 
+
 | OS      | NVidia Graphic Card | File     |
 |------|----------|-------|
 |  Windows (7+)  | Tesla K40 | [dsi_studio_win_cuda_sm35.zip](https://github.com/frankyeh/DSI-Studio/releases/download/2021.12.03/dsi_studio_win_cuda_sm35.zip)<br />[dsi_studio_win_cuda_sm35.zip(中國镜像)](https://github.com.cnpmjs.org/frankyeh/DSI-Studio/releases/download/2021.12.03/dsi_studio_win_cuda_sm35.zip) |
