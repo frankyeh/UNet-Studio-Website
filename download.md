@@ -22,7 +22,9 @@
 
 The FSL eddy correction and DSI Studio's atlas functions use GPU computation to achieve ~x5 to x10 accelerations.
 
-***If you are not sure which one to use, just download any of them to run. DSI Studio will check your graphic card and tell the correct one you should use.*** 
+***You may need to install [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exe_network)***
+
+***If you are not sure which SM number to use, just download any of them to run. DSI Studio will check your graphic card and tell the correct one you should use.*** 
 
 | File | NVidia Graphic Card|
 |------|--------------------|
