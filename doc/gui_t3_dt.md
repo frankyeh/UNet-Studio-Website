@@ -32,7 +32,7 @@ The followings are steps for cross-sectional and longitudinal studies, respectiv
 
     We will compare subject's metrics with a group average (template) in the nifti format. Ideally the template metrics should be averaged from your control subject data. To create group-average images from a control group, open [**Tools**][**P1: Create template/skeleton**] and include the FIB files of the control subjects reconstructed by **[Step C1: Reconstruct SRC files for connectometry]** to create a group-average FIB file. Open the FIB file in **[Step T3 Fiber Tracking]** and export metrics using **[Export].**
     
-    Load the template (*.nii.gz) using **[Slices][Insert MNI Images]**. The newly added metrics will be listed in the [Slices] droplist on the top of the 3D window.   
+    Load the template (e.g. template_qa.nii.gz) using **[Slices][Insert MNI Images]**. The newly added metrics will be listed in the [Slices] droplist on the top of the 3D window.   
     
     Alternatively, you may use [HCP dMRI templates](https://brain.labsolver.org/hcp_template.html), but you may expect more false findings due to acquisition differences. 
 
