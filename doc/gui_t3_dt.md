@@ -44,7 +44,11 @@ The followings are steps for cross-sectional and longitudinal studies, respectiv
 
 ## 2. Compare Metrics
 
-Add a new tracking metric at **[Analysis][Add Tracking Metrics]** and input the names of two comparing metrics connected by a minus sign. For example, ***qa-followup_qa*** compres **qa** and **followup_qa** and the minus sign **-** signals DSI Studio to calculate the decreased values in **followup_qa**. For calculating the increase of QA in the followup, input input ***followup_qa-qa***.
+Add a new tracking metric at **[Analysis][Add Tracking Metrics]** and input the names of two comparing metrics connected by a minus sign. 
+
+For cross sectional study, input ***template_qa-qa*** to study the decrease of QA in the subject, and input ***qa-template_qa*** for increase of QA in the subject.
+
+For longitudinal study, input ***qa-followup_qa*** to study the decrease of QA in the followup, and input ***followup_qa-qa*** for increase of QA in the followup.
 
 A new differential tracking metrics will be added to the **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics]**
 
