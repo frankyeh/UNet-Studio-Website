@@ -60,8 +60,7 @@ For longitudinal study, input ***nqa-followup_nqa*** to study the decrease of QA
 
 A new differential tracking metrics will be added to the **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics]**
 
-We can compare any inserted NIFTI metrics (e.g, for DKI_base.nii.gz and DKI_followup.nii.gz, the comparison metric due mapping decreased DKI is 'DKI_base-DKI_followup'). 
-
+Differential tractography can compare any metrics stored in the NIFTI files. For example, we can load DKI_base.nii.gz and DKI_followup.nii.gz and compare their differences.  
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RkWui6NlLqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -72,11 +71,11 @@ Clear all tracks from the tract list using [Tracts][Delete Tracts][Delete all].
 
 In the tracking parameters, set **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics]** from *none* to the newly added comparison metric.
 
-1. Set [Differential Tracking][Threshold]=0.1,
+1. Set [Differential Tracking][Threshold]=0.2,
 
     0.1 means 10% increase or decrease, 0.2 means 20%. 
 
-2. Set [Tracking Parameters][Min Length (mm)]=20
+2. Set [Tracking Parameters][Min Length (mm)]=30
 
     Lower value like 20 mm is more sensitive, whereas 40 mm is more specific. 
     
