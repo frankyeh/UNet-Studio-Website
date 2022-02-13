@@ -26,20 +26,24 @@ You may also need to adjust other parameters (check out [Step T3 Whole brain fi
 
 ## 1. Load metrics
 
-A FIB file opened in **[Step T3: Fiber Tracking]** includes a list of metrics under the **[Slices]** droplist on the top of the 3D window. The **[Export]** menu allows for exporting a  metric as a NIFTI file, whereas the exported NIFTI files can be imported using **[Slices][Insert Other Images]**. 
+A FIB file opened in **[Step T3: Fiber Tracking]** includes a list of metrics under the **[Slices]** droplist on the top of the 3D window. 
 
-For loading template metrics, use **[Slices][Insert MNI images]**. 
+Although differential tractography can use any metrics, ***we recommend using NQA (normalized quantitative anisotropy) and FA to find neuronal changes***.
+
+The **[Export]** menu allows for exporting a  metric as a NIFTI file, whereas the exported NIFTI files can be imported using **[Slices][Insert Other Images]**. 
+
+For loading template images, use **[Slices][Insert MNI images]**. 
 
 The followings are steps for cross-sectional and longitudinal studies, respectively.
 
 - **for cross-sectional studies**
 
-    We will compare subject's metrics with a group average (template) in the nifti format. Ideally the template metrics should be averaged from your control subject data. To create group-average images from a control group, open [**Tools**][**P1: Create template/skeleton**] and include the FIB files of the control subjects reconstructed by **[Step C1: Reconstruct SRC files for connectometry]** to create a group-average FIB file. Open the FIB file in **[Step T3 Fiber Tracking]** and export metrics using **[Export].**
+    We will compare subject's metrics with a group average (template) in the nifti format. Load the template image (e.g. template_nqa.nii.gz) using **[Slices][Insert MNI Images]**. The newly added metrics will be listed in the [Slices] droplist on the top of the 3D window, and the name will be the basename of the template file (i.e. template_nqa).
     
-    Load the template (e.g. template_qa.nii.gz) using **[Slices][Insert MNI Images]**. The newly added metrics will be listed in the [Slices] droplist on the top of the 3D window.   
+    You can download  [HCP dMRI templates](https://brain.labsolver.org/hcp_template.html), but there could be false findings due to acquisition differences. 
+      
+    The ideal template images should be averaged from your control subjects. To create group-average images from a control group, follow the **[Step C1: Reconstruct SRC files for connectometry]** to generate ODF-containing FIB files. Then open [**Tools**][**P1: Create template/skeleton**] and select the ODF-containing FIB files of the control subjects to create a group-averaged template FIB file. The generated template FIB file can be opened in **[Step T3 Fiber Tracking]** and export metrics using **[Export].**
     
-    Alternatively, you may use [HCP dMRI templates](https://brain.labsolver.org/hcp_template.html), but you may expect more false findings due to acquisition differences. 
-
 - **for longitudinal studies**
 
     Export metrics from the follow-up FIB files using the **[Step T3][Export]**, and rename the exported files (e.g. followup_xxx.nii.gz) so that it won't be confused with the baseline metrics.
@@ -50,15 +54,14 @@ The followings are steps for cross-sectional and longitudinal studies, respectiv
 
 Add a new tracking metric at **[Analysis][Add Tracking Metrics]** and input the names of two comparing metrics connected by a minus sign. 
 
-For cross sectional study, input ***template_qa-qa*** to study the decrease of QA in the subject, and input ***qa-template_qa*** for increase of QA in the subject.
+For cross sectional study, input ***template_nqa-nqa*** to study the decrease of QA in the subject, and input ***nqa-template_nqa*** for increase of QA in the subject.
 
-For longitudinal study, input ***qa-followup_qa*** to study the decrease of QA in the followup, and input ***followup_qa-qa*** for increase of QA in the followup.
+For longitudinal study, input ***nqa-followup_nqa*** to study the decrease of QA in the followup, and input ***followup_nqa-nqa*** for increase of QA in the followup.
 
 A new differential tracking metrics will be added to the **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics]**
 
 We can compare any inserted NIFTI metrics (e.g, for DKI_base.nii.gz and DKI_followup.nii.gz, the comparison metric due mapping decreased DKI is 'DKI_base-DKI_followup'). 
 
-Tutorial:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RkWui6NlLqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
