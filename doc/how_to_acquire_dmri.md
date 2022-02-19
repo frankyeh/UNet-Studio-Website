@@ -2,15 +2,13 @@
 
 Multi-shell acquisition is currently the most popular choice for "beyond-DTI" analysis that utilizes multiple diffusion sensitizations (b-values). The HCP-style multishell acquisition sample has three b-value at 90-90-90 directions. However, the protocol has several issues:
 
-1. Sub-optimal sampling scheme:
+- Sub-optimal sampling scheme:
 
 The 90 directions at the low b-value shell are over-sampled because most of its DWI signals are redundant and can be readily interpolated by neighboring DWIs in the same shell. In comparison, the high b-value shell does not have enough directions. The correlation between the neighboring DWI is much lower, and more directions can be sampled. *An optimal setting should have the same redundancy for each shell, which means high b-value shells should have more sampling directions.*
 
-2. Rotation variation: 
+- Rotation variation: 
 
-The 90 directions of each shell have inhomogeneous sampling density and high rotation variation. Consequently, the acquisition has sampling bias and lower reproducibility when head orientation is different. 
-
-The original HCP directions tried to avoid the same direction at different shells. This is unnecessary because other b-value signals can differentiate fast and slow diffusion. A sampling direction with good rotation invariance is important for improving reproducibility. 
+The 90 directions of each shell have inhomogeneous sampling density and high rotation variation. Consequently, the acquisition has sampling bias and lower reproducibility when head orientation is different. The original HCP directions tried to avoid the same direction at different shells. This is unnecessary because other b-value signals can differentiate fast and slow diffusion. A sampling direction with good rotation invariance is important for improving reproducibility. 
 
 ## My recommendation: 23 b-values with b-max=4,000 at 258 directions
 
