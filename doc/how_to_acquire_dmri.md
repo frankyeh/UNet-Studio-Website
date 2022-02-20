@@ -2,9 +2,9 @@
 
 Multi-shell acquisition is currently the most popular choice for "beyond-DTI" acquisition. The HCP-style multishell acquisition sample has three b-value at 90-90-90 directions. However, the protocol has two major issues:
 
-- Sub-optimal sampling scheme:
+- Suboptimal sampling scheme:
 
-The 90 directions at the low b-value shell are over-sampled because most of its DWI signals are redundant and can be readily interpolated by neighboring DWIs in the same shell. In comparison, the high b-value shell does not have enough directions. The correlation between the neighboring DWI is much lower, and more directions can be sampled. *An optimal setting should have the same redundancy for each shell, which means high b-value shells should have more sampling directions.*
+The 90 directions at the low b-value shell are over-sampled because most of 90 DWI signals are redundant and can be readily interpolated by neighboring DWIs in the same shell. By contrast, the high b-value shell does not have enough directions. The correlation between the neighboring DWI is much lower, and more directions can be sampled. *An optimal setting should have the same redundancy for each shell, which means high b-value shells should have more sampling directions.*
 
 - Rotation variation: 
 
