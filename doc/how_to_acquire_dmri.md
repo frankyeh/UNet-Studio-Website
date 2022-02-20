@@ -6,9 +6,9 @@ Multi-shell acquisition is currently the most popular choice for "beyond-DTI" ac
 
 The 90 directions at the low b-value shell are over-sampled because most of 90 DWI signals are redundant and can be readily interpolated by neighboring DWIs in the same shell. By contrast, the high b-value shell does not have enough directions. The correlation between the neighboring DWI is much lower, and more directions can be sampled. *An optimal setting should have the same redundancy for each shell, which means high b-value shells should have more sampling directions.*
 
-- Rotation variation: 
+- Orientation bias: 
 
-The 90 directions of each shell have inhomogeneous sampling density and high rotation variation. Consequently, the acquisition has sampling bias and lower reproducibility when head orientation is different. The original HCP directions tried to avoid the same direction at different shells. This is unnecessary because other b-value signals can differentiate fast and slow diffusion. A sampling direction with good rotation invariance is important for improving reproducibility. 
+The 90 directions of each shell have *substantial* inhomogeneous sampling density and high rotation variation. Consequently, the acquisition has orientational bias, and the reproducibility will be lower if head orientation is different. The problem is due to that the original HCP directions tried to avoid the same direction at different shells. This is unnecessary because each shell can be viewed as different bandwidth for differentiating fast and slow diffusion. A sampling direction with good rotation invariance is important for achieving good reproducibility and low rotation variance. 
 
 ## My recommendation: 23 b-values with b-max=4,000 at 258 directions
 
@@ -16,8 +16,7 @@ My recommendation is a 12-minute "grid-258" sampling with a maximum b-value of 4
 but 23 different b-values ranging from b=0 to b=4000 at a total of 258 directions. The low b-value range has fewer sampling compared to HCP multishell,
 making the entire acquisition much more efficient. Moreover, the scheme reaches a higher b-value to 4,000 so that it captures restricted diffusion much better. 
 
-This scheme addresses the issues of HCP-style acquisition mentioned above.
-
+This grid scheme addresses the issues of HCP-style acquisition mentioned above.
 
 > **Using a multiband sequence (e.g., CMRR) with an MB factor of 4, this 2-mm 258-direction dMRI acquisition can be completed in 12 minutes.**  
 
