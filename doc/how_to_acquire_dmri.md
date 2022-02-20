@@ -1,6 +1,6 @@
 ## Current Trend in Diffusion MRI Acquisitions
 
-Multi-shell acquisition is currently the most popular choice for "beyond-DTI" analysis that utilizes multiple diffusion sensitizations (b-values). The HCP-style multishell acquisition sample has three b-value at 90-90-90 directions. However, the protocol has several issues:
+Multi-shell acquisition is currently the most popular choice for "beyond-DTI" acquisition. The HCP-style multishell acquisition sample has three b-value at 90-90-90 directions. However, the protocol has two major issues:
 
 - Sub-optimal sampling scheme:
 
