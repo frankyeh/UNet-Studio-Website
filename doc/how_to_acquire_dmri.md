@@ -24,16 +24,19 @@ This grid scheme addresses the issues of HCP-style acquisition mentioned above.
 - It has uniformly distributed density in the diffusion encoding space (i.e. q-space) and does not have the sampling homogeneity problem in the shell acquisitions. 
 - The sampling is more efficient by avoiding over-sampling at low b-values or under-sampling at high b-values. 
 - It can be reconstructed by DTI, ball-and-sticks model, NODDI, GQI...etc.
-- It captures a continuous range of diffusion patterns from non-restricted diffusion to restricted diffusion. For clinical studies, the grid scheme can capture all possible diffusion changes due to edematous tissue or cell infiltration. In comparison, multishell only acquire 2 or 3 b-values and may miss diffusion patterns that are only sensitive to values in between.
+- It captures a continuous range of diffusion patterns from non-restricted diffusion to restricted diffusion. For clinical studies, the grid scheme can capture all possible diffusion changes due to edematous tissue or cell infiltration. In comparison, multishell only acquire 2 or 3 b-values. Its ability to differentiate complex restricted diffusion is not as good as 23 b-value acquisition.
 
 *There are limitations with the grid sampling scheme:*
-- A bipolar-encoding pulse is needed to handle eddy current at the sequence level.
-- Methods using spherical harmonics cannot use grid scheme data.
+- A bipolar-encoding pulse is needed to handle eddy current at the sequence level. 
 
-The following steps will help you set up the grid-258 sampling scheme on your MRI scanner. They are verified on Siemens Prisma scanners, and a similar protocol can be implemented in other manufacturers. If scanning time is an issue, you may also consider grid-101 ([b-table here](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/EUFLViycNvFJjitO0pM2pg4BRHdXc9LSjICBtuAgiBk_4A?e=ztSaxy))
+FSL's *eddy* need enough redundancy at each shell to "interpolate" or correct DWI singals. The grid-258 turns out does not have this redundancy. Each of the acquired signals is much more unique and cannot be interpolated by the neighboring DWI signals. The eddy current distortion needs sequence-level correction.
+
+- Methods using spherical harmonics cannot use grid scheme data.
 
 
 ## Steps to install the 12-min q-space scheme on Siemens scanners
+
+The following steps will help you set up the grid-258 sampling scheme on your MRI scanner. They were tested on Siemens Prisma scanners, and a similar protocol can be implemented in other manufacturers. If scanning time is an issue, you may also consider 5-minute grid-101 ([b-table here](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/EUFLViycNvFJjitO0pM2pg4BRHdXc9LSjICBtuAgiBk_4A?e=ztSaxy))
 
 If you are using a Siemens Prisma or Skyra scanner, you will need a C2P agreement (get it from your Siemens representative) to install the CMRR multiband sequence:
 http://www.cmrr.umn.edu/multiband/. You may also need a Siemens SMS EPI license (for MB imaging), Siemens DTI package license (for diffusion table), High-performance gradient (HCP) that is installed in Prisma (for high bandwidth readout).
