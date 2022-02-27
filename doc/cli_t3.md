@@ -129,8 +129,7 @@ call dsi_studio.exe --action=trk --source="%%x" --seed_count=1000000 --thread_co
 | delete_repeat  | assign the distance for removing repeat tracks (e.g. --delete_repeat=1 removes repeat tracks with distance smaller than 1 mm) |
 | output | specify the output directory or output file name (tt.gz, trk.gz, or nii.gz ). Specify `no_file` to disable tractography output. |
 | end_point | specify file name for output endpoint coordinates (.txt or .mat) |
-| export | export along-track indices, statistics, TDI, or track analysis report. See the export option at --action=ana (below) for detail |
-
+| export |  export additional information related to the fiber tracts <p> use "--export=tdi" to generate track density image in the diffusion space. <p> use "--export=tdi2" to generate track density image in the subvoxel diffusion space. <p> use "--export=tdi_color" or "--export=tdi2_color" to generate track color density image. <p> use "--export=stat" to export tracts statistics like along tract mean fa, adc, or morphology index such as volume, length, ... etc. <p> <p> To export TDI endpoints, use tdi_end or tdi2_end. <p> <p> use "--export=report:dti_fa:0:1" to export the tract reports on "fa" values with a profile style at x-direction "0" and a bandwidth of "1" <p> the profile style can be the following: <p> <p> 0 x-direction <p> 1 y-direction <p> 2 z-direction <p> 3 along tracts <p> 4 mean of each tract <p> <p> You can export multiple outputs separated by ",". For example, <p> --export=stat,tdi,tdi2 exports tract statistics, tract density images (TDI), subvoxel TDI, along tract qa values, and along tract gfa values. |
 
 
 ## Connectivity analysis
