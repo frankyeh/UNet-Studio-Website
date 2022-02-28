@@ -14,7 +14,7 @@ dsi_studio --action=trk --source=subject001.fib.gz --parameter_id=c9A99193Fba3F2
 ```
 *Use the left and right precentral region from FreeSurferDKT atlas as the ROIs. Dilate them twice and smooth them for fiber tracking*
 ```
-dsi_studio --action=trk --source=subject001.fib.gz --roi=FreeSurferDKT:left_precentral,dilate,dilate,smoothing --roi2=FreeSurferDKT:right_precentral,dilate,dilate,smoothing
+dsi_studio --action=trk --source=subject001.fib.gz --roi=FreeSurferDKT_Cortical:left_precentral,dilate,dilate,smoothing --roi2=FreeSurferDKT_Cortical:right_precentral,dilate,dilate,smoothing
 ```
 *Fiber tracking using two MNI-space ROIs (include MNI in the file name) and subject-space whole-brain seeding (from wholeBrain.nii)*
 ```
