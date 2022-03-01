@@ -34,7 +34,7 @@ dsi_studio --action=trk --source=subject001.fib.gz --other_slices=./other/*.nii.
 ```
 *Perform differential tractography by comparing MNI-space FA map (include MNI in the file name) and subject's fa and tracking the decreased FA at 10%*
 ```
-dsi_studio --action=trk --source=subject001.fib.gz --other_slices=mni_fa.nii.gz --dt_threshold_index=mni_fa-dti_fa --dt_threshold=0.1 --output=tracks.tt.gz
+dsi_studio --action=trk --source=subject001.fib.gz --other_slices=template_qa.nii.gz --dt_threshold_index=template_qa-qa --dt_threshold=0.2 --seed_count=1000000 --min_length=30 --output=tracks.tt.gz
 ```
 *(Windows System) Search for all fib files under the current directory and perform fiber tracking to get the FreeSurferDKT connectivity matrix*
 ```
