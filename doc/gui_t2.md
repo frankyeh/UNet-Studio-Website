@@ -71,6 +71,8 @@ You can open/save the mask to a txt file or nifti file.
     ![image](https://user-images.githubusercontent.com/275569/149644623-ee22e1d3-d8a6-4650-b2ae-ce10d93e11f2.png)
 
     Use [**Edit**][**Image Flip**] or [**Image Swap**] to make sure your image volume matches that of the template. Note that either "Image Flip" or "Image Swap" will create a mirrored image, and thus you may need either 2 or 4 flip/swap operations to avoid creating mirrow images. ***you can always add an additional left-right flip to ensure an even number of operations***.
+    
+    For correcting oblique angles, use [**Edit**][**Rotate...**] 
    
 2. remove background signals or crop image volume (optional, recommended)
 
