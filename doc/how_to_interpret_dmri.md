@@ -20,7 +20,7 @@ The most commonly used model-based metrics are calculated from the diffusion ten
 
 A diffusion tensor can provide fractional anisotropy (FA), axial diffusivity (AD), radial diffusivity (RD), and mean diffusivity (MD).
 
-**AD**, denoted by λ parallel, quantifies how fast water diffuses along the axonal fibers. It is estimated by λ1, the first eigenvalue of the tensor. RD, denoted by λ perpendicular, quantified how fast water diffuses across the axonal bundles. It is estimated by (λ2+λ3)/2, the average of the second and third eigenvalues of the tensor. MD is the diffusivity average from the three eigenvalues of the tensor. It is often regarded as an approximation of the overall diffusivities. FA is a non-unit fraction derived from the ratio between λ1, λ2, and λ3. It has a value ranging from 0 (isotropic) to 1(totally anisotropic). Myelinated fibers have high FA and low RD (Chang 2017).
+**AD**, denoted by λ parallel, quantifies how fast water diffuses along the axonal fibers. It is estimated by λ1, the first eigenvalue of the tensor. **RD**, denoted by λ perpendicular, quantified how fast water diffuses across the axonal bundles. It is estimated by (λ2+λ3)/2, the average of the second and third eigenvalues of the tensor. **MD** is the diffusivity average from the three eigenvalues of the tensor. It is often regarded as an approximation of the overall diffusivities. **FA** is a non-unit fraction derived from the ratio between λ1, λ2, and λ3. It has a value ranging from 0 (isotropic) to 1(totally anisotropic). Myelinated fibers have high FA and low RD (Chang 2017).
 
 Numerous studies have investigated the relation between diffusivity and pathological conditions:
 
@@ -58,13 +58,11 @@ The model-free metrics calculated in DSI Studio include the following:
 - **ISO**: isotropic diffusion component derives from GQI analysis
 - **RDI, NRDI**: an index quantifying the density of restricted diffusion given a displacement distance (L). nRDI quantifies non-restricted diffusion. (Yeh, et al. Magnetic resonance in medicine 77.2 (2017): 603-612).
 
-QA is the density of *anisotropic* diffusing water calculated from GQI (Yeh, 2010). Each voxel may have more than one principal diffusion directions (when two white matter tracts intersect), and each principal direction will have its QA value. It is noteworthy that there is only one FA for each voxel, regardless of the number of principal diffusion directions. 
+**QA** is the density of *anisotropic* diffusing water calculated from GQI (Yeh, 2010). Each voxel may have more than one principal diffusion directions (when two white matter tracts intersect), and each principal direction will have its QA value. It is noteworthy that there is only one FA for each voxel, regardless of the number of principal diffusion directions. QA scales with spin density and receiver gain, and it has an "arbitrary unit."  QA is often calibrated by scaling the largest isotropic component in the entire image volume to a unit (i.e., max(iso)=1). The normalized QA (NQA) further scales the largest QA in the scan to one. 
 
-QA scales with spin density and receiver gain, and it has an "arbitrary unit."  QA is often calibrated by scaling the largest isotropic component in the entire image volume to a unit (i.e., max(iso)=1). The normalized QA (NQA) further scales the largest QA in the scan to one. 
+**ISO** is the density of *isotropic diffusing water calculated from GQI (Yeh, 2010). It represents background isotropic diffusion contributed from CSF or edema, including restricted and non-restricted isotropic diffusion. ISO will be affected by the diffusion MRI sampling schemes. Higher b-value "diffusion sensitization" will provide more sensitivity to restricted diffusion, whereas lower b-value will be more sensitive to free water diffusion. 
 
-ISO is the density of *isotropic diffusing water calculated from GQI (Yeh, 2010). It represents background isotropic diffusion contributed from CSF or edema, including restricted and non-restricted isotropic diffusion. ISO will be affected by the diffusion MRI sampling schemes. Higher b-value "diffusion sensitization" will provide more sensitivity to restricted diffusion, whereas lower b-value will be more sensitive to free water diffusion. 
-
-RDI and NRDI further separate restricted ISO and non-restricted ISO. The calculation needs multiple b-values, ideally the grid scheme that acquires 20+ b-values.
+**RDI** and **NRDI** further separate restricted ISO and non-restricted ISO. The calculation needs multiple b-values, ideally the grid scheme that acquires 20+ b-values.
 
 Numerous studies have investigated the relation between model-free metrics and pathological conditions:
 
@@ -88,7 +86,6 @@ Here we focus on the differences between DTI and GQI, although other model-based
 ## Partial volume effect due to fiber and free water
 
 <img src="https://user-images.githubusercontent.com/275569/156826203-e8c4ece1-1b45-4193-8257-aa8e64dfe57c.png" width="200">
-
 
 The DTI model does not specify restricted diffusion contributed by axonal myelination. The consequence is that FA, AD, MD will reflect a portfolio of biological changes including edema, inflammation, or just a superimposing crossing fiber (see  Yeh F-C et al. PLoS ONE 8(11): e80713.2013). Using DTI metrics will result in a considerable variation due to the complexity of the real-world biological changes, and often time a large sample size is needed to find statistical significance.
 
