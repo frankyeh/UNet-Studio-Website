@@ -87,7 +87,7 @@ Here we focus on the differences between DTI and GQI, although other model-based
 
 ## Partial volume effect due to fiber and free water
 
-![image](https://user-images.githubusercontent.com/275569/156826203-e8c4ece1-1b45-4193-8257-aa8e64dfe57c.png)
+<img href="https://user-images.githubusercontent.com/275569/156826203-e8c4ece1-1b45-4193-8257-aa8e64dfe57c.png" width="200">
 
 
 The DTI model does not specify restricted diffusion contributed by axonal myelination. The consequence is that FA, AD, MD will reflect a portfolio of biological changes including edema, inflammation, or just a superimposing crossing fiber (see  Yeh F-C et al. PLoS ONE 8(11): e80713.2013). Using DTI metrics will result in a considerable variation due to the complexity of the real-world biological changes, and often time a large sample size is needed to find statistical significance.
@@ -96,7 +96,7 @@ GQI separates isotropic diffusion and anisotropic diffusion, thus minimizing the
 
 ## Biophysical meaning
 
-![image](https://user-images.githubusercontent.com/275569/156826048-40933f38-339d-442e-ab5d-2fa5d4fbb999.png)
+<img href="https://user-images.githubusercontent.com/275569/156826048-40933f38-339d-442e-ab5d-2fa5d4fbb999.png" width="200">
 
 The metrics derived from DTI (e.g., FA, AD, RD, MD) cannot differentiate non-restricted and restricted diffusion. The diffusivity measures the overall "rate" of diffusion, and the metrics are an ensemble measure from both non-restricted (due to edema or free water) and restricted diffusion (myelination). The calculation also cannot address the condition of fibers. The biological association between DTI-based metrics is often affected by multiple counteracting factors, making the interpretation much more difficult.
 
