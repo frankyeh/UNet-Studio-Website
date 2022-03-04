@@ -73,7 +73,7 @@ Numerous studies have investigated the relation between model-free metrics and p
 - Cell infiltration: RDI↑(Yeh 2017)(Yeh 2021)
 - Edema: NRDI↑(Yeh 2017) 
 
-# References:
+# References
 1. Yeh FC, Irimia A, Bastos DCA, Golby AJ. Tractography methods and findings in brain tumors and traumatic brain injury. Neuroimage. 2021;245:118651.
 2. Yeh FC, Zaydan IM, Suski VR, Lacomis D, Richardson RM, Maroon JC, et al. Differential tractography as a track-based biomarker for neuronal injury. Neuroimage. 2019;202:116131.
 3. Garic D, Yeh FC, Graziano P, Dick AS. In vivo restricted diffusion imaging (RDI) is sensitive to differences in axonal density in typical children and adults. Brain Struct Funct. 2021;226(8):2689-705.
