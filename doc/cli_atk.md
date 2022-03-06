@@ -1,4 +1,4 @@
-# Automatic Fiber Tracking
+# [Step B4] Automatic Fiber Tracking
 
 > use --action=`atk` to initiate automatic fiber tracking
 
