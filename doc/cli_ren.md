@@ -4,7 +4,6 @@
 
 ## Examples
 
-
 *Rename DICOM files under the raw_data directory*
 ```
 dsi_studio --action=ren --source=d:/draw_data
