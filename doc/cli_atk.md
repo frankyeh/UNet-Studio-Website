@@ -23,6 +23,7 @@ dsi_studio --action=atk --source=*.fib.gz --export_template_trk=1
 | track_id | `Fasciculus,Cingulum,Aslant,Corticos,Thalamic_R,Reticular,Optic,Fornix,Corpus` | specify the id number or the name of the bundle. The id can be found in /atlas/ICBM152/HCP1065.tt.gz.txt . <p> This text file is included in DSI Studio package (For Mac, right-click on dsi_studio_64.app to find content). You can specify partial name of the bundle: <p>           example:<p>   for tracking left and right arcuate fasciculus, assign --track_id=0,1  or --track_id=arcuate    (DSI Studio will find bundles with names containing 'arcuate', case insensitive) <p>           example:<p>   for tracking left and right arcuate and cingulum, assign --track_id=0,1,2,3 or --track_id=arcuate,cingulum|
 
 ## Optional
+  
 | Parameters            | Default | Description                                                                 |
 |:-----------------|:--------|:------------------------------------------------------------------------------|
 | length_ratio | `1.25` | the diffusion sampling length ratio for GQI reconstruction. This is only used if the source file is an SRC file. |
