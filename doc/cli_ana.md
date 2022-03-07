@@ -1,10 +1,10 @@
-# Region and Tract Analysis
+# Region and Tract Functions
 
-> use --action=`ana` to initiate region or tract analysis
+> use --action=`ana` to initiate region or tract functions in [Step T3 Fiber Tracking]
 
 The `ana` action can use any post-tracking functions listed under "--action=trk", including `delete_repeat`,`output`, `export`, `end_point`, `ref`, `connectivity`, `connectivity_type`, `connectivity_value`, and ROI related commands, such as `roi`, `roi2`, ...etc. Please check out `--action=trk` for details.
 
-## Tract Analysis Examples: 
+## Examples of Tract Functions: 
 
 *Convert trk file to txt file*
 ```
@@ -41,7 +41,7 @@ dsi_studio --action=ana --source=my.fib.gz --tract=tract.tt.gz --other_slices=DK
 dsi_studio --action=ana --source=my.fib.gz --tract=tract.tt.gz --connectivity=FreeSurferDKT,my_roi.nii.gz,another_roi.nii.gz --connectivity_value=qa,count,ncount --connectivity_type=pass,end
 ```
 
-## Region Analysis Examples: 
+## Examples of Region Functions: 
 
 *Get the statistics of multiple native-space ROIs*
 ```
@@ -74,18 +74,12 @@ dsi_studio --action=ana --source=my.fib.gz --atlas=FreeSurferDKT
 |:-------------|:------------------------------------------------------------------------------|
 | source |  specify the fib.gz file  |
 
-## Tract Analysis Functions
+## Tract Functions
   
 | Parameters  | Description                                                                 |
 |:------------|:------------------------------------------------------------------------------|
 | tract | specify the tract file |
 | output | use"--output=Tract.txt" to convert trk file to other format or ROI (assigned output file as NIFTI file) |
-
-
-## Export Function
-
-| Parameters   | Description                                                                 |
-|:-------------|:------------------------------------------------------------------------------|
 | export | export additional information related to the fiber tracts |
 
 ***Export tract density images***
@@ -108,7 +102,7 @@ You can export multiple outputs separated by ",". For example,
 
 `--export=stat,tdi,tdi2` exports tract statistics, tract density images (TDI), subvoxel TDI, along tract qa values, and along tract gfa values.
 
-## Region Statistics Functions
+## Region Functions
 
 ***Do not specify `--tract` if you want to use the region analysis fuction***
 
