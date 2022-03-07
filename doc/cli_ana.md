@@ -2,7 +2,7 @@
 
 > use --action=`ana` to initiate region or tract analysis
 
-The `ana` action can use any post-tracking listed under "--action=trk", including `delete_repeat`,`output`, `export`, `end_point`, `ref`, `connectivity`, `connectivity_type`, `connectivity_value`, and ROI related commands, such as `roi`, `roi2`, ...etc. Please check out `--action=trk` for details.
+The `ana` action can use any post-tracking functions listed under "--action=trk", including `delete_repeat`,`output`, `export`, `end_point`, `ref`, `connectivity`, `connectivity_type`, `connectivity_value`, and ROI related commands, such as `roi`, `roi2`, ...etc. Please check out `--action=trk` for details.
 
 ## Tract Analysis Examples: 
 
@@ -70,21 +70,22 @@ dsi_studio --action=ana --source=my.fib.gz --atlas=FreeSurferDKT
 
 ## Core Functions
 
-| Parameters            | Default | Description                                                                 |
-|:-----------------|:--------|:------------------------------------------------------------------------------|
-| source |  | specify the fib.gz file  |
+| Parameters   | Description                                                                 |
+|:-------------|:------------------------------------------------------------------------------|
+| source |  specify the fib.gz file  |
 
 ## Tract Analysis Functions
   
-| Parameters            | Default | Description                                                                 |
-|:-----------------|:--------|:------------------------------------------------------------------------------|
-| tract | | specify the tract file |
-| output | | use"--output=Tract.txt" to convert trk file to other format or ROI (assigned output file as NIFTI file) |
+| Parameters  | Description                                                                 |
+|:------------|:------------------------------------------------------------------------------|
+| tract | specify the tract file |
+| output | use"--output=Tract.txt" to convert trk file to other format or ROI (assigned output file as NIFTI file) |
 
 
 ## Export Function
-| Parameters            | Description                                                                 |
-|:-----------------|:------------------------------------------------------------------------------|
+
+| Parameters   | Description                                                                 |
+|:-------------|:------------------------------------------------------------------------------|
 | export | export additional information related to the fiber tracts |
 
 ***Export tract density images***
@@ -111,11 +112,11 @@ You can export multiple outputs separated by ",". For example,
 
 ***Do not specify `--tract` if you want to use the region analysis fuction***
 
-| Parameters            | Default | Description                                                                 |
-|:-----------------|:--------|:------------------------------------------------------------------------------|
-| region or regions |  | specify the NIFTI file of a single ROI (--region) or multiple ROIs (--regions) to export region statistics. If the regions are in the MNI space, add "mni" to the file name (e.g. mni_regions.nii.gz) |
-| t1t2 | | if the region is derived from a T1W, then specify the t1w image using --t1t2=t1w.nii.gz for registration with the DWI.|
-| atlas | | specify the built-in atlas name for export region statistics | 
+| Parameters        | Description                                                                 |
+|:------------------|:------------------------------------------------------------------------------|
+| region or regions | specify the NIFTI file of a single ROI (--region) or multiple ROIs (--regions) to export region statistics. If the regions are in the MNI space, add "mni" to the file name (e.g. mni_regions.nii.gz) |
+| t1t2 | if the region is derived from a T1W, then specify the t1w image using --t1t2=t1w.nii.gz for registration with the DWI.|
+| atlas | specify the built-in atlas name for export region statistics | 
 
 Multiple files can be specified using "+" as the separator. The format can be a txt file or nifti file or from the atlas regions (e.g. --region=FreeSurferDKT:right_precentral+FreeSurferDKT:left_precentral)
 
