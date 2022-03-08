@@ -22,6 +22,11 @@ Click [**Ok**] button to generate an SRC file for further reconstruction.
 
 # Step T1: NIFTI File to SRC Files
 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iuBtgGLohsg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
 The NIFTI files include no b-table information, and we will also a bval and a bvec file to create an SRC file.
 
 First, click on [**Step T1: Open Source Images**] in the main window and select the NIFTI file. DSI Studio will try to locate its associated bval and bvec files in the same folder. 
