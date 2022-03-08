@@ -64,9 +64,9 @@ done
 |:-----------------|:------------------------------------------------------------------------------|
 | mask | specify the mask file (.nii.gz) |
 | rev_pe | assign the NIFTI or SRC file of the reversed-phase encoding images for TOPUP/EDDY
-| study_src  | compare another src.gz file for further differential tractography analysis |
 | rotate_to  | specify a T1W or T1W for DSI Studio to rotate DWI to its space.|
 | other_image  | assign other image volumes (e.g., T1W, T2W image) to be wrapped with QSDR. --other_image=<label>:<file path>,<label>:<file path> |
+| save_src | save preprocessed images to a new SRC file |
 | cmd  | specify any of the following commands for preprocessing. Use "+" to combine commands, and use "=" to assign value/parameters |
            
      [Step T2][File][Save 4D NIFTI]
