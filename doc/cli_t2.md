@@ -16,6 +16,13 @@ dsi_studio --action=rec --source=*.src.gz --method=4 --param0=1.25 --output=/fib
 dsi_studio --action=rec --source=subject1.src.gz --rev_pe=subject1.rev_b0.nii.gz --method=4 --param0=1.25
 ```
 
+*Reconstruct *.src.gz file after TOPUP/EDDY correction using reverse-phase encoding b0 stored in *.rev_b0.nii.gz.*
+
+```
+dsi_studio --action=rec --source=*.src.gz --rev_pe=*.rev_b0.nii.gz --method=4 --param0=1.25
+```
+
+
 *QSDR reconstruction with 1.25 sampling length ratio. The t1w and t2w were also warped with QSDR*
 
 ```
