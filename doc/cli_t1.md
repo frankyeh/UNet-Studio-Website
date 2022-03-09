@@ -63,16 +63,16 @@ call dsi_studio.exe --action=src --source=%%x\%%x_dwi_QCed.nii --bval=%%x\%%x_QC
 
 ## Core Functions
 
-| Parameters            | Default | Description                                                                 |
-|:-----------------|:--------|:------------------------------------------------------------------------------|
-| source |  | specify a directory storing DICOM files or the file name for 4D nifti file. <br> specify one or more 4D NIFTI files separated by comma |
+| Parameters            | Description                                                                 |
+|:-----------------|:------------------------------------------------------------------------------|
+| source | Specify a directory storing DICOM files or the path to one 4D NIFTI file |
 
 
 ## Optional Functions
 
 | Parameters            | Description                                                                 |
 |:-----------------|:------------------------------------------------------------------------------|
-| other_source | specify other files to be included in the SRC file, e.g. --other_source=1.nii.gz,2.nii.gz |
+| other_source | specify other files to be included in the SRC file. Multiple files can be assigned using comma separator, (e.g. --other_source=1.nii.gz,2.nii.gz) |
 | output | assign the output src file name (.src.gz) or the output folder |
 | b_table | assign the text file to replace b-table |
 | bval |specify the location of the FSL bval file<sup>a</sup> |
