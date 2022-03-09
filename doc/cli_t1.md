@@ -19,22 +19,19 @@ dsi_studio --action=src --source=c:\subject001.nii.gz --bval=bval --bvec=bvec
 *Combine two 4d NIFTI files and generate one SRC file*
 
 ```
-dsi_studio --action=src --source=HCA9992517_V1_MR_dMRI_dir98_AP.nii.gz,HCA9992517_V1_MR_dMRI_dir99_AP.nii.gz
+dsi_studio --action=src --source=HCA9992517_V1_MR_dMRI_dir98_AP.nii.gz --other_source=HCA9992517_V1_MR_dMRI_dir99_AP.nii.gz
 ```
 
 *Search all DICOM files under the assigned directory and output SRC file*
 
 ```
-dsi_studio --action=src --source=C:\20081006_11_00814348_DWI_WIP_DSI_203 --output=c:\.src.gz
+dsi_studio --action=src --source=C:\20081006_11_00814348_DWI_WIP_DSI_203 --output=c:\20081006_11_00814348_DWI_WIP_DSI_203.src.gz
 ```
 
 *Find all *98_AP.nii.gz file and combine its corresponding 99_AP.nii.gz file to generate one combined SRC file*
 
-```bash
-for sub in $(ls *98_AP.nii.gz)
-do
-    dsi_studio --action=rec --source=${sub},${sub:0:25}99_AP.nii.gz
-done
+```
+dsi_studio --action=rec --source=*98_AP.nii.gz --other_source=*99_AP.nii.gz
 ```
 
 *Parse all 4d NIFTI files in a folder (each of them has a bval and bvec file that shares a similar file name) and generate corresponding SRC files to a new folder*
@@ -75,6 +72,7 @@ call dsi_studio.exe --action=src --source=%%x\%%x_dwi_QCed.nii --bval=%%x\%%x_QC
 
 | Parameters            | Description                                                                 |
 |:-----------------|:------------------------------------------------------------------------------|
+| other_source | specify other files to be included in the SRC file, e.g. --other_source=1.nii.gz,2.nii.gz |
 | output | assign the output src file name (.src.gz) or the output folder |
 | b_table | assign the text file to replace b-table |
 | bval |specify the location of the FSL bval file<sup>a</sup> |
