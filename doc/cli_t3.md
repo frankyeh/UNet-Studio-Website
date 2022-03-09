@@ -4,9 +4,9 @@ use --action=`trk` to initiate fiber tracking in DSI Studio
 
 ## Examples
 
-*Track the left arcuate fasciculus a fib files and save them in tractography and NIFTI format*
+*Track the left arcuate fasciculus a fib files and save them in tractography*
 ```
-dsi_studio --action=trk --source=subject001.fib.gz --track_id=Arcuate_Fasciculus_L --output=subject001.AF.tt.gz,subject001.AF.nii.gz
+dsi_studio --action=trk --source=*.fib.gz --track_id=Arcuate_Fasciculus_L --output=*.AF.tt.gz
 ```
 *Perform fiber tracking with all fiber tracking parameters assigned by a parameter ID*
 ```
