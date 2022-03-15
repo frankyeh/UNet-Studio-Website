@@ -2,7 +2,7 @@
 
 DSI Studio saves most files in MAT -v4 format. You can ungzip the fib.gz, src.gz file and rename it to view the content in MATLAB.
 
-## Load Mrtrix3 FOD in DSI Studio
+## Load MRtrix3 FOD in DSI Studio
 
 Convert FOD.mif using the following command:
 
