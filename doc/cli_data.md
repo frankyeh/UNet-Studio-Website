@@ -2,6 +2,22 @@
 
 DSI Studio saves most files in MAT -v4 format. You can ungzip the fib.gz, src.gz file and rename it to view the content in MATLAB.
 
+## Load Mrtrix3 FOD in DSI Studio
+
+Convert FOD.mif using the following command:
+
+```
+sh2peaks fod.mif peak.mif
+mrconvert peak.mif -stride 1,2,3,4 peak.nii.gz
+```
+
+The peak.nii.gz can be loaded in DSI Studio [Step T3 Fiber Tracking] to run fiber tracking.
+
+![image](https://user-images.githubusercontent.com/275569/158298172-0fd06ad6-ac08-4f2f-9736-db85a95289cf.png)
+
+
+
+
 ## Load/Save SRC files in MATLAB
 
 |   matrix | description|
