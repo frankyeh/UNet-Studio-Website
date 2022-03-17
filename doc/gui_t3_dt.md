@@ -101,6 +101,10 @@ In the tracking parameters, set **[Step T3c: Options][Tracking Parameters][Diff
 
 - Use [Tracts][Miscellaneous][Recognize Track] to know the name of the findings.
 
+- If tracking results change a lot in repeated analyses, it is likely that the image acquisition is not optimal (e.g. too noisy, has very thick slices), and thus registration errors are boosted. To minimize this variance, export both baseline and follow-up NQA images and smooth them using [Tool][O41 View image][Signals][Smoothing] (make sure to update DSI Studio to use this function). Save the smoothed images as new files to run differential tracking.
+
+After smoothing, add the smoothed image back using [Slices][Add Other images] and continue with further analysis.
+
 ## 4. False discovery rate and statistical testing
 
 One key question for differential tractography is the significance of the findings. For example, if we observe a lot of tracks showing up in differential tractography, how many of them are false positive? A way to quantifying this reliability is by calculating the false discovery rate from a group of patients and a group of control subjects. The following steps illustrate how this can be carried out in DSI Studio.
