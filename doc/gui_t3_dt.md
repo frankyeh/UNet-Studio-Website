@@ -14,15 +14,17 @@ Open the main window and click on [Step T3: Fiber Tracking] to select a GQI-reco
 
 ## 0. Quality check using whole-brain tracking
 
+First, restore default settings using **[Options][Restore Tracking Settings]**
+
 In the tracking parameters (right upper window), set **[Step T3c: Options][Tracking Parameters][Min length]** to "30 mm",  **[Terminate if]** to `100,000` seeds
 
-Click the **[Step T3d: Tracts][Fiber Tracking]** button to see if you can get a good quality of whole-brain fiber tracking.
+Click the **[Step T3d: Tracts][Fiber Tracking]** button to see if you can get a good quality of whole-brain fiber tracking 
 
 If there are too many noisy fibers, consider increasing the **[Step T3c: Options][Tracking Parameters][Threshold]** or **[Min length]**.
 
 If missing too many branches, considers lowering the **[Step T3c: Options][Tracking Parameters][Threshold]** or **[Min length]**.
 
-You may also need to adjust other parameters (check out [Step T3 Whole brain fiber tracking](/doc/gui_t3_whole_brain.html) ) until you get a good quality of the whole-brain track.
+Adjust other parameters until you get a good quality of the whole-brain track. (You may check out [whole brain fiber tracking](/doc/gui_t3_whole_brain.html) to see how to evaluate the tractography quality and adjust parameters)
 
 ## 1. Load metrics
 
