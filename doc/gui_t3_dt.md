@@ -38,12 +38,18 @@ The followings are steps for cross-sectional and longitudinal studies, respectiv
 
 - **for cross-sectional studies**
 
-    We will compare subject's metrics with a group average template. You can download [dMRI templates](https://brain.labsolver.org/hcp_template.html). If your data were acquired using HCP-style multishell, choose the HCP-1065 NQA and FA templates. If your data were acquired using the [258-direction DSI](/doc/how_to_acquire_dmri.html), choose the DSI NQA and FA templates. 
+    We will compare subject's metrics with a group average template. You can [download templates](https://brain.labsolver.org/hcp_template.html) for comparison. 
+    
+    - If your data were acquired using HCP-style multishell, choose the ***HCP-1065 NQA*** or ***HCP-1065 FA*** templates. 
+    - If your data were acquired using the [258-direction DSI](/doc/how_to_acquire_dmri.html), choose the ***Grid258 NQA*** or ***Grid258 FA*** templates. 
+    - To use an age-sex adjusted template for your subject, download ***Grid258 NQA connectometry database*** and open it in ***[Step C2a]*** and select ***[File][Save Matched Image as]***. Input age and sex (1 for male, 0 for female) separated by a space to export the age-sex adjusted NQA template.
     
     Load the template image (e.g. template_nqa.nii.gz) using **[Slices][Insert MNI Images]**. The newly added metrics will be listed in the [Slices] droplist on the top of the 3D window, and the name will be the basename of the template file (i.e. template_nqa).
       
-    Nontheless, the ideal template should be constructed from your control subjects to avoid possible site differences. 
-    To create group-average images from a control group, follow the **[Step C1: Reconstruct SRC files for connectometry]** to generate ODF-containing FIB files. Then open [**Tools**][**P1: Create template/skeleton**] and select the ODF-containing FIB files of the control subjects to create a group-averaged template FIB file. The generated template FIB file can be opened in **[Step T3 Fiber Tracking]** and export metrics using **[Export].**
+**TIP**
+
+The ideal template should be constructed from your control subjects to avoid possible site differences. To create group-average images from a control group, follow the **[Step C1: Reconstruct SRC files for connectometry]** to generate ODF-containing FIB files. Then open [**Tools**][**P1: Create template/skeleton**] and select the ODF-containing FIB files of the control subjects to create a group-averaged template FIB file. The generated template FIB file can be opened in **[Step T3 Fiber Tracking]** and export metrics using **[Export].**   
+
     
 - **for longitudinal studies**
 
