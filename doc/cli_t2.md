@@ -85,6 +85,7 @@ done
      [Step T2][Edit][Image swap yz]
      [Step T2][Edit][Image swap xz]
      [Step T2][Edit][Crop Background]
+     [Step T2][Edit][Smooth Signals]
      [Step T2][Edit][Align APPC]
      [Step T2][Edit][Change b-table:flip bx]
      [Step T2][Edit][Change b-table:flip by]
