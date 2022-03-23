@@ -11,6 +11,8 @@ This documentation introduces the steps to create a connectometry database for g
 
 # Step C1: Reconstruct SRC Files
 
+***If you would like to use metrics from MNI-space NIFTI files, skip Step C1 and proceed to Step C2.***
+
 First, [generate SRC files](/doc/gui_t1.html) for your data and place all SRC files in a folder. Also make sure to run a [Diffusion MRI Analysis][Step T1a: Quality Control](/doc/gui_t1.html#step-t1a-quality-control-optional) to exclude problematic data.
 
 Click [**Step C1: Reconstruct SRC Files for Connectometry**] and select the folder to reconstruct all SRC files. DSI Studio will run QSDR for all SRC files using the HCP-1065 young adult template. 
@@ -39,7 +41,7 @@ Click on [Step C2: Create a Connectometry Database] to bring up the following da
 
 2. **Open SRC files**
 
-Use [Search in Directory] or [Add] button to load FIB files. 
+Use [Search in Directory] or [Add] button to load FIB files constructed from the previous step. Alternatively, you can use MNI-space NIFTI files, and specify the name of the metrics.
 
 You may need to make sure that the file orders match that of your demographic records. Use the "sort" function to sort the files.
 
@@ -55,9 +57,9 @@ If your data have both 2-mm MNI FIB file and 1-mm MNI FIB, DSI Studio will promp
 
 For animal or pediatric studies, you may need to create a group averaged template as the template file. The function is located at [**Tools**][**P1:Create Template/Skeleton**]. Select all fib files created using Step C1, and DSI Studio will generate a group-averaged template FIB file.
 
-4. **Assign index of interest**
+4. **Choose index of interest**
 
-The default setting is "QA" known as the quantitative anisotropy. You can also study other diffusion measures such as FA, AD, RD, MD, RDI, NRDI. Each metric will need its dedicated connectometry database file.
+The FIB file contains many diffusion metrics. The default choice is "QA" known as the quantitative anisotropy. You can also study other diffusion measures such as FA, AD, RD, MD, RDI, NRDI. Each metric will need its dedicated connectometry database file.
 
 The QA here is the SDF values sampled at fiber orientations, and the fiber orientations here are defined by the template in the previous steps. The sampled values are similar to QA defined in the native space, but there are differences. QA in the native space is defined on the peaks of SDF, but here the QA values are extracted at the template fiber orientations. The physical meaning is the same, but their evaluation approach is different.
 
@@ -71,7 +73,7 @@ Click the "Create Database" button to create the connectometry database as a db.
 
 At the End of this step, you will have a connectometry database, which is a file name with the extension db.fib.gz
 
-After creating the database file, you can still append subjects to the database or remove subjects from a database later using [**Step C2a**:**Modify a Connecometry Database**].
+After creating the database file, you can still check the alignment of the database or add/remove  subjects to/from the database using [**Step C2a**:**Modify a Connecometry Database**].
 
 If you are going to study the change in a longitudinal study, use [**Step C2a**:**Modify a Connecometry Database**] to calculate the difference between baseline scan and follow-up scan for each subject (e.g. base of s#1, follow-up of #1, base of s#2, followup of s#2...etc.) and save a new database.
 
@@ -84,7 +86,7 @@ The FIB files created from Step C1 can be averaged into a population average tem
 2. Add in all FIB files and specify the output file name. This dialog outputs two fib files, one without and one with the averaged ODFs. The one without the ODFs can be used as the template for creating a connectometry database.
 
 
-**Additional processing for longitudinal studies **
+**Additional processing for longitudinal studies**
 
 Skipping this if your study is a cross-sectional study (has no repeat scans of the same subjects).
 
