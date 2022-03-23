@@ -11,7 +11,7 @@ This documentation introduces the steps to create a connectometry database for g
 
 # Step C1: Reconstruct SRC Files
 
-***If you would like to use metrics from MNI-space NIFTI files, skip Step C1 and proceed to Step C2.***
+***Skip this step if you want to use MNI-space NIFTI files as the input***
 
 First, [generate SRC files](/doc/gui_t1.html) for your data and place all SRC files in a folder. Also make sure to run a [Diffusion MRI Analysis][Step T1a: Quality Control](/doc/gui_t1.html#step-t1a-quality-control-optional) to exclude problematic data.
 
@@ -73,9 +73,7 @@ Click the "Create Database" button to create the connectometry database as a db.
 
 At the End of this step, you will have a connectometry database, which is a file name with the extension db.fib.gz
 
-After creating the database file, you can still check the alignment of the database or add/remove  subjects to/from the database using [**Step C2a**:**Modify a Connecometry Database**].
 
-If you are going to study the change in a longitudinal study, use [**Step C2a**:**Modify a Connecometry Database**] to calculate the difference between baseline scan and follow-up scan for each subject (e.g. base of s#1, follow-up of #1, base of s#2, followup of s#2...etc.) and save a new database.
 
 **Optional: Create a population average template**
 
@@ -85,6 +83,12 @@ The FIB files created from Step C1 can be averaged into a population average tem
 
 2. Add in all FIB files and specify the output file name. This dialog outputs two fib files, one without and one with the averaged ODFs. The one without the ODFs can be used as the template for creating a connectometry database.
 
+
+# Step C2a: Modify a Connecometry Database (Optional)
+
+After creating the database file, you can still check the alignment of the database or add/remove subjects to/from the database using [**Step C2a**:**Modify a Connecometry Database**]. ***A quick visual checking on the database is highly recommended.***
+
+If you are going to study the change in a longitudinal study, use [**Step C2a**:**Modify a Connecometry Database**] to calculate the difference between baseline scan and follow-up scan for each subject (e.g. base of s#1, follow-up of #1, base of s#2, followup of s#2...etc.) and save a new database.
 
 **Additional processing for longitudinal studies**
 
