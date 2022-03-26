@@ -1,3 +1,5 @@
+DSI Studio has a high version turning rate, and occasionally the computation outcome may be different between versions. I would recommend  keepping a local copy of DSI Studio for each research project and update DSI Studio every time if a new project is initiated.
+
 # Packages
 
 [![Build Release](https://github.com/frankyeh/DSI-Studio/actions/workflows/build_release.yml/badge.svg)](https://github.com/frankyeh/DSI-Studio/actions/workflows/build_release.yml)<a href="https://github.com/frankyeh/DSI-Studio/commits/master"><img src="https://img.shields.io/github/last-commit/frankyeh/DSI-Studio"></a>
@@ -67,15 +69,7 @@ DSI Studio is free for research purposes.
 
 Unless required by applicable law or agreed to in writing, DSI Studio program and source code are distributed under [Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
 
-# Optional Package
-
-[Neonate/Infant1yr/Infant2yr template](https://pitt-my.sharepoint.com/:u:/g/personal/yehfc_pitt_edu/ERCWcDXswqJOgFj8xUqyPwYBBhHquH-JsdWHBIcRlcOi6g?e=SkwWd4) 
-To install, unzip the files and move them to the /atlas folder (Windows). For Mac users, right-click on dsi_studio.app to [Show Content] and move the files under Content/MacOS/atlas
-
-DSI Studio has a very high turning rate, and occasionally the computation outcome may be different between versions. I would recommend users keep a local copy of DSI Studio for each research project and only update DSI Studio if a new project is initiated.
-
 # Hardware recommendation:
 
-To achieve the best performance, I would recommend a computer with a multi-core CPU (e.g. http://store.hp.com/us/en/mdp/business-solutions/z840-workstation). Minimum memory of 2GB is needed. To handle a large number of tracks or image volumes, DSI Studio will need 32GB of memory or more. 
+To achieve the best performance, I would recommend a computer with a multi-core CPU (e.g. http://store.hp.com/us/en/mdp/business-solutions/z840-workstation). Minimum memory of 16GB is needed. To handle a large number of tracks or image volumes, DSI Studio will need 32GB of memory or more. 
 
-GPU computation is not yet supported in DSI Studio. 
