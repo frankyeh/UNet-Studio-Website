@@ -129,11 +129,10 @@ DSI Studio can up-sample the dMRI signals to achieve a high spatial resolution. 
 
 3. **Align SRC to the common space**: Open first SRC file using [**Step T2: Reconstruction**] and rotate the volume to a the "DWI sum" using the top menu item [**Edit**][**Resample to T1w/T2w...**]. Specify the NIFTI files for the DWI sum. DSI Studio will show a manual registration interface allowing you to rerun registration or adjust registration. Click ok once the alignment is good. Export the rotated volume using the top menu [**File**][**Save 4D nifti**]. DSI Studio will save the resampled NIFTI file as well as rotated bvec and bval.
 
-The following command can proceed multiple SRC files and saved as NIFTI file in one command:
+4. Repeat step 3 for each SRC file, or you may use the following command can proceed multiple SRC files and saved as NIFTI files:
 ```
-dsi_studio --action=rec --source=*.src.gz --rotate_to=dwi_sum_cropped.nii.gz --save_nii=*_rotated.nii.gz
+dsi_studio --action=rec --source=*.src.gz --rotate_to=dwi_sum.nii.gz --save_nii=*_aligned.nii.gz
 ```
 
-4. Repeat step 3 for each SRC file.
 5. **Merge all scans**: In DSI Studio main window. Click [**Step T1: Open source images**] and open all resampled NIFTI files and create a joint SRC file.
 
