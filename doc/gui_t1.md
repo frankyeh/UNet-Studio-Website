@@ -107,13 +107,13 @@ DSI Studio can up-sample the dMRI signals to achieve a high spatial resolution. 
 
 # Aggregating Multiple Scans (Optional)
 
-- To merge scans from NIFTI or DICOM files from the same scan section (i.e. no head rotation or movement):
+- ***To merge data from the same scan section*** (i.e. no head rotation or movement):
 
 1. Click on [**Step T1: Open source images**] and select the files from the first scan. DSI Studio will open up a dialog showing the DWI loaded. 
 2. Then in the top menu, click on the item [**Files**][**Open images...**] and select the files from the second scan. The dialog will append these new DWIs to the existing list. If you load 4D NIFTI files here, you may need to manually concatenate the b-table using [**Files**] menu.
 3. Create a joint SRC file.
 
-- To merge scans from two SRC files:
+- ***To merge scans from two SRC files:***
 
 1. open the SRC file using [**Step T2: Reconstruction**] and export a 4D NIFTI file using the top menu [**File**][**Save 4D NIFTI**]. You also need to export the b-table as a single text file here.
 2. repeat the same step for another SRC file.
@@ -122,17 +122,16 @@ DSI Studio can up-sample the dMRI signals to achieve a high spatial resolution. 
 5. Load the merged b-table created from (3) using the top menu item [**Files**][**Load b-table...**]
 6. Create a joint SRC file.
 
-- To merge scans at different time points:
+- ***To merge scans at multiple time points:***
+
+**Make sure you have DSI Studio with version dated after March/2022**
 
 1. create separate SRC files for each of the scans (see instruction on the top of this page) 
-2. open first SRC file using [**Step T2: Reconstruction**] and rotate the volume to a common T1w image using the top menu item [**Edit**][**To T1w/T2w space**]. DSI Studio will ask for a T1W image volume. 
-3. export the rotated volume using the top menu [**File**][**Save 4D nifti**]. You may also need to export the b-table (bval and bvec) using [**File**] menu.
-4. Repeat 2 and 3 for another SRC file.
-5. In DSI Studio main window. Click [**Step T1: Open source images**] and open the first exported 4D nifti file.
-6. Add the second 4D NIFTI using the top menu item [**Files**][**Open Images...**].
-7. Load the b-table of the second scan using the top menu item [**Files**]
-8. Create a joint SRC file
-
-**You may need to manually check whether the b-table are corrected concatenated**
+2. Find the SRC file that has the best quality (see [visual troubleshooting](https://dsi-studio.labsolver.org/doc/gui_t2.html)), and save the sum of DWI using [**File**][**Save DWI Sum...**]. Before svaing, you may opt to apply [**Edit**][**Crop background volume**] to reduce image volume.
+3. open first SRC file using [**Step T2: Reconstruction**] and rotate the volume to a the "DWI sum" using the top menu item [**Edit**][**Resample to T1w/T2w...**]. Specify the NIFTI files for the DWI sum. DSI Studio will show a manual registration interface allowing you to rerun registration or adjust registration. Click ok once the alignment is good.
+4. export the rotated volume using the top menu [**File**][**Save 4D nifti**]. DSI Studio will save the resampled NIFTI file as well as rotated bvec and bval.
+5. Repeat 2 and 3 for each SRC file.
+6. In DSI Studio main window. Click [**Step T1: Open source images**] and open all resampled NIFTI files.
+7. Create a joint SRC file
 
 For Bruker images, additional scaling is needed. The scaling parameters are recorded in reco file (RECO_slope). You may need to scale the image back to get the correct reconstruction result.
