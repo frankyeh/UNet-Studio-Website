@@ -136,3 +136,7 @@ dsi_studio --action=rec --source=*.src.gz --rotate_to=dwi_sum.nii.gz --save_nii=
 
 5. **Merge all scans**: In DSI Studio main window. Click [**Step T1: Open source images**] and open all resampled NIFTI files and create a joint SRC file.
 
+You may also use the command line to merge the NIFTI file into a new SRC
+```
+dsi_studio --action=src --source=scan1.nii.gz --other_source=scan2.nii.gz,scan2.nii.gz,scan3.nii.gz --output=combined.src.gz
+```
