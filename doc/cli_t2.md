@@ -64,6 +64,9 @@ done
 | check_btable | `1` | specify whether the b-table orientation will be checked and automatically flipped |
 | other_output | `fa,ad,rd,md,nqa,iso,rdi,nrdi` | specify what diffusion metrics to calculate. use `all` to get all of possible metrics |
 | record_odf | `0` | specify whether to output the ODF in the fib file (used in connectometry analysis). |
+| template | `0` | specify the template for QSDR reconstruction:<br>`0`:ICBM152<br>`1`:CIVM_mouse<br>`2`:INDI_rhesus<br>`3`:Neonate<br>`4`:Pitt_Marmoset<br>`5`:WHS_SD_rat |
+ |
+
 
 ## Optional Functions
 
@@ -118,4 +121,3 @@ done
 | scheme_balance | `1` for shell scheme | specify whether the shell will be resampled to ensure balance. |
 | half_sphere | `1` for grid scheme | specify whether the grid scheme samples half-sphere |
 | r2_weighted | `0` | specify whether GQI and QSDR uses r2-weighted to calculate SDF |
-| template | determined by DSI Studio | specify the template for QSDR (0:ICBM152) |
