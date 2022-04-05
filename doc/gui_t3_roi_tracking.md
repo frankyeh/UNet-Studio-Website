@@ -64,13 +64,15 @@ If you only have a T1W template (e.g. child or elder population), then you can w
 
 ***Add a new atlas***
 
-An *atlas* is an integer-valued parcellation volume that records the location of each brain region.
+An *atlas* is an integer-valued parcellations that record the location of each brain region. It usually has a corresponding value-name list in the text format.
 
-For human atlas, please copy the MNI space (presumably ICBM2009a nonlinear space) to \atlas\ICBM152 folder. For animal atlas, please find the corresponding folder, such as the one for mouse, rat, marmoset, or rhesus.
+1. **Prepare the atlas in NIFTI**: For other formats, please convert them to the NIFTI format as .nii.gz. 
+2. **A .txt text file records the labels**: An example of the text can be find [here](https://github.com/frankyeh/DSI-Studio-atlas/blob/main/ICBM152/HCP-MMP.txt). Each line has a value-name pair separated by a tab or space. The file name should match the atlas (e.g. HCP-MMP.nii.gz and HCP-MMP.txt)
+3. **Locate the target template folder**: A list of template space can be found [here](https://github.com/frankyeh/DSI-Studio-atlas), including ICBM152 (human young adult), neuonate, CIVM_mouse,...etc. You will find the same folders in the DSI Studio package. In windows, they are in under the \dsi_studio_64\atlas folder. In Mac, those folders are stored in the app package (Right-click on dsi_studio_64.app to open the DSI Studio package /Content/MacOS/atlas). 
+4. **Convert atlas to the target template space**: click on [Tools][R1: Linear Registration Toolbox], first select the atlas file (from step 1) and then select the [TEMPLATE NAME].QA.nii.gz in the template folder (identified in Step 3). Once the two volume matches, save the atlas using [Files][Save Transformed Image]
+5. **Copy atlas and its text labels to the template folder**: For human atlas, please copy the .nii.gz and correponding .txt files to the template folder (e.g., \atlas\ICBM152 in the dsi studio package). For animal atlas, please find the corresponding folder, such as the one for mouse, rat, marmoset, or rhesus. 
 
-In the Mac version, those folders are stored in the app package (Right-click on dsi_studio_64.app to open the DSI Studio package and look for the template and atlas folder).
-
-After copying a new atlas to the \atlas\ICBM152 (this location is for humans), restart DSI Studio to see the new atlas added to the ICBM152 menu.
+After copying a new atlas to the template space folder, restart DSI Studio to see the new atlas added to the ICBM152 menu.
 
 ## Load Regions From Text Coordinate Files
 
