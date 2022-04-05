@@ -24,7 +24,8 @@ dsi_studio --action=atk --source=*.fib.gz --export_template_trk=1
 | tolerance | `16,18,20` | the tolerance for the bundle recognition. The unit is in mm. Multiple values can be assigned using comma separator. A larger value may include larger track variation but also subject to more false results. |
 | tip | `32` | iterations of topology-informed pruning. A higher value will apply more pruning that removes noisy tracks |
 | track_voxel_ratio | `2` | the track-voxel ratio for the total number of streamline count. A larger value gives better mapping with the expense of computation time. 
-  
+| check_ending | `1` | remove tracts if they terminate in high anisotropy locations. |
+
 ## Other Options
   
 | Parameters            | Default | Description                                                                 |
