@@ -56,6 +56,9 @@ The details of each parameter:
 
 # Connectivity Matrix and Network Measures 
 
+***Recommendation: Do not use connectivity matrix and network measure unless you are really familiar with its methodological utilization, interpretation, and limications. Choose [other analysis approaches](https://dsi-studio.labsolver.org/doc/how_to_analyze_dmri.html) for better sensitivity and specificity.***
+
+
 The following are steps to generate connectivity matricies:
 
 1. Generate whole brain tracking using the instructions above. Make sure to have at least 1 million tracks (i.e. [**Step T3c: Options**][**Tracking Parameters**][**Terminate if**] to a least 1,000,000 [**Tracks**]).
