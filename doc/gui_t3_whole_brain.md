@@ -54,21 +54,25 @@ The details of each parameter:
 | ***Check Ending*** | `Off` | If `On`, DSI Studio will check whether the tracking terminates with a location that has anisotropy higher than the threshold. If higher, the fiber is probably terminated in the white matter and will be removed.|
 | ***Thread Count*** | half of the system thread | DSI Studio supports multithread fiber tracking, which can boost the performance on a computer with multiple core CPUs. Assign the thread count in accord with the possible computation power to obtain the highest efficiency. |
 
-# Connectivity Matrix and Network Measures (Optional)
+# Connectivity Matrix and Network Measures 
 
-To generate connectivity matrix, open connectivity matrix dialog at the top menu: [**Tracts**][**Connectivity matrix**]. DSI Studio will conduct a spatial normalization to ensure that the built-in parcellation is registered with the subject data. 
+The following are steps to generate connectivity matricies:
+
+1. Generate whole brain tracking using the instructions above. Make sure to have at least 1 million tracks (i.e. [**Step T3c: Options**][**Tracking Parameters**][**Terminate if**] to a least 1,000,000 [**Tracks**]).
+2. If you would like to use default regions from an atlas to construct the connectivity matrices, skip this step. If you would like to customize a combination of regions (e.g. to include subcortical regions), use the [Step T3a][Atlas] to add regions from atlases. 
+3. Open the connectivity matrix dialog by [**Tracts**][**Connectivity matrix**]. DSI Studio will conduct a spatial normalization to ensure that the built-in parcellation is registered with the subject data. 
+4. In the connectivity matrix dialog at [Parcellation Atlas] choose the atlas. If you use customized regions, choose [ROIs]. Click [Recalculate] to get the connectivity matrices.
 
 Here are some tips for getting a good connectivity matrix:
 
-1. Increase [**Step T3c: Options**][**Tracking Parameters**][**Terminate if**] to a least 1,000,000.
-2. Carefully choose the parcellation atlas and decide **whether to include subcortical regions**.
-3. Avoid using a white matter atlas as the parcellation (e.g., HCP842/HCP1065 tractography atlas, JHU white matter atlas)
+- Decide whether to include subcortical regions.
+- Avoid using a white matter atlas as the parcellation atlas (e.g., HCP842/HCP1065 tractography atlas, JHU white matter atlas)
 
-There are parameters for calculating the connectivity matrix:
+There are settings in the connectivity matrix dialog:
 
 | Parameters | Description|
 |:-----------|:-----------|
-| ***Parcellation Atlas*** | DSI Studio provides built-in atlases as the brain parcellation. <br> You can also customize your own parcellation. If the map is in the MNI space, you may place the map NIFTI file in the /atlas/ICBM152 subfolder under DSI Studio package (In Mac, you may need to open the dsi_studio.app package to see the folder). The ROIs will be included in the atlas database for you to calculate the connectivity matrix. <br> If your ROIs are in the native space, you can load the NIFTI file in the region list using [Regions][Open Region] and then check all ROIs using [Regions][Check all]. Once the ROIs are loaded in the region, you can bring up the connectivity windows by [Tracts][Connectivity matrix]. <br> You can also combine parcellations from built-in atlases at [Step T3a: Assign Regions] |
+| ***Parcellation Atlas*** | DSI Studio provides built-in atlases as the brain parcellation or choose `ROIs` for using customized regions. <br> You can also customize your own parcellation by loading regions from  the [Step T3a][Atlas] button or from a NIFTI file.   |
 | ***pass region vs end in region*** | Determine whether the connecting track is counted by `passing` or `ending` in the parcellation region. `ending` is more restrictive because `passing` allows for passing through. |
 | ***value*** | The connectivity matrix can be calculated by accounting for the number of tracts that pass two ROIs (select "count" as matrix value). This number can be normalized by the median length (select "ncount" as matrix value) or multiplied by the sum of the inverse of the length (select "ncount2"). <br> The FA, QA, or ADC sampled by the tracks can also be used as the matrix entry (e.g. select "fa", "qa", or "adc" as the matrix value). There is a drop-down list in the connectivity window. One is "end in region", which counts only the final connecting region. Another one is "pass region", which counts all the regions passed. |
 | ***threshold*** | The threshold is used to filter out matrix entries with a small number of connecting tracks. It is a ratio to the maximum connecting tracks in the connectivity matrix. |
