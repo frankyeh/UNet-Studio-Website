@@ -59,9 +59,9 @@ The details of each parameter:
 The following are steps to generate connectivity matricies:
 
 1. Generate whole brain tracking using the instructions above. Make sure to have at least 1 million tracks (i.e. [**Step T3c: Options**][**Tracking Parameters**][**Terminate if**] to a least 1,000,000 [**Tracks**]).
-2. If you would like to use default regions from an atlas to construct the connectivity matrices, skip this step. If you would like to customize a combination of regions (e.g. to include subcortical regions), use the [Step T3a][Atlas] to add regions from atlases. 
+2. If you would like to use default regions from an atlas to construct the connectivity matrices, skip this step. If you would like to customize a combination of regions (e.g. to include subcortical regions), use the [**Step T3a**][**Atlas**] to add regions from atlases. 
 3. Open the connectivity matrix dialog by [**Tracts**][**Connectivity matrix**]. DSI Studio will conduct a spatial normalization to ensure that the built-in parcellation is registered with the subject data. 
-4. In the connectivity matrix dialog at [Parcellation Atlas] choose the atlas. If you use customized regions, choose [ROIs]. Click [Recalculate] to get the connectivity matrices.
+4. In the connectivity matrix dialog at [**Parcellation Atlas**] choose the atlas. If you use customized regions, choose `ROIs`. Click [**Recalculate**] to get the connectivity matrices.
 
 Here are some tips for getting a good connectivity matrix:
 
