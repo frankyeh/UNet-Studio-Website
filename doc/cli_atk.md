@@ -2,6 +2,8 @@
 
 > use --action=`atk` to initiate automatic fiber tracking
 
+Automatic fiber tracking maps individual bundles using deterministic fiber tracking and tract recognition. The implementation is detailed in Yeh, Fang-Cheng. "Shape analysis of the human association pathways." Neuroimage 223 (2020): 117329.
+
 ## Examples
 
 *Run fiber tracking on all fib.gz files to map the left and arcuate fasciculus
