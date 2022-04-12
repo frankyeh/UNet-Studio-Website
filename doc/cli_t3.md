@@ -1,6 +1,12 @@
 # Fiber Tracking
 
-use --action=`trk` to initiate fiber tracking in DSI Studio
+use --action=`trk` to initiate fiber tracking in DSI Studio. 
+
+The fiber tracking is a deterministic tracking approach doeumented in Yeh, Fang-Cheng, et al. "Deterministic diffusion fiber tracking improved by quantitative anisotropy." PloS one 8.11 (2013): e80713.
+
+The pipeline also includes computations for connectivity matrices and tractometry.
+
+For mapping individual bundle, please use [(automatic fiber tracking)](https://dsi-studio.labsolver.org/doc/cli_atk.html)
 
 ## Examples
 
