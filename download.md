@@ -65,9 +65,9 @@ $ singularity exec dsistudio_latest.sif dsi_studio --action=rec --source=my.src.
 
 # License
 
-DSI Studio is free for research purposes.
+DSI Studio is free for research purposes (including research conducted within business entities). 
 
-Unless required by applicable law or agreed to in writing, DSI Studio program and source code are distributed under [Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
+Unless required by applicable law or agreed to in writing, DSI Studio program and source code are distributed under [Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). Including any part of DSI Studio in a commercial product would require both copyright and patent licensing.
 
 # Hardware recommendation:
 
