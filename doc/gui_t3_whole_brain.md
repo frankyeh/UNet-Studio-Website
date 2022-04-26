@@ -54,6 +54,78 @@ The details of each parameter:
 | ***Check Ending*** | `Off` | If `On`, DSI Studio will check whether the tracking terminates with a location that has anisotropy higher than the threshold. If higher, the fiber is probably terminated in the white matter and will be removed.|
 | ***Thread Count*** | half of the system thread | DSI Studio supports multithread fiber tracking, which can boost the performance on a computer with multiple core CPUs. Assign the thread count in accord with the possible computation power to obtain the highest efficiency. |
 
+# Manual Track Editing
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1xfhaFQhCtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+DSI Studio provides "Select", "Delete", and "Cut" functions to refine the fiber tracking result.
+
+- ***Tract Selection***
+
+    ![image](https://user-images.githubusercontent.com/275569/147838366-a6adb599-2b04-4a17-9914-214c4af2fa9f.png)
+
+    The steps are as follows:
+
+    1. [Edit][Select] or press Ctrl + S
+
+    2. Move the cursor to the starting point of the selection plane on the screen.
+
+    3. Press the left button of the mouse and move the cursor to the ending point of the selection plane.
+
+        **Use the right button to further select tracts perpendicular to the selection plane within an incoming angle (about 60degress).**
+
+    4. Release the button and the selection will be performed immediately.
+
+
+    The select function selects the tracks that pass through the *selection plane* determined by the location of the mouse click position on the screen. 
+   
+
+- ***Track Deletion***
+
+    Tract deletion is carried out in the same manner except that the selected tracks will be deleted. The deletion can be undone by Ctrl+Z.
+
+- ***Track Cutting***
+
+    Tract cutting is to cut the selected tracts into two parts. This function is useful in a condition like the users want to analyze only the right corpus callosum. The corpus callosum can be cut into two parts by a sagittally placed selection plane.  The right corpus callosum is then selected to perform further analysis.
+
+    Another condition to apply tract cutting is that only a section of the fiber bundle is to be analyzed, or the users want to align the fiber bundle. In such a case, an interested portion of the fiber bundle can be extracted by track cutting.
+
+- ***Track Painting***
+
+    Track painting offers a way to paint tracks by assigned color. To perform this task, press Ctrl+P. Assign the painting color and select the tracks.
+
+- ***Cut by Slices***
+
+    Cut tracts based on slice position. The function is at [Edit][Cut by slices]
+
+
+***Shortcuts***
+
+  - Ctrl+S: select tracts in the 3D window 
+
+  - Ctrl+D: delete tracts in the 3D window
+
+  - Ctrl+P: delete tracts in the 3D window
+
+  - Ctrl+X: cut tracts in the 3D window (click-drag-release)(cannot undo)
+
+  - Ctrl+T: trim tracts  (a.k.a. topology-informed pruning)
+
+  - Ctrl+Z: undo select and delete
+
+  - Ctrl+Y: redo select and delete
+
+
+## 3. Save Tractography
+
+The fiber trajectories can be saved using [Tracts][Save Tracts As]. One should note that [Tracts][Save Tracts As] saves only the current selected fiber bundles. To save tracts of different clusters at one, use [Tracts][Save All Tracts As...].
+
+
+DSI Studio saves tracks in the native diffusion voxel space rotated to "LPS". The coordinates are voxel coordinates started from (0,0,0) at the most left/anterior/bottom point of the image volume. The orientation is (+right,+posterior, +top). For example, (1,2,3) = [the left most 1st voxel, the most anterior second voxel, the bottom 3rd voxel].
+
+
 # Connectivity Matrix and Network Measures 
 
 ***Recommendation: Do not use connectivity matrix and network measure unless you are really familiar with its methodological utilization, interpretation, and limications. Choose [other analysis approaches](https://dsi-studio.labsolver.org/doc/how_to_analyze_dmri.html) for better sensitivity and specificity.***
