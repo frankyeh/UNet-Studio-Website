@@ -17,7 +17,7 @@ DSI Studio will present a reconstruction window as shown in the figure to the ri
 ![image](https://user-images.githubusercontent.com/275569/147804658-3d2b3442-c0dd-4383-91cf-3718670b1413.png)
 
 
-# Visual Inspection (Optional)
+# Visual Quality Inspection (Optional)
 
 Switch the first tab [**Source Images**].
 
@@ -26,6 +26,10 @@ Switch the first tab [**Source Images**].
 2. Check bad slices: click on the [**Show bad slices**] button (available after 10/2/2019 version) and DSI Studio will mark bad slices and their belonging DWI volume in red (see below). I recommend using sagittal view to check the bad slices (click on the sagittal view button on the right)
 
 ![](/images/t1_bad_slices.png)
+
+3. Checking other problems:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/stL4GMeTC1I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 # Step T2a: Setup a Mask
