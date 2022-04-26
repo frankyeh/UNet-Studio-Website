@@ -44,15 +44,9 @@ Here is the checking list:
 
 1. run [quality control for SRC files](/doc/gui_t1.html#batch-quality-control) and remove problematic dataset.
 
-2. Check if the b-table is flipped, or if the image volume is flipped:
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/stL4GMeTC1I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
+2. Check if the b-table is flipped, or if the image volume is flipped. For more details, please check the documentation at reconstruction.
 
    For b-table problems, uncheck the "check b-table" function at [Step T2b(2)], and manually flip the b-table in y-direction if you use bval and bvec from FSL.
-
 
 The above issues will affect all pathways. If "no result" happens more often in small pathways (e.g. right AF, SLF I, corticopontine tract...etc) or in only some subjects (see examples reported in [1](https://groups.google.com/g/dsi-studio/c/wfXcuxk1I3g),[2](https://groups.google.com/g/dsi-studio/c/oOVyL9MN7PQ)), then likely your data acquisition is not perfect enough to map all small tracts in all individuals. 
 
