@@ -56,8 +56,7 @@ call dsi_studio.exe --action=trk --source="%%x" --seed_count=1000000 --thread_co
 |:-----------------|:--------|:------------------------------------------------------------------------------|
 | source         |  | specify the fib file |                  
 | thread_count   | hardware max | specify the thread count. |
-| track_id       |  | specify which ID of the track to track using automatic fiber tracking. The complete list of ID is found in ICBM152.tt.gz.txt in the DSI Studio package under the \atlas\ICBM152 folder (On Mac, right click to show content).
-
+| track_id       | (not assigned) | specify which ID of the track to track using automatic fiber tracking. The complete list of ID is found in ICBM152.tt.gz.txt in the DSI Studio package under the \atlas\ICBM152 folder (On Mac, right click to show content). |
 
 ## Conventional Tracking
 > Specify the tracking parameters below or replace them by using a single `--parameter_id`, which can be found at the method text under Step T3d after running fiber tracking.
