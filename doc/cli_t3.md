@@ -55,9 +55,8 @@ call dsi_studio.exe --action=trk --source="%%x" --seed_count=1000000 --thread_co
 | Parameters            | Default | Description                                                                 |
 |:-----------------|:--------|:------------------------------------------------------------------------------|
 | source         |  | specify the fib file |                  
-| thread_count   | system thread | specify the thread count. |
+| thread_count   | hardware max | specify the thread count. |
 | track_id       |  | specify which ID of the track to track using automatic fiber tracking. The complete list of ID is found in ICBM152.tt.gz.txt in the DSI Studio package under the \atlas\ICBM152 folder (On Mac, right click to show content).
-| ref | optional | output track coordinate based on a reference image (e.g. T1w or T2w).|
 
 
 ## Conventional Tracking
@@ -65,16 +64,21 @@ call dsi_studio.exe --action=trk --source="%%x" --seed_count=1000000 --thread_co
 
 | Parameters            | Default | Description                                                                 |
 |:-----------------|:--------|:------------------------------------------------------------------------------|
-| method | `0` |  tracking methods 0:streamline , 1:rk4 |
-| fa_threshold   | `0` | which means it is randomized): threshold for fiber tracking. In QBI, DSI, and GQI, "fa_threshold" will be applied to the QA threshold. To use other index as the threshold, add "threshold_index=[name of the index]" (e.g. "--threshold_index=nqa --fa_threshold=0.01" sets a threshold of 0.01 on nqa for tract termination). If fa_threshold is not assigned, then DSI Studio will select a random value between 0.5Otsu and 0.7 Otsu threshold using a uniform distribution.
-| otsu_threshold | `0.6` | The default Otsu's threshold can be adjusted to any ratio.
 | fiber_count or seed_count | `100000`| specify the number of fibers to be generated. If seed number is preferred, use seed_count instead. If DSI Studio cannot find a track connecting the ROI, then the program may run forever. To avoid this problem, you may assign fiber_count and seed_count at the same time so that DSI Studio can terminate if the seed count reaches a large number.
-| step_size | `0` (randomized) | Step size defines the moving distance in each tracking iteration. This unit is in millimeter-scale. The default value `0` will be a random selection of the step size from 0.5 to 1.5 voxel distance. |
-| initial_dir | `0` | initial propagation direction 0:primary fiber, 1:random, 2:all fiber orientations. The `Primary` approach always starts the tracking from the most prominent fiber in a voxel. The advantage is the stableness and consistency of the results. A way to compensate for this drawback is using whole-brain seeding to explore all possible connections. <br> The `Random` approach starts the tracking a randomly selected fiber orientation, so the results have random factors. The advantage is that it can explore all possibilities, but the drawback is that the results may not be reproduced exactly. The tracking results are also sensitive to noisy fibers because the false fiber orientation can be selected as the starting direction. <br> The `All` approach starts a track for each fiber orientation resolved in a voxel. It aims to explore all possible connections and there are no stochastic factors that may hurt the reproducibility. The drawback is that it is sensitive to noisy fibers because all resolved fiber orientations will be used as the starting directions.| 
+| fa_threshold   | `0` | which means it is randomized): threshold for fiber tracking. In QBI, DSI, and GQI, "fa_threshold" will be applied to the QA threshold. To use other index as the threshold, add "threshold_index=[name of the index]" (e.g. "--threshold_index=nqa --fa_threshold=0.01" sets a threshold of 0.01 on nqa for tract termination). If fa_threshold is not assigned, then DSI Studio will select a random value between 0.5Otsu and 0.7 Otsu threshold using a uniform distribution.
 | turning_angle | `0` (randomized) | This threshold (in degrees) serves as a termination criterion. If two consecutive moving directions have a crossing angle above this threshold, the tracking will be terminated. <br> The default `0` will be a random selection of a value from 15 degrees to 90 degrees.|
-| smoothing | `0` (off) | Smoothing serves like a "momentum". For example, if smoothing is 0, the propagation direction is independent of the previous incoming direction. If the smoothing is 0.5, each moving direction remains 50% of the "momentum", which is the previous propagation vector. This function makes the tracks appear smoother. In implementation detail, there is a weighting sum on every two consecutive moving directions. For smoothing value 0.2, each subsequent direction has 0.2 weightings contributed from the previous moving direction and 0.8 contributed from the income direction. To disable smoothing set its value to 0. <br> Assign 1.0 to do a random selection of the value from 0% to 95%. |
+| step_size | `0` (randomized) | Step size defines the moving distance in each tracking iteration. This unit is in millimeter-scale. The default value `0` will be a random selection of the step size from 0.5 to 1.5 voxel distance. |
 | min_length | `30` (mm)| Length constraint that filters out the tracks that are either too short |
 | max_length | `300` (mm) | Length constraint that filters out the tracks that are too long |
+
+The following settings are also included in `--parameter_id` but  usually the default values are used.
+
+| Parameters            | Default | Description                                                                 |
+|:-----------------|:--------|:------------------------------------------------------------------------------|
+| method | `0` |  tracking methods 0:streamline , 1:rk4 |
+| otsu_threshold | `0.6` | The default Otsu's threshold can be adjusted to any ratio.
+| initial_dir | `0` | initial propagation direction 0:primary fiber, 1:random, 2:all fiber orientations. The `Primary` approach always starts the tracking from the most prominent fiber in a voxel. The advantage is the stableness and consistency of the results. A way to compensate for this drawback is using whole-brain seeding to explore all possible connections. <br> The `Random` approach starts the tracking a randomly selected fiber orientation, so the results have random factors. The advantage is that it can explore all possibilities, but the drawback is that the results may not be reproduced exactly. The tracking results are also sensitive to noisy fibers because the false fiber orientation can be selected as the starting direction. <br> The `All` approach starts a track for each fiber orientation resolved in a voxel. It aims to explore all possible connections and there are no stochastic factors that may hurt the reproducibility. The drawback is that it is sensitive to noisy fibers because all resolved fiber orientations will be used as the starting directions.| 
+| smoothing | `0` (off) | Smoothing serves like a "momentum". For example, if smoothing is 0, the propagation direction is independent of the previous incoming direction. If the smoothing is 0.5, each moving direction remains 50% of the "momentum", which is the previous propagation vector. This function makes the tracks appear smoother. In implementation detail, there is a weighting sum on every two consecutive moving directions. For smoothing value 0.2, each subsequent direction has 0.2 weightings contributed from the previous moving direction and 0.8 contributed from the income direction. To disable smoothing set its value to 0. <br> Assign 1.0 to do a random selection of the value from 0% to 95%. |
 | tip_iteration | `0` | specify pruning iterations. If --track_id or --dt_threshold_index is specified, the default value is `16` |
 
 > Please note that parameter ID does not override ROI settings, dt_threshold_index, or threshold_index settings. You may still need to assign ROI/ROA...etc. in the command line.
@@ -132,6 +136,8 @@ call dsi_studio.exe --action=trk --source="%%x" --seed_count=1000000 --thread_co
 | output | specify the output directory or output file name (tt.gz, trk.gz, or nii.gz ). Specify `no_file` to disable tractography output. |
 | end_point | specify file name for output endpoint coordinates (.txt or .mat) |
 | export |  export additional information related to the fiber tracts <p> use "--export=tdi" to generate track density image in the diffusion space. <p> use "--export=tdi2" to generate track density image in the subvoxel diffusion space. <p> use "--export=tdi_color" or "--export=tdi2_color" to generate track color density image. <p> use "--export=stat" to export tracts statistics like along tract mean fa, adc, or morphology index such as volume, length, ... etc. <p> <p> To export TDI endpoints, use tdi_end or tdi2_end. <p> <p> use "--export=report:dti_fa:0:1" to export the tract reports on "fa" values with a profile style at x-direction "0" and a bandwidth of "1" <p> the profile style can be the following: <p> <p> 0 x-direction <p> 1 y-direction <p> 2 z-direction <p> 3 along tracts <p> 4 mean of each tract <p> <p> You can export multiple outputs separated by ",". For example, <p> --export=stat,tdi,tdi2 exports tract statistics, tract density images (TDI), subvoxel TDI, along tract qa values, and along tract gfa values. |
+| ref | output track coordinate based on a reference image (e.g. --ref=T1w.nii.gz |
+
 
 
 ## Connectivity analysis
