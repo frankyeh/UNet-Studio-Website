@@ -213,7 +213,7 @@ There are several ways to reduce the size and facilitate sharing of the presenta
 
 # Shortcuts and Graphic Control
 
-## Slice view
+## Region view (left lower corner)
 
 Click on the brain buttons at the bottom row of the ROI window to switch between difference slice views
 
@@ -228,7 +228,7 @@ Click on the brain buttons at the bottom row of the ROI window to switch between
 - **Middle mouse button** to drag a slice or a region in the ROI window to the left.
 
 
-## 3D View
+## 3D View (middle)
 
 - **Mouse left button**: press and rotate the object
 - **Mouse right button**: press and change the zoom scale
@@ -239,8 +239,6 @@ Click on the brain buttons at the bottom row of the ROI window to switch between
 - **Alt+1**: remember the current viewport and slice position to memory slot 1 and **1**: return to the viewport and slice position recorded in memory slot 1
 
   The same function applies to **Alt+2**,...**Alt+9**, and **2**,**3**,...**9**
-
-## Track Editing
 
 The following four shortcuts are for track editing. To edit the tracts, 1) hit the shortcut 2) press left mouse button 3) drag the cursor 4) release the mouse button. If the track selection further considers the income angle, use right mouse button instead. (please refer to here for details)
 
