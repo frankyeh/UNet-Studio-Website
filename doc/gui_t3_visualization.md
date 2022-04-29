@@ -209,3 +209,51 @@ There are several ways to reduce the size and facilitate sharing of the presenta
 2. remove hcp1065_2mm.fib.gz and mni_icbm152 files
 
 3. remove animal templates in the /template folder
+
+
+# Shortcuts and Graphic Control
+
+## Move slices or regions
+
+`Right double click` in the ROI window to move slices to the pointed location.
+Press `middle mouse button` to drag a slice or a region in the ROI window to the left.
+Press `Ctrl+M` to drag a slice or a region in the 3D window.
+
+`Q` and `A`: move sagittal slide
+`W` and `S`: move coronal slide
+`E` and `D`: move axial slide
+
+## Slice views
+
+Click on the brain buttons at the bottom row of the ROI window to switch between difference slice views
+`Z`: switch to sagittal view
+`X`: switch to coronal view
+`C`: switch to axial view
+Use `mouse wheel` to zoom in or zoom out in the left ROI window
+
+## Select a region
+`Left double click` on a region: select it in the region list
+
+## Browse 3D objects
+
+`Mouse left button`: press and rotate the object
+`Mouse right button`: press and change the zoom scale
+`Mouse mid button`: press and move the object (you may also use direction keys to move the object)
+Use `mouse wheel` to zoom in or zoom out in the 3D window
+
+## 3D views
+`Alt+1`: remember the current viewport and slice position to memory slot 1
+`1`: return to the viewport and slice position recorded in memory slot 1
+The same function applies to `Alt+2`,...`Alt+9`, and `2`,`3`,...`9`
+
+## Track editing
+
+The following four shortcuts are for track editing. To edit the tracts, 1) hit the shortcut 2) press left mouse button 3) drag the cursor 4) release the mouse button. If the track selection further considers the income angle, use right mouse button instead. (please refer to here for details)
+
+`Ctrl+S`: select tracts in the 3D window 
+`Ctrl+D`: delete tracts in the 3D window
+`Ctrl+P`: delete tracts in the 3D window
+`Ctrl+X`: cut tracts in the 3D window (click-drag-release)(cannot undo)
+`Ctrl+T`: trim tracts
+`Ctrl+Z`: undo select and delete
+`Ctrl+Y`: redo select and delete
