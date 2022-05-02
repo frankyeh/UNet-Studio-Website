@@ -6,18 +6,23 @@
 
 DSI Studio Cloud makes uses of the GitHub-hosted runner, a virtual machine hosted by GitHub, to process dMRI data. The GitHub-Action scripts in the DSI Studio Cloud get data from OpenNeuro to the GitHub runners and processe them using DSI Studio.
 
-# Advantages
+## Advantages
 
 - **Free computation resources**: GitHub action provides 20 concurrent jobs with 2-core each. The computation power is equal to a 40-core workstation, much faster than running it on most laptops/desktops.
 
 - **Faster data transfer**: The raw dMRI data are usually huge and can be up to several GB per scan, but tractography and related metrics are substantially smaller at MB size. Using DSI Studio Cloud, the amount of data transfer can be dramatically reduced. 
 
-# Requirements 
+## Requirements 
 
 - dMRI data stored on [OpenNeuro](https://openneuro.org/)
 - A [GitHub](https://github.com/) account (free)
 
-# Steps
+## Limitations
+
+- **Not more than 256 scans data**: There is a maximum of 256 jobs per workflow run. DSI Studio will still generate SRC and FIB files for downloading, but fiber tracking cannot be executed due to the this limit.
+- **90-day data retention**: GitHub will retain workflor data only for 90 days before they are automatically deleted.
+
+## Steps
 
 1. **Fork the repository**: Click on the `Fork` button in the upper right corner.
 
