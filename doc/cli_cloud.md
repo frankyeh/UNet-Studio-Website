@@ -19,19 +19,15 @@ DSI Studio Cloud makes uses of the GitHub-hosted runner, a virtual machine hoste
 
 # Steps
 
-1. Fork the repository: Click on the `Fork` button in the upper right corner.
+1. **Fork the repository**: Click on the `Fork` button in the upper right corner.
 
 <img src="https://user-images.githubusercontent.com/275569/157307065-a172c393-a4db-4cf3-92c8-b4482619a0e7.png" width=500>
 
-2. Click on the `Actions` menu and confirm `I understand my workflows, go ahead and enable them`. Now you have automated fiber tracking enabled. Under the same `Actions` menu, click on `Auto-Track (OpenNeuro)` on the left and click run `workflow` on the right.
+2. **Enable Actions**: Click on the `Actions` menu and confirm `I understand my workflows, go ahead and enable them`. 
 
 <img src="https://user-images.githubusercontent.com/275569/157596167-7d9ee687-2633-4d48-ba5f-c12c62b04b35.png" width=500>
 
-3. Assign `OpenNeuro Accession Number` (e.g. ds000031) 
-
-4. Assign `Tract of Interest`
-
-   Support partial name, and multiple tracts can be assigned using comman separator (e.g. Arcuate,Optic_Radiation).
+3. **Run Actions**: Under the same `Actions` menu, click on `Auto-Track (OpenNeuro)` on the left and click run `workflow` on the right. Assign `OpenNeuro Accession Number` (e.g. ds000031) and also `Tract of Interest`, which support partial name, and multiple tracts can be assigned using comman separator (e.g. Arcuate,Optic_Radiation). Click on `Run workflow` to start. 
 
 The full list of tracts supported:
 
@@ -128,8 +124,6 @@ CNVIII_L
 CNVIII_R
 ```
 
-5. Click on `Run workflow` to start tracking. The tracking will take a while to start and complete. You can cancel it at any time, and partial results will still be saved.
-
-6. Once the process completed, the FIB files and tract files will be saved. They can be downloaded and [viewed in DSI Studio](https://dsi-studio.labsolver.org/doc/gui_t3_whole_brain.html).
+4. **Download Results**: Once completed, the intermediate results (e.g. SRC files, FIB files), tract files, and tract metrics can be downloaded. SRC, FIB, TT files  can be [inspected in DSI Studio](https://dsi-studio.labsolver.org/doc/gui_t3_whole_brain.html).
 
 <img src="https://user-images.githubusercontent.com/275569/157700442-6fae3601-9208-4607-af56-eb4b44d43877.png" width=500>
