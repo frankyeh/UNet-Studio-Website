@@ -32,102 +32,24 @@ DSI Studio Cloud makes uses of the GitHub-hosted runner, a virtual machine hoste
 
 <img src="https://user-images.githubusercontent.com/275569/157596167-7d9ee687-2633-4d48-ba5f-c12c62b04b35.png" width=500>
 
-3. **Run Actions**: Under the same `Actions` menu, click on `Auto-Track (OpenNeuro)` on the left and click run `workflow` on the right. Assign `OpenNeuro Accession Number` (e.g. ds000031) and also `Tract of Interest`, which support partial name, and multiple tracts can be assigned using comman separator (e.g. Arcuate,Optic_Radiation). Click on `Run workflow` to start. 
+3. **Run Actions**: Under the same `Actions` menu, click on `Auto-Track (OpenNeuro)` on the left and click run `workflow` on the right. 
 
-The full list of tracts supported:
+*Setup Parameters*:
 
-```
-Arcuate_Fasciculus_L
-Arcuate_Fasciculus_R
-Cingulum_Frontal_Parahippocampal_L
-Cingulum_Frontal_Parahippocampal_R
-Cingulum_Frontal_Parietal_L
-Cingulum_Frontal_Parietal_R
-Cingulum_Parahippocampal_Parietal_L
-Cingulum_Parahippocampal_Parietal_R
-Cingulum_Parahippocampal_L
-Cingulum_Parahippocampal_R
-Cingulum_Parolfactory_L
-Cingulum_Parolfactory_R
-Extreme_Capsule_L
-Extreme_Capsule_R
-Frontal_Aslant_Tract_L
-Frontal_Aslant_Tract_R
-Inferior_Fronto_Occipital_Fasciculus_L
-Inferior_Fronto_Occipital_Fasciculus_R
-Inferior_Longitudinal_Fasciculus_L
-Inferior_Longitudinal_Fasciculus_R
-Middle_Longitudinal_Fasciculus_L
-Middle_Longitudinal_Fasciculus_R
-Parietal_Aslant_Tract_L
-Parietal_Aslant_Tract_R
-Superior_Longitudinal_Fasciculus1_L
-Superior_Longitudinal_Fasciculus1_R
-Superior_Longitudinal_Fasciculus2_L
-Superior_Longitudinal_Fasciculus2_R
-Superior_Longitudinal_Fasciculus3_L
-Superior_Longitudinal_Fasciculus3_R
-Uncinate_Fasciculus_L
-Uncinate_Fasciculus_R
-Vertical_Occipital_Fasciculus_L
-Vertical_Occipital_Fasciculus_R
-Acoustic_Radiation_L
-Acoustic_Radiation_R
-Corticobulbar_Tract_L
-Corticobulbar_Tract_R
-Corticopontine_Tract_Frontal_L
-Corticopontine_Tract_Frontal_R
-Corticopontine_Tract_Parietal_L
-Corticopontine_Tract_Parietal_R
-Corticopontine_Tract_Occipital_L
-Corticopontine_Tract_Occipital_R
-Corticospinal_Tract_L
-Corticospinal_Tract_R
-Corticostriatal_Tract_Anterior_L
-Corticostriatal_Tract_Anterior_R
-Corticostriatal_Tract_Posterior_L
-Corticostriatal_Tract_Posterior_R
-Corticostriatal_Tract_Superior_L
-Corticostriatal_Tract_Superior_R
-Thalamic_Radiation_Anterior_L
-Thalamic_Radiation_Anterior_R
-Thalamic_Radiation_Posterior_L
-Thalamic_Radiation_Posterior_R
-Thalamic_Radiation_Superior_L
-Thalamic_Radiation_Superior_R
-Dentatorubrothalamic_Tract_L
-Dentatorubrothalamic_Tract_R
-Fornix_L
-Fornix_R
-Medial_Lemniscus_L
-Medial_Lemniscus_R
-Optic_Radiation_L
-Optic_Radiation_R
-Reticular_Tract_L
-Reticular_Tract_R
-Anterior_Commissure
-Corpus_Callosum_Forceps_Minor
-Corpus_Callosum_Body
-Corpus_Callosum_Tapetum
-Corpus_Callosum_Forceps_Major
-Cerebellum_L
-Cerebellum_R
-Inferior_Cerebellar_Peduncle_L
-Inferior_Cerebellar_Peduncle_R
-Middle_Cerebellar_Peduncle
-Superior_Cerebellar_Peduncle
-Vermis
-CNII_L
-CNII_R
-CNIII_L
-CNIII_R
-CNV_L
-CNV_R
-CNVII_L
-CNVII_R
-CNVIII_L
-CNVIII_R
-```
+|Parameters | Descriptions |
+|-----------|---------------|
+| OpenNeuro Accession Number | the ds number of the OpenNeuro data. |
+| Save SRC Files | specify whether to save SRC files for downloading. |
+| QC report | specify whether to run a quality check on the dMRI data. |
+| Region Analysis | the region analysis pipeline calculates the averages value of metrics in the atlas regions. | 
+| Connectivity Matrix | the connectivity matrix pipeline calculates the whole-brain connectivity matrix using the atlas parcellations. | 
+| Automatic Fiber Tracking | the automatic fiber tracking pipeline maps tracts of interests and calculates their diffusion and shape metrics. | 
+| Options: Atlases | specify the atlases to be used in region analysis or connectivity matrix. [Full list of atlases](https://github.com/frankyeh/DSI-Studio-atlas/tree/main/ICBM152)  |
+| Options: Tracts of Interest | specify the tracts to be mapped used in automatic fiber tracking. Partial name accepted. [Full list of tracts](https://github.com/frankyeh/DSI-Studio-atlas/blob/main/ICBM152/ICBM152.tt.gz.txt)|
+
+Arcuate,Optic_Radiation). 
+
+Click on `Run workflow` to start. 
 
 4. **Download Results**: Once completed, the intermediate results (e.g. SRC files, FIB files), tract files, and tract metrics can be downloaded. SRC, FIB, TT files  can be [inspected in DSI Studio](https://dsi-studio.labsolver.org/doc/gui_t3_whole_brain.html).
 
