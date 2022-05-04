@@ -38,7 +38,7 @@ DSI Studio Cloud makes uses of the GitHub-hosted runner, a virtual machine hoste
 
 |Parameters | Descriptions |
 |-----------|---------------|
-| OpenNeuro Accession Number | the ds number of the OpenNeuro data. |
+| OpenNeuro Accession Number | the DS number of the OpenNeuro data. |
 | Save SRC Files | specify whether to save SRC files for downloading. |
 | QC report | specify whether to run a quality check on the dMRI data. |
 | Region Analysis | the region analysis pipeline calculates the averages value of metrics in the atlas regions. | 
@@ -46,8 +46,6 @@ DSI Studio Cloud makes uses of the GitHub-hosted runner, a virtual machine hoste
 | Automatic Fiber Tracking | the automatic fiber tracking pipeline maps tracts of interests and calculates their diffusion and shape metrics. | 
 | Options: Atlases | specify the atlases to be used in region analysis or connectivity matrix. [Full list of atlases](https://github.com/frankyeh/DSI-Studio-atlas/tree/main/ICBM152)  |
 | Options: Tracts of Interest | specify the tracts to be mapped used in automatic fiber tracking. Partial name accepted. [Full list of tracts](https://github.com/frankyeh/DSI-Studio-atlas/blob/main/ICBM152/ICBM152.tt.gz.txt)|
-
-Arcuate,Optic_Radiation). 
 
 Click on `Run workflow` to start. 
 
