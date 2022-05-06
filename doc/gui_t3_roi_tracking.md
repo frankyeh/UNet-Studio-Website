@@ -34,45 +34,7 @@ There are several ways to assign regions:
 
 DSI Studio provides a list of atlases that can be added to the region list. Users can add anatomical landmarks by clicking on the ![image](https://user-images.githubusercontent.com/275569/147854300-d08bfff8-0ef0-480e-893b-582c8ed9097b.png) button in [Step T3a]. DSI Studio will perform a nonlinear registration to bring atlas to the subject space.
 
-***Add a new template***
-
-A *template* is a population-average image volume (e.g. T1W, FA...etc.) that defines a standard space. The template has its imaging modality, such as T1W, T2W, anisotropy map.
-
-DSI Studio can include a new anisotropy template for different animal species or different subject populations (e.g., neonatal, elder...etc.).
-
-To add a template, first, create a folder under the /atlas folder (e.g. /atlas/NAME_OF_TEMPLATE) and then copy the anisotropy map to the folder and name it NAME_OF_TEMPLATE.QA.nii.gz
-
-DSI Studio also needs an "ISO" map to utilize dual-modality normalization. The file should also be placed under /atlas/NAME_OF_TEMPLATE and should be saved as NAME_OF_TEMPLATE.ISO.nii.gz
-
-An ISO map is optional, but having an ISO template with the QA template will greatly increase the normalization accuracy.
-
-If you only have a T1W template (e.g. child or elder population), then you can warp ICBM152 QA and ISO template to your template space using the following procedure:
-
-1. [O6: Linear registration box] select "\atlas\ICBM152\ICBM152.QA.nii.gz" as the subject image and "\mni_icbm152_t1_tal_nlin_asym_09c.nii.gz" (provided in DSI Studio package, windows version) as the reference image. 
-
-2. Click on [Save Warped Image] and save it as a new file. Let's name it new.QA.nii.gz
-
-3. Repeat steps 1 and 2 but select "\atlas\ICBM152\ICBM152.ISO.nii.gz" to create new.ISO.nii.gz
-
-4. [07: Nonlinear registration box], [Open Subject]->"\mni_icbm152_t1_tal_nlin_asym_09c.nii.gz" and [Open Reference]->your new t1w template. I would suggest using smoothness=1.0 or higher to avoid over-distorted results. Click [Run]. You may experiment with different smoothness values to get the best result.
-
-5. After registration, select the top menu [File][Apply Warpping]->new.QA.nii.gz and overwrite it.
-
-6. Repeat 5 but select new.ISO.nii.gz and overwrite it.
-
-7. Now you have new QA and ISO templates in your T1W template space. After adding them to \atlas\NAME_OF_TEMPLATE, restart DSI Studio to see the template added to the menu.
-
-***Add a new atlas***
-
-An *atlas* is an integer-valued parcellations that record the location of each brain region. It usually has a corresponding value-name list in the text format.
-
-1. **Prepare the atlas in NIFTI**: For other formats, please convert them to the NIFTI format as .nii.gz. 
-2. **A .txt text file records the labels**: An example of the text can be find [here](https://github.com/frankyeh/DSI-Studio-atlas/blob/main/ICBM152/HCP-MMP.txt). Each line has a value-name pair separated by a tab or space. The file name should match the atlas (e.g. HCP-MMP.nii.gz and HCP-MMP.txt)
-3. **Locate the target template folder**: A list of template space can be found [here](https://github.com/frankyeh/DSI-Studio-atlas), including ICBM152 (human young adult), neuonate, CIVM_mouse,...etc. You will find the same folders in the DSI Studio package. In windows, they are in under the \dsi_studio_64\atlas folder. In Mac, those folders are stored in the app package (Right-click on dsi_studio_64.app to open the DSI Studio package /Content/MacOS/atlas). 
-4. **Convert atlas to the target template space**: click on [Tools][R1: Linear Registration Toolbox], first select the atlas file (from step 1) and then select the [TEMPLATE NAME].QA.nii.gz in the template folder (identified in Step 3). Once the two volume matches, save the atlas using [Files][Save Transformed Image]
-5. **Copy atlas and its text labels to the template folder**: For human atlas, please copy the .nii.gz and correponding .txt files to the template folder (e.g., \atlas\ICBM152 in the dsi studio package). For animal atlas, please find the corresponding folder, such as the one for mouse, rat, marmoset, or rhesus. 
-
-After copying a new atlas to the template space folder, restart DSI Studio to see the new atlas added to the ICBM152 menu.
+To use a customized atlas, please refer to the optional instructions at the bottom of this page.
 
 ## Load Regions From Text Coordinate Files
 
@@ -131,6 +93,10 @@ The function of each tool is detailed as follows:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZkWBU_qnaKg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+# Step T3d: Tracts
+
+Click on the [Fiber Tracking] button to start fiber tracking. Only the checked regions will affect tracking results.
+
 # (Optional) Modifying Regions
 
 You can modify a region using [Regions Misc][Modify Regions] and [Move Regions]. The modification includes shitting the region in x, y, or z-direction. Flip x, flip y, or flip z correct the orientation problem. There is also an expansion function that expands the current region. Other functions include erosion, smoothing, negating, and defragment.
@@ -158,6 +124,47 @@ The following steps will convert DSI Studio ROIs to FSL space.
 4. Select the FSL mask or ROI file
 5. In the registration window, click on the [File] button on the left bottom corner and select [Save Transformed Image]
 6. Save converted ROI as a NIFTI file.
+
+# (Optional) Add a new template
+
+A *template* is a population-average image volume (e.g. T1W, FA...etc.) that defines a standard space. The template has its imaging modality, such as T1W, T2W, anisotropy map.
+
+DSI Studio can include a new anisotropy template for different animal species or different subject populations (e.g., neonatal, elder...etc.).
+
+To add a template, first, create a folder under the /atlas folder (e.g. /atlas/NAME_OF_TEMPLATE) and then copy the anisotropy map to the folder and name it NAME_OF_TEMPLATE.QA.nii.gz
+
+DSI Studio also needs an "ISO" map to utilize dual-modality normalization. The file should also be placed under /atlas/NAME_OF_TEMPLATE and should be saved as NAME_OF_TEMPLATE.ISO.nii.gz
+
+An ISO map is optional, but having an ISO template with the QA template will greatly increase the normalization accuracy.
+
+If you only have a T1W template (e.g. child or elder population), then you can warp ICBM152 QA and ISO template to your template space using the following procedure:
+
+1. [O6: Linear registration box] select "\atlas\ICBM152\ICBM152.QA.nii.gz" as the subject image and "\mni_icbm152_t1_tal_nlin_asym_09c.nii.gz" (provided in DSI Studio package, windows version) as the reference image. 
+
+2. Click on [Save Warped Image] and save it as a new file. Let's name it new.QA.nii.gz
+
+3. Repeat steps 1 and 2 but select "\atlas\ICBM152\ICBM152.ISO.nii.gz" to create new.ISO.nii.gz
+
+4. [07: Nonlinear registration box], [Open Subject]->"\mni_icbm152_t1_tal_nlin_asym_09c.nii.gz" and [Open Reference]->your new t1w template. I would suggest using smoothness=1.0 or higher to avoid over-distorted results. Click [Run]. You may experiment with different smoothness values to get the best result.
+
+5. After registration, select the top menu [File][Apply Warpping]->new.QA.nii.gz and overwrite it.
+
+6. Repeat 5 but select new.ISO.nii.gz and overwrite it.
+
+7. Now you have new QA and ISO templates in your T1W template space. After adding them to \atlas\NAME_OF_TEMPLATE, restart DSI Studio to see the template added to the menu.
+
+# (Optional) Add a new atlas
+
+An *atlas* is an integer-valued parcellations that record the location of each brain region. It usually has a corresponding value-name list in the text format.
+
+1. **Prepare the atlas in NIFTI**: For other formats, please convert them to the NIFTI format as .nii.gz. 
+2. **A .txt text file records the labels**: An example of the text can be find [here](https://github.com/frankyeh/DSI-Studio-atlas/blob/main/ICBM152/HCP-MMP.txt). Each line has a value-name pair separated by a tab or space. The file name should match the atlas (e.g. HCP-MMP.nii.gz and HCP-MMP.txt)
+3. **Locate the target template folder**: A list of template space can be found [here](https://github.com/frankyeh/DSI-Studio-atlas), including ICBM152 (human young adult), neuonate, CIVM_mouse,...etc. You will find the same folders in the DSI Studio package. In windows, they are in under the \dsi_studio_64\atlas folder. In Mac, those folders are stored in the app package (Right-click on dsi_studio_64.app to open the DSI Studio package /Content/MacOS/atlas). 
+4. **Convert atlas to the target template space**: click on [Tools][R1: Linear Registration Toolbox], first select the atlas file (from step 1) and then select the [TEMPLATE NAME].QA.nii.gz in the template folder (identified in Step 3). Once the two volume matches, save the atlas using [Files][Save Transformed Image]
+5. **Copy atlas and its text labels to the template folder**: For human atlas, please copy the .nii.gz and correponding .txt files to the template folder (e.g., \atlas\ICBM152 in the dsi studio package). For animal atlas, please find the corresponding folder, such as the one for mouse, rat, marmoset, or rhesus. 
+
+After copying a new atlas to the template space folder, restart DSI Studio to see the new atlas added to the ICBM152 menu.
+
 
 # Shortcuts 
 
