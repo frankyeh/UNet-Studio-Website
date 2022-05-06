@@ -85,12 +85,6 @@ DSI Studio can load ROIs from a text file of the ROI coordinates. The coordinate
 
 ---
 
-- Always start with only one ROI and gradually add more restrictions, such as the second `ROI`, `ROA`, `End`...etc.
-- Assign `ROA` to eliminate unwanted pathways.
-- Assign `End` ***only if*** you have tried assigning it as `ROI` and want more restricted results in the endpoints.
-- Assign `Terminative` ***only if*** you specifically want tracks to stop at a certain location.
-- Assign `Seed` ***only if*** you want to speed up fiber tracking by limiting the starting region of fiber tracking. 
-
 There are several region types available to control fiber tracking, including ROI, ROA, Seed, End, Terminative. Each of them is explained in the following sections.
 
 | Type | Function |
@@ -103,8 +97,15 @@ There are several region types available to control fiber tracking, including RO
 | ***Terminative*** | A terminative region will intercept fiber tracking by terminating any tracts as soon as they enter it. It changes the behavior of a tracking algorithm and forces tracking to terminate. A terminative region is useful if one is to study the tracts that project to a nucleus or a specific cortical area. A terminative region does not allow a tract to pass through it, which is very different from an "end" region. <br> A terminative region can be used to terminate a track if the anisotropy level is greater than a threshold. The steps are the following: <br><br> 1. In the options window, set the anisotropy threshold to the maximum value <br> 2. Click on [Region][Whole Brain seeding]. This creates a region with FA greater than the threshold. <br> 3. Change the region type to "terminative" <br> 4. Setting the Fanisotropy threshold back to the minimum value <br> 5. Start fiber tracking. |
 | ***NotEnd*** | Similar to ROA but only excludes tracts that end in the region (allows passing). |
 
-# Step T2b: Draw Regions
+## Tips
 
+- Assign `Seed` ***only if*** you want to speed up fiber tracking by limiting the starting region of fiber tracking. 
+- Always start with only one ROI and gradually add more restrictions, such as the second `ROI`, `ROA`, `End`...etc.
+- Assign `ROA` to eliminate unwanted pathways.
+- Assign `End` ***only if*** you have tried assigning it as `ROI` and want more restricted results in the endpoints.
+- Assign `Terminative` ***only if*** you specifically want tracks to stop at a certain location.
+
+# Step T2b: Draw Regions
 
 ![image](https://user-images.githubusercontent.com/275569/147854543-9001e2d5-580b-4a86-a9cd-f931ca3973ca.png)
 
