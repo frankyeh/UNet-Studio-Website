@@ -9,7 +9,6 @@ DSI Studio Cloud makes uses of the GitHub-hosted runner, a virtual machine hoste
 ## Advantages
 
 - **Free computation resources**: GitHub action provides 20 concurrent jobs with 2-core each. The computation power is equal to a 40-core workstation, much faster than running it on most laptops/desktops.
-
 - **Faster data transfer**: The raw dMRI data are usually huge and can be up to several GB per scan, but tractography and related metrics are substantially smaller at MB size. Using DSI Studio Cloud, the amount of data transfer can be dramatically reduced. 
 
 ## Requirements 
@@ -21,6 +20,12 @@ DSI Studio Cloud makes uses of the GitHub-hosted runner, a virtual machine hoste
 
 - **Not more than 256 scans data**: There is a maximum of 256 jobs per workflow run. DSI Studio will still generate SRC and FIB files for downloading, but fiber tracking cannot be executed due to the this limit.
 - **90-day data retention**: GitHub will retain workflor data only for 90 days before they are automatically deleted.
+
+## Examples Dataset
+
+- [(OpenNeuro ds002087) Datasets with and without deliberate head movements for detection and imputation of dropout in diffusion MRI](https://openneuro.org/datasets/ds002087/versions/1.0.0)
+- [(OpenNeuro ds001378) SCA2 Diffusion Tensor Imaging](https://openneuro.org/datasets/ds001378/versions/1.0.0)
+
 
 ## Steps
 
