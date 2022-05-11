@@ -26,6 +26,11 @@ DSI Studio Cloud makes uses of the GitHub-hosted runner, a virtual machine hoste
 - [(OpenNeuro ds002087) Datasets with and without deliberate head movements for detection and imputation of dropout in diffusion MRI](https://openneuro.org/datasets/ds002087/versions/1.0.0)
 - [(OpenNeuro ds001378) SCA2 Diffusion Tensor Imaging](https://openneuro.org/datasets/ds001378/versions/1.0.0)
 
+## Pipeline
+
+The DSI Studio Cloud pipeline includes preprocessing (eddy correction and align ac-pc), quality check, automatic fiber tracking, region-based analysis, and connectivity matrix.
+![image](https://user-images.githubusercontent.com/275569/167920232-68b2e6d8-88db-48ab-9950-7e0f5f85d6bf.png)
+
 
 ## Steps
 
@@ -43,12 +48,12 @@ DSI Studio Cloud makes uses of the GitHub-hosted runner, a virtual machine hoste
 
 |Parameters | Descriptions |
 |-----------|---------------|
-| OpenNeuro Accession Number | the DS number of the OpenNeuro data. |
-| Save SRC Files | specify whether to save SRC files for downloading. |
-| QC report | specify whether to run a quality check on the dMRI data. |
-| Region Analysis | the region analysis pipeline calculates the averages value of metrics in the atlas regions. | 
-| Connectivity Matrix | the connectivity matrix pipeline calculates the whole-brain connectivity matrix using the atlas parcellations. | 
-| Automatic Fiber Tracking | the automatic fiber tracking pipeline maps tracts of interests and calculates their diffusion and shape metrics. | 
+| OpenNeuro Accession Number | the DS number of the OpenNeuro data. (e.g. ds001378) |
+| Preprocessing: Eddy Correction | specify whether to correct DWI data using FSL eddy. |
+| Preprocessing: Align AC-PC | specify whether to resample DWI to align ac-pc. |
+| Pipeline: Region Analysis | the region analysis pipeline calculates the averages value of metrics in the atlas regions. | 
+| Pipeline: Connectivity Matrix | the connectivity matrix pipeline calculates the whole-brain connectivity matrix using the atlas parcellations. | 
+| Pipeline: Automatic Fiber Tracking | the automatic fiber tracking pipeline maps tracts of interests and calculates their diffusion and shape metrics. | 
 | Options: Atlases | specify the atlases to be used in region analysis or connectivity matrix. [Full list of atlases](https://github.com/frankyeh/DSI-Studio-atlas/tree/main/ICBM152)  |
 | Options: Tracts of Interest | specify the tracts to be mapped used in automatic fiber tracking. Partial name accepted. [Full list of tracts](https://github.com/frankyeh/DSI-Studio-atlas/blob/main/ICBM152/ICBM152.tt.gz.txt)|
 
@@ -56,4 +61,4 @@ Click on `Run workflow` to start.
 
 4. **Download Results**: Once completed, the intermediate results (e.g. SRC files, FIB files), tract files, and tract metrics can be downloaded. SRC, FIB, TT files  can be [inspected in DSI Studio](https://dsi-studio.labsolver.org/doc/gui_t3_whole_brain.html).
 
-<img src="https://user-images.githubusercontent.com/275569/157700442-6fae3601-9208-4607-af56-eb4b44d43877.png" width=500>
+<img src="https://user-images.githubusercontent.com/275569/167920862-55b12b8d-9f22-4ca8-b1a5-969b33443a9f.png" width=500>
