@@ -63,6 +63,9 @@ Click on `Run workflow` to start.
 
 Once completed, the FIB files, tract files, and tract metrics can be downloaded from the Release on the right of the repository.
 
+![image](https://user-images.githubusercontent.com/275569/169601907-eb2c040f-78f4-4f38-931a-85c320b99b08.png)
+
+
 ## OpenNeuro DWI Data List 
 
 |	DS NUMBER	|	DWI COUNT	|		NAME		|
