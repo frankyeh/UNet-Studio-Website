@@ -55,6 +55,8 @@ The ideal template should be constructed from your control subjects to avoid pos
     
 - **for longitudinal studies**
 
+    **If you are using DSI Studio with a version dated earlier than 5/28/2022, please update DSI Studio to reduce the misalignment errors.**
+    
     Export metrics from the follow-up FIB files using the **[Step T3][Export]**, and rename the exported files (e.g. followup_xxx.nii.gz) so that it won't be confused with the baseline metrics.
     
     Open the FIB file of the baseline study and load NIFTI files from the follow-up study. Now in the **[Slices]** droplist on the top of the 3D window will have both the metrics in the baseline and followup study 
