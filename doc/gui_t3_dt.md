@@ -99,8 +99,6 @@ In the tracking parameters, set **[Step T3c: Options][Tracking Parameters][Diff
 
 **TIPS**
 
-- You can use [Edit][Pruning (TIP)] to eliminate noisy results. I will apply it for 5~10 times.
-
 - Add ROA or ROI to limit findings. 
 
     For example, you can map the affected pathways that pass through the internal capsule by assigning the internal capsule as the ROI. The number and length of tracks can be compared between patients if other tracking parameters are fixed (be sure to fix the seed count).
@@ -108,6 +106,8 @@ In the tracking parameters, set **[Step T3c: Options][Tracking Parameters][Diff
 - Avoid lower cerebellum due to different slice coverage.
 
 - Use [Tracts][Miscellaneous][Recognize Track] to know the name of the findings.
+
+- Any mismisalignment between the compring metrics (due to either distortion or deformation) will lead to false results. To minimize this problem, export two comparing metrics and use [Tools][R2: Nonlinear Registration Toolbox] and its [Save Warpped Image] to reduce the misalignment issue.
 
 - If tracking results change a lot in repeated analyses, it is likely that the image acquisition is not optimal (e.g. too noisy, has very thick slices), and thus registration errors are boosted. To minimize this variance, export both baseline and follow-up NQA images and smooth them using [Tool][O41 View image][Signals][Smoothing] (make sure to update DSI Studio to use this function). Save the smoothed images as new files to run differential tracking.
 
