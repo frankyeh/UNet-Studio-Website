@@ -38,13 +38,15 @@ For loading template images, use **[Slices][Insert MNI images]**.
 
 The followings are steps for cross-sectional and longitudinal studies, respectively.
 
-- **for cross-sectional studies**
+### 1a. Cross-sectional studies
 
-    We will compare subject's metrics with a group average template. You can [download templates](https://brain.labsolver.org/hcp_template.html) for comparison. 
+![image](https://user-images.githubusercontent.com/275569/170849962-ef2f90af-748a-4011-8610-508fa8e24645.png)
+
+We will compare subject's metrics with a group average template. You can [download templates](https://brain.labsolver.org/hcp_template.html) for comparison. 
     
-    - If your data were acquired using HCP-style multishell, choose the ***HCP-1065 NQA*** or ***HCP-1065 FA*** templates. 
-    - If your data were acquired using the [258-direction DSI](/doc/how_to_acquire_dmri.html), choose the ***Grid258 NQA*** or ***Grid258 FA*** templates. 
-    - To use an age-sex adjusted template for your subject, download ***Grid258 NQA connectometry database*** and open it in ***[Step C2a]*** and select ***[File][Save Matched Image as]***. Input age and sex (1 for male, 0 for female) separated by a space to export the age-sex adjusted NQA template.
+  - If your data were acquired using HCP-style multishell, choose the ***HCP-1065 NQA*** or ***HCP-1065 FA*** templates. 
+  - If your data were acquired using the [258-direction DSI](/doc/how_to_acquire_dmri.html), choose the ***Grid258 NQA*** or ***Grid258 FA*** templates. 
+  - To use an age-sex adjusted template for your subject, download ***Grid258 NQA connectometry database*** and open it in ***[Step C2a]*** and select ***[File][Save Matched Image as]***. Input age and sex (1 for male, 0 for female) separated by a space to export the age-sex adjusted NQA template.
     
     Load the template image (e.g. template_nqa.nii.gz) using **[Slices][Insert MNI Images]**. The newly added metrics will be listed in the [Slices] droplist on the top of the 3D window, and the name will be the basename of the template file (i.e. template_nqa).
       
@@ -53,13 +55,16 @@ The followings are steps for cross-sectional and longitudinal studies, respectiv
 The ideal template should be constructed from your control subjects to avoid possible site differences. To create group-average images from a control group, follow the **[Step C1: Reconstruct SRC files for connectometry]** to generate ODF-containing FIB files. Then open [**Tools**][**P1: Create template/skeleton**] and select the ODF-containing FIB files of the control subjects to create a group-averaged template FIB file. The generated template FIB file can be opened in **[Step T3 Fiber Tracking]** and export metrics using **[Export].**   
 
     
-- **for longitudinal studies**
+### 1b. Longitudinal studies
 
-    **If you are using DSI Studio with a version dated earlier than 5/28/2022, please update DSI Studio to reduce the misalignment errors.**
+![image](https://user-images.githubusercontent.com/275569/170850010-72c1ea82-4fea-47ff-984c-505ae453d4ea.png)
+
+
+**If you are using DSI Studio with a version dated earlier than 5/28/2022, please update DSI Studio to reduce the misalignment errors.**
     
-    Export metrics from the follow-up FIB files using the **[Step T3][Export]**, and rename the exported files (e.g. followup_xxx.nii.gz) so that it won't be confused with the baseline metrics.
+Export metrics from the follow-up FIB files using the **[Step T3][Export]**, and rename the exported files (e.g. followup_xxx.nii.gz) so that it won't be confused with the baseline metrics.
     
-    Open the FIB file of the baseline study and load NIFTI files from the follow-up study. Now in the **[Slices]** droplist on the top of the 3D window will have both the metrics in the baseline and followup study 
+Open the FIB file of the baseline study and load NIFTI files from the follow-up study. Now in the **[Slices]** droplist on the top of the 3D window will have both the metrics in the baseline and followup study 
 
 ## 2. Compare Metrics
 
