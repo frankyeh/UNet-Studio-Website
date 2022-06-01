@@ -106,7 +106,7 @@ If a dialog prompts a warning about poor image quality (low R2), you may need to
 
 ![](https://sites.google.com/a/labsolver.org/dsi-studio/_/rsrc/1487609216505/Manual/diffusion-mri-connectometry/cnt_gui.png?height=236&width=400)
 
-# Step C3a: Load demographics
+## 3a: Load demographics
 
 Prepare a comma-separated values (CSV) file that records any variables you would like to include in the regression model. The first row should be the name of the scalar values. The second row is the value for the first subject, and the rest follows. If there is any missing data, leave the field empty. DSI Studio will ignore subjects with missing data.
 
@@ -114,7 +114,7 @@ Click on the button labeled "open subjects demographics". Load the text file tha
 
 *If your data are from a longitudinal study and only want to look at longitudinal differences without considering any other variable, go directly to [Step C3d: Parameters].
 
-# Step C3b: Select variables
+## 3b: Select variables
 
 Please choose the variables to be considered. This can include all covariates to be considered such as sex and age and also your target study variable. 
 
@@ -126,7 +126,7 @@ There are several tips in choosing the variables in the model:
 
 *TIPS: *If your study variables are highly correlated to each other, consider using a PCA to get the principal components. (see <https://www.sciencedirect.com/science/article/pii/S1875957218301797>). You will need to interpret the meaning of each principal component by checking its coefficient.
 
-# Step C3c: Study variable
+## 3c: Study variable
 
 Choose the target variable to study, and DSI Studio will find any tracks correlated with this variable. The effect of other covariates selected in C3b will be regressed out.
 
@@ -142,7 +142,7 @@ If you choose "age" for Step C3b and choose "Intercept" for Step C3c?. This will
 
 If you choose "age" for Step C3b and choose "age" for Step C3c? This will show tracks with changes that are significantly correlated with age. A positive correlation means when age increases, the tracks show increased anisotropy.
 
-# Step C3d: Parameters
+## 3d: Parameters
 
 | Parameters | Descriptions |
 |:-----------|:-------------|
@@ -174,7 +174,7 @@ You can include/exclude a particular group of subjects in/from the analysis. Cli
 | Pruning | helps remove noisy findings. Higher values may improve FDR with the expense of sensitivity. |
 | Normalize QA | Check this to homogenize data for potential scanner or site differences. <br>If your data contains scans acquired from different protocols (e.g. b-value, resolution ...etc.), you will need to check "Normalize QA" to homogenize the data |
 
-# Step C3e: Run connectometry and report the results
+## 3e: Run connectometry and report the results
 
 Click on the [**Step C3d: Run connectometry**] button and wait until the computation is finished.
 
@@ -233,17 +233,17 @@ You can visualize the results at different T thresholds (see the next section ab
 
 3. Convert the finding to ROI using [Tracts][Tract to ROI] to track the entire pathways. This allows you to confirm the anatomical structure of the findings.
 
-## Post Connectometry Analyses
+# Post Connectometry Analyses
 
 There are additional analyses that could be done after connectometry to show more details about the findings. The following are some recommendations.
 
-**1. Segment findings into bundles**
+## 1. Segment findings into bundles
 
 The connectometry results often include multiple pathways, and they can be segmented into different bundles manually [(video)](https://www.youtube.com/watch?v=1xfhaFQhCtY&t=13s) or through [Tract Misc][Recognize and Cluster].
 
 I would recommend checking [Tract Misc][Recognize and Cluster] and fine-tuning it using manual segmentation.
 
-**2. Report FDR for each bundle**
+## 2. Report FDR for each bundle
 
 The FDR in report.html is for the overall results, but findings with a longer distance will have a lower FDR than the others. You can report the FDR of each bundle based on its length.
 
@@ -253,7 +253,7 @@ Segment findings into bundles as mentioned above. Get the length using [Tracts][
 
 Last, check the FDR values in *.fdr_dist.values.txt and look up the row with voxel distance=30 to get the FDR values. There is one FDR for positive correlation and one for negative. Make sure you get the right one.
 
-**3. Scatter plots of bundle statistics and study variable**
+## 3. Scatter plots of bundle statistics and study variable
 
 We can further plot a scatter plot between the study variable and the diffusion variable (e.g. QA or nQA) averaged from the bundle.
 
@@ -263,7 +263,7 @@ The QA value can be copied to the clipboard and pasted into an Excel sheet. We c
 
 ![](https://sites.google.com/a/labsolver.org/dsi-studio/_/rsrc/1556206471892/Manual/diffusion-mri-connectometry/scatter%20plot.png)
 
-**4. Visualize bundle in mosaic T1w**
+## 4. Visualize bundle in mosaic T1w
 
 The finding can be visualized in slices using the following steps:
 
@@ -277,7 +277,7 @@ The finding can be visualized in slices using the following steps:
 
 [![](https://sites.google.com/a/labsolver.org/dsi-studio/_/rsrc/1468760876407/Manual/diffusion-mri-connectometry/sleep4.jpg)](https://sites.google.com/a/labsolver.org/dsi-studio/Manual/diffusion-mri-connectometry/sleep4.jpg?attredirects=0)
 
-**5. Network Property Analysis for Connectometry Findings**
+## 5. Network Property Analysis for Connectometry Findings
 
 The connectometry findings usually present a group of fiber bundles, and how these bundles affect the network topology can be further analyzed to better present the results.\
 The following are steps to carry out this analysis:
