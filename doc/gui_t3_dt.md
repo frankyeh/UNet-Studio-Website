@@ -59,7 +59,7 @@ Adjust other parameters until you get a good quality of the whole-brain track. (
 **If you are using DSI Studio with a version dated earlier than 5/28/2022, please update DSI Studio to reduce the misalignment errors.**
 
 
-A FIB file opened in **[Step T3: Fiber Tracking]** includes a list of metrics under the **[Slices]** droplist on the top of the 3D window. A typical list includes `qa`, `nqa`, `dti_fa`, ...etc. Those metrics are ready to be used. ***we recommend using NQA (normalized quantitative anisotropy) or DTI_FA to find neuronal changes***.
+A FIB file opened in **[Step T3: Fiber Tracking]** includes a list of metrics under the **[Slices]** droplist on the top of the 3D window. A typical list includes `qa`, `nqa`, `dti_fa`, ...etc. Those metrics are ready to be used. ***We recommend using NQA (normalized quantitative anisotropy) or DTI_FA to find neuronal changes***.
 
 An external native-space NIFTI files can be imported by **[Slices][Insert Other Images]**. DSI Studio will ask whether a rotation alignment is needed. In most cases, you should choose yes, and DSI Studio will alignment the image with the subject's existing scans. 
 
