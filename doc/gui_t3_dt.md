@@ -6,19 +6,47 @@
 
 ---
 
-Differential tractography compares scans to capture neuronal change reflected by a decrease of anisotropy. Compared with conventional tractography, differential integrates the  "tracking-the-difference" paradigm as opposed to "tracking-the-existence" one used in the conventional setting. It is realized by adding one criterion to track along trajectories only if a decrease of anisotropy is found between repeat scans. This approach greatly increase the sensitivity and specificity of the diffusion metrics by aggregating results along white matter pathways. 
+Differential tractography compares scans to capture neuronal change reflected by a decrease of anisotropy. Compared with conventional tractography, differential integrates the  "tracking-the-difference" paradigm as opposed to the "tracking-the-existence" one used in the conventional setting. It is realized by adding one criterion to track along trajectories only if a decrease of anisotropy is found between repeat scans. This approach greatly increases the sensitivity and specificity of the diffusion metrics by aggregating results along white matter pathways. 
 
-Differential tractography can be applied to DTI data, multi-shell data, and DSI data. But, we found that higher b-value signals will be more sensitive to early-stage neuronal changes, whereas low b-value signals may include a lot of physiological fluctuations. If your data are acquired at a low b-value (e.g., < 3000), then you may expect to have a higher false discovery rate (FDR). In the original study, we used 256-direction grid sampling with b-max=4000 or even up to 7000 to get excellent FDR values lower than 0.05. Using DTI data may increase FDR to 0.2.
+![image](https://user-images.githubusercontent.com/275569/170849962-ef2f90af-748a-4011-8610-508fa8e24645.png)
+
+
+Differential tractography can be applied to DTI data, multi-shell data, and DSI data. However, we found that higher b-value signals will be more sensitive to early-stage neuronal changes, whereas low b-value signals may include a lot of physiological fluctuations. If data are acquired at a low b-value (e.g., < 3000), then you may expect to have a higher false discovery rate (FDR). In the original study, we used 256-direction grid sampling with b-max=4000 or even up to 7000 to get excellent FDR values lower than 0.05. Using DTI data may increase FDR to 0.2.
 
 Open the main window and click on [Step T3: Fiber Tracking] to select a GQI-reconstructed FIB file from [Step T1](/doc/gui_t1.html) and [Step T2](/doc/gui_t2.html). 
 
-## 0. Quality check using whole-brain tracking
+## Data Preparation 
 
-First, restore default settings using **[Options][Restore Tracking Settings]**
+We first need to identify two key data elements in differential tractography:
+
+### 0a. A FIB file 
+A FIB file is needed as the tracking framework. The FIB file can be constructed from the subject's baseline scan (most common).
+
+If the individual scans are not good enough for tracking (e.g., in-vivo animal scans), then an existing [population-averaged template (*.FIB.GZ)](https://brain.labsolver.org/hcp_template.html) can be used instead. If you cannot find a suitable template, please feel free to contact Frank to identify one.
+
+### 2. Metrics to be compared
+
+The metrics can be those stored within a subject's FIB file or from a NIFTI file exported from another FIB (e.g. same subject's follow-up scans) or any source. The **[Export]** menu allows for exporting a metric as a NIFTI file from a FIB file. If the FIB file is reconstructed by GQI, the exported metrics is in the native space. If the FIB file is reconstructed by QSDR, the exported metrics is stored in the MNI space. 
+
+For cross-sectional studies, you can generate an age-sex matched NIFTI file for each subject. First you will need to [create a connectometry database](https://dsi-studio.labsolver.org/doc/gui_cx.html) using your control subjects. Then open the database file in ***[Step C2]*** and load demographics using ***[File][Open demographics]***. Select ***[File][Save Matched Image as]***. Input the matching demographics separated by a space to export the matched metric as an NIFTI file.
+
+
+If your data were acquired using the [258-direction GRID](/doc/how_to_acquire_dmri.html), you can use a publicly available [***Grid258 NQA connectometry database***]. 
+
+Examples:
+|Study Type | FIB file | Baseline metrics | Baseline source | Follow-up metrics | Follow-up source |
+|----------|--------|------------------|------------------|----------------|-----------------|
+| Longitudinal | Subject's baseline FIB | `nqa` in FIB file | in the baseline FIB file | `nqa` NIFTI file | exported from the GQI-reconstructed FIB file constructed from follow-up scan |
+| Longitudinal| HCP1065.2mm.fib.gz (from brain.labsolver.org) |  Subject's baseline `nqa` NIFTI file in ICBM152 space | exported from QSDR-reconstructed FIB files | Subject's follow-up `nqa` NIFTI file in ICBM152 space in ICBM152 space | exported from QSDR-reconstructed FIB files |
+| Cross-sectional | Subject's baseline FIB | age-sex-matched control `nqa` in the MNI space | generated from healthy controls's connectometry database | `nqa`  | in the subject's FIB file |
+
+## Quality check on FIB file using whole-brain tracking
+
+Open the FIB file in [Step T3: fiber tracking], restore default settings using **[Options][Restore Tracking Settings]**
 
 In the tracking parameters (right upper window), set **[Step T3c: Options][Tracking Parameters][Min length]** to "30 mm",  **[Terminate if]** to `100,000` seeds
 
-Click the **[Step T3d: Tracts][Fiber Tracking]** button to see if you can get a good quality of whole-brain fiber tracking 
+Click the **[Step T3d: Tracts][Fiber Tracking]** button to see if you can get a good quality whole-brain fiber tracking 
 
 If there are too many noisy fibers, consider increasing the **[Step T3c: Options][Tracking Parameters][Threshold]** or **[Min length]**.
 
@@ -26,53 +54,26 @@ If missing too many branches, considers lowering the **[Step T3c: Options][Trac
 
 Adjust other parameters until you get a good quality of the whole-brain track. (You may check out [whole brain fiber tracking](/doc/gui_t3_whole_brain.html) to see how to evaluate the tractography quality and adjust parameters)
 
-## 1. Load metrics
-
-A FIB file opened in **[Step T3: Fiber Tracking]** includes a list of metrics under the **[Slices]** droplist on the top of the 3D window. 
-
-Although differential tractography can use any metrics, ***we recommend using NQA (normalized quantitative anisotropy) and FA to find neuronal changes***.
-
-The **[Export]** menu allows for exporting a  metric as a NIFTI file, whereas the exported NIFTI files can be imported using **[Slices][Insert Other Images]**. 
-
-For loading template images, use **[Slices][Insert MNI images]**. 
-
-The followings are steps for cross-sectional and longitudinal studies, respectively.
-
-### 1a. Cross-sectional studies
-
-![image](https://user-images.githubusercontent.com/275569/170849962-ef2f90af-748a-4011-8610-508fa8e24645.png)
-
-We will compare subject's metrics with a group average template. You can [download templates](https://brain.labsolver.org/hcp_template.html) for comparison. 
-    
-  - If your data were acquired using HCP-style multishell, choose the ***HCP-1065 NQA*** or ***HCP-1065 FA*** templates. 
-  - If your data were acquired using the [258-direction DSI](/doc/how_to_acquire_dmri.html), choose the ***Grid258 NQA*** or ***Grid258 FA*** templates. 
-  - To use an age-sex adjusted template for your subject, download ***Grid258 NQA connectometry database*** and open it in ***[Step C2a]*** and select ***[File][Save Matched Image as]***. Input age and sex (1 for male, 0 for female) separated by a space to export the age-sex adjusted NQA template.
-    
-    Load the template image (e.g. template_nqa.nii.gz) using **[Slices][Insert MNI Images]**. The newly added metrics will be listed in the [Slices] droplist on the top of the 3D window, and the name will be the basename of the template file (i.e. template_nqa).
-      
-**TIP**
-
-The ideal template should be constructed from your control subjects to avoid possible site differences. To create group-average images from a control group, follow the **[Step C1: Reconstruct SRC files for connectometry]** to generate ODF-containing FIB files. Then open [**Tools**][**P1: Create template/skeleton**] and select the ODF-containing FIB files of the control subjects to create a group-averaged template FIB file. The generated template FIB file can be opened in **[Step T3 Fiber Tracking]** and export metrics using **[Export].**   
-
-    
-### 1b. Longitudinal studies
-
-![image](https://user-images.githubusercontent.com/275569/170850010-72c1ea82-4fea-47ff-984c-505ae453d4ea.png)
-
+## Load metrics
 
 **If you are using DSI Studio with a version dated earlier than 5/28/2022, please update DSI Studio to reduce the misalignment errors.**
-    
-Export metrics from the follow-up FIB files using the **[Step T3][Export]**, and rename the exported files (e.g. followup_xxx.nii.gz) so that it won't be confused with the baseline metrics.
-    
-Open the FIB file of the baseline study and load NIFTI files from the follow-up study. Now in the **[Slices]** droplist on the top of the 3D window will have both the metrics in the baseline and followup study 
+
+
+A FIB file opened in **[Step T3: Fiber Tracking]** includes a list of metrics under the **[Slices]** droplist on the top of the 3D window. A typical list includes `qa`, `nqa`, `dti_fa`, ...etc. Those metrics are ready to be used. ***we recommend using NQA (normalized quantitative anisotropy) or DTI_FA to find neuronal changes***.
+
+An external native-space NIFTI files can be imported by **[Slices][Insert Other Images]**. DSI Studio will ask whether a rotation alignment is needed. In most cases, you should choose yes, and DSI Studio will alignment the image with the subject's existing scans. 
+
+An MNI-space NIFTI file can be loaded by **[Slices][Insert MNI images]**. DSI Studio will apply nonlinear registration to warp the image to subject's native space.
+
+After loading the external NIFTI files, they should appear in the **[Slices]** droplist on the top of the 3D window.
 
 ## 2. Compare Metrics
 
 Add a new tracking metric at **[Analysis][Add Tracking Metrics]** and input the names of two comparing metrics connected by a minus sign. 
 
-For cross sectional study, input ***template_nqa-nqa*** to study the decrease of QA in the subject, and input ***nqa-template_nqa*** for increase of QA in the subject.
+For cross-sectional study, input ***external_nqa-nqa*** to study the decrease of QA in the subject, and input ***nqa-external_nqa*** for increase of QA in the subject. Here ***external_nqa*** is the name of the metric loaded from the external NIFTI file. Be default, DSI Studio will use file name as the metrics name.
 
-For longitudinal study, input ***nqa-followup_nqa*** to study the decrease of QA in the followup, and input ***followup_nqa-nqa*** for increase of QA in the followup.
+For a longitudinal study, input ***nqa-followup_nqa*** to study the decrease of QA in the follow-up, and input ***followup_nqa-nqa*** for increase of QA in the follow-up. Here ***followup_nqa*** is the name of the metric loaded from the external NIFTI file. Be default, DSI Studio will use file name as the metrics name.
 
 A new differential tracking metrics will be added to the **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics]**
 
@@ -93,13 +94,15 @@ In the tracking parameters, set **[Step T3c: Options][Tracking Parameters][Diff
 
 2. Set [Tracking Parameters][Min Length (mm)]=30
 
-    Lower value like 20 mm is more sensitive, whereas 40 mm is more specific. 
+   For animal studies, you may need to use a smaller value (e.g. 5)
+
+    A lower value like 20 mm is more sensitive, whereas 40 mm is more specific. 
     
 3. Click [Step T3d][Fiber Tracking] to map the differential stratigraphy. 
 
 4. Test different [Differential Tracking][Threshold] (e.g. 0.05, 0.10, ... 0.25) and [Tracking Parameters][Min Length (mm)] (20, 25, 30, 35, 40, 45)
 
-    The goal is to maximize sensitivity while retaining specificity. The following example suggest [Min Length (mm)]=40 has the best trade-off.
+    The goal is to maximize sensitivity while retaining specificity. The following example suggests [Min Length (mm)]=40 has the best trade-off.
 
     ![image](https://user-images.githubusercontent.com/275569/147860680-74abdce8-81a3-47a6-9d01-3d93be355b0d.png)
 
@@ -114,7 +117,7 @@ In the tracking parameters, set **[Step T3c: Options][Tracking Parameters][Diff
 
 - Use [Tracts][Miscellaneous][Recognize Track] to know the name of the findings.
 
-- Any mismisalignment between the compring metrics (due to either distortion or deformation) will lead to false results. To minimize this problem, export two comparing metrics and use [Tools][R2: Nonlinear Registration Toolbox] and its [Save Warpped Image] to reduce the misalignment issue.
+- Any misalignment between the comparing metrics (due to either distortion or deformation) will lead to false results. To minimize this problem, export two comparing metrics and use [Tools][R2: Nonlinear Registration Toolbox] and its [Save Warpped Image] to reduce the misalignment issue.
 
 - If tracking results change a lot in repeated analyses, it is likely that the image acquisition is not optimal (e.g. too noisy, has very thick slices), and thus registration errors are boosted. To minimize this variance, export both baseline and follow-up NQA images and smooth them using [Tool][O41 View image][Signals][Smoothing] (make sure to update DSI Studio to use this function). Save the smoothed images as new files to run differential tracking.
 
@@ -122,7 +125,7 @@ After smoothing, add the smoothed image back using [Slices][Add Other images] an
 
 ## 4. False discovery rate and statistical testing
 
-One key question for differential tractography is the significance of the findings. For example, if we observe a lot of tracks showing up in differential tractography, how many of them are false positive? A way to quantifying this reliability is by calculating the false discovery rate from a group of patients and a group of control subjects. The following steps illustrate how this can be carried out in DSI Studio.
+One key question for differential tractography is the significance of the findings. For example, if we observe a lot of tracks showing up in differential tractography, how many of them are false positive? A way to quantify this reliability is by calculating the false discovery rate from a group of patients and a group of control subjects. The following steps illustrate how this can be carried out in DSI Studio.
 
 **Example 1: calculate the false discovery rate using control subjects**
 
@@ -142,5 +145,5 @@ This is the alternative sham approach described in the original work in Yeh, Neu
 
 3. Calculate false discovery rate (FDR) 
 
-    if you can get a total of 1000 tracks from 1. patients and 10 tracks from 2., then the false discovery rate of the findings is 10/100 = 10%. An FDR lower than 0.05 can be considered as significant.
+    If you can get a total of 1000 tracks from 1. patients and 10 tracks from 2., then the false discovery rate of the findings is 10/100 = 10%. An FDR lower than 0.05 can be considered significant.
 
