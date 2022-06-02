@@ -19,12 +19,12 @@ Open the main window and click on [Step T3: Fiber Tracking] to select a GQI-reco
 
 We first need to identify two key data elements in differential tractography:
 
-### 0a. A FIB file 
+### Data Preparation: FIB file 
 A FIB file is needed as the tracking framework. The FIB file can be constructed from the subject's baseline scan (most common).
 
 If the individual scans are not good enough for tracking (e.g., in-vivo animal scans), then an existing [population-averaged template (*.FIB.GZ)](https://brain.labsolver.org/hcp_template.html) can be used instead. If you cannot find a suitable template, please feel free to contact Frank to identify one.
 
-### 2. Metrics to be compared
+### Data Preparation: Comparing metrics
 
 The metrics can be those stored within a subject's FIB file or from a NIFTI file exported from another FIB (e.g. same subject's follow-up scans) or any source. The **[Export]** menu allows for exporting a metric as a NIFTI file from a FIB file. If the FIB file is reconstructed by GQI, the exported metrics is in the native space. If the FIB file is reconstructed by QSDR, the exported metrics is stored in the MNI space. 
 
@@ -40,7 +40,7 @@ Examples:
 | Longitudinal| HCP1065.2mm.fib.gz (from brain.labsolver.org) |  Subject's baseline `nqa` NIFTI file in ICBM152 space | exported from QSDR-reconstructed FIB files | Subject's follow-up `nqa` NIFTI file in ICBM152 space in ICBM152 space | exported from QSDR-reconstructed FIB files |
 | Cross-sectional | Subject's baseline FIB | age-sex-matched control `nqa` in the MNI space | generated from healthy controls's connectometry database | `nqa`  | in the subject's FIB file |
 
-## Quality check on FIB file using whole-brain tracking
+## Quality check on the FIB file using whole-brain tracking
 
 Open the FIB file in [Step T3: fiber tracking], restore default settings using **[Options][Restore Tracking Settings]**
 
