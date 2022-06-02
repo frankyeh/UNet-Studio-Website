@@ -67,7 +67,7 @@ An MNI-space NIFTI file can be loaded by **[Slices][Insert MNI images]**. DSI St
 
 After loading the external NIFTI files, they should appear in the **[Slices]** droplist on the top of the 3D window.
 
-## 2. Compare Metrics
+## Compare Metrics
 
 Add a new tracking metric at **[Analysis][Add Tracking Metrics]** and input the names of two comparing metrics connected by a minus sign. 
 
@@ -82,7 +82,7 @@ Differential tractography can compare any metrics stored in the NIFTI files. For
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RkWui6NlLqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## 3. Tracking the difference
+## Tracking the difference
 
 Clear all tracks from the tract list using [Tracts][Delete Tracts][Delete all].
 
@@ -123,7 +123,7 @@ In the tracking parameters, set **[Step T3c: Options][Tracking Parameters][Diff
 
 After smoothing, add the smoothed image back using [Slices][Add Other images] and continue with further analysis.
 
-## 4. False discovery rate and statistical testing
+## False discovery rate and statistical testing
 
 One key question for differential tractography is the significance of the findings. For example, if we observe a lot of tracks showing up in differential tractography, how many of them are false positive? A way to quantify this reliability is by calculating the false discovery rate from a group of patients and a group of control subjects. The following steps illustrate how this can be carried out in DSI Studio.
 
