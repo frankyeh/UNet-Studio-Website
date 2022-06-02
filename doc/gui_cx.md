@@ -68,11 +68,11 @@ The FIB files created from Step C1 can be averaged into a population average tem
 
 # Step C2: View/Modify a Connecometry Database (Optional)
 
-After creating the database file, you can still check the alignment of the database or add/remove subjects to/from the database using [**Step C2a**:**Modify a Connecometry Database**]. ***A quick visual checking on the database is highly recommended.***
+After creating the database file, you can check the alignment of the database or add/remove subjects to/from the database using [**Step C2a**:**Modify a Connecometry Database**]. ***A quick visual checking on the database is highly recommended.***
+
+## Additional processing for longitudinal studies
 
 If you are going to study the change in a longitudinal study, use [**Step C2a**:**Modify a Connecometry Database**] to calculate the difference between baseline scan and follow-up scan for each subject (e.g. base of s#1, follow-up of #1, base of s#2, followup of s#2...etc.) and save a new database.
-
-**Additional processing for longitudinal studies**
 
 Skipping this if your study is a cross-sectional study (has no repeat scans of the same subjects).
 
@@ -108,7 +108,20 @@ If a dialog prompts a warning about poor image quality (low R2), you may need to
 
 ## 3a: Load demographics
 
-Prepare a comma-separated values (CSV) file that records any variables you would like to include in the regression model. The first row should be the name of the scalar values. The second row is the value for the first subject, and the rest follows. If there is any missing data, leave the field empty. DSI Studio will ignore subjects with missing data.
+The demographic file can be space-separated, tab-separated, or comma-separated values (.csv). The file should record any variables you would like to include in the regression model. The first row should be the name of the scalar values. The second row is the value for the first subject, and the rest follows. If there is any missing data, leave the field empty. DSI Studio will ignore subjects with missing data.
+
+Example:
+```
+ID,AGE,SEX
+SUB01,23,0
+SUB02,31,1
+SUB03,24,0
+SUB04,36,0
+SUB05,35,1
+SUB06,27,1
+```
+
+TIP: To save demographic into the connectometry DB file, open the .db.fib.gz in [Step C2: View/Modify a Connectometry Database]. Load the demographic using [Files][Open Demographics] and overwrite the .db.fib.gz file by [File][Save DB as...].
 
 Click on the button labeled "open subjects demographics". Load the text file that records all the scalar values that will be included in the regression model. 
 
