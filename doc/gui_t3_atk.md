@@ -58,6 +58,19 @@ The following is a list of common acquisition issues that may lead to poor resul
 
 If you still have concerns or unexpected issues, please upload the problematic SRC file(s) using the upload link provided on the left navigation bar and notify me at the Discussion forum.
 
+## Customize a tract atlas
+
+The built-in tract atlas can be modified (e.g. merge or add tracts) for study needs. 
+
+The trat atlas are stored as ICBM152_adult.tt.gz (tracts) and ICBM152_adult.tt.gz.txt (labels) under /atlas/ICBM152_adult under the DSI Studio pacakage. In the Mac version, right-click on dsi_studio_64.app and look for atlas folder under /Contents/MacOs. 
+
+
+To modify it, first open HCP1065_1mm.fib.gz (can be found [here](https://brain.labsolver.org/hcp_template.html)) in [Step T3 Fiber Tracking], and open the tract atlas using [Tracts][Open Tracts].
+
+After modifying the tracts, check all the tracts and save them back using [Tracys][Save Tracts][Save All Tracts...]
+
+Restart DSI Studio to take effect.
+
 # Tractometry
 
 [Tracts][Statistics] provides values extracted from shape analysis and diffusion metrics.
