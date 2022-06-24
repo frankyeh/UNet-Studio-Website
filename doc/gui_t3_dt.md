@@ -34,11 +34,13 @@ For cross-sectional studies, you can generate an age-sex matched NIFTI file for 
 If your data were acquired using the [258-direction GRID](/doc/how_to_acquire_dmri.html), you can use a publicly available [***Grid258 NQA connectometry database***]. 
 
 Examples:
+
 |Study Type | FIB file | Baseline metrics | Baseline source | Follow-up metrics | Follow-up source |
 |----------|--------|------------------|------------------|----------------|-----------------|
 | Longitudinal | Subject's baseline FIB | `nqa` in FIB file | in the baseline FIB file | `nqa` NIFTI file | exported from the GQI-reconstructed FIB file constructed from follow-up scan |
 | Longitudinal| HCP1065.2mm.fib.gz (from brain.labsolver.org) |  Subject's baseline `nqa` NIFTI file in ICBM152 space | exported from QSDR-reconstructed FIB files | Subject's follow-up `nqa` NIFTI file in ICBM152 space in ICBM152 space | exported from QSDR-reconstructed FIB files |
 | Cross-sectional | Subject's baseline FIB | age-sex-matched control `nqa` in the MNI space | generated from healthy controls's connectometry database | `nqa`  | in the subject's FIB file |
+
 
 ## Quality check on the FIB file using whole-brain tracking
 
