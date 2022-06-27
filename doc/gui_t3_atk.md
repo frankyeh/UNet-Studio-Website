@@ -4,6 +4,8 @@
 
 ---
 
+***If you are using DSI Studio dated between Feb 8 2022 and June 27 2022, please update it to handle the "no result" issue in difficult tracking cases.***
+
 Automatic fiber tracking aims to map a target pathway (e.g. optic radiation, arcuate fasciculus) and is most suitable for pre-surgical planning or tract-of-interest analysis. The function uses a pathway recognition based on the a tractography atlas (Yeh et al. 2018) to filter out false tracks and unrelated tracks. The detail of how it works is the following:
 
 1. non-linear registration of subject data to MNI space
