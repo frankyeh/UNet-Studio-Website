@@ -4,19 +4,19 @@
 
 ## Examples
 
-*Load an fib file and a trk file. Add an isosurface,switch to an axial view, and save the rendering image.*
+*Load all fib file and its correponding tract file. Add an isosurface,and save the rendering image in horizontal layout.*
 ```
-dsi_studio --action=vis --source=test.fib.gz --track="whole_brain.tt.gz" --cmd="add_surface,Full+set_view,2+save_image"
+dsi_studio --action=vis --source=sub001.fib.gz --track=sub001.tt.gz --cmd="set_zoom,1.0+restore_rendering+add_surface,Full+save_h3view_image,sub001.png"
 ```
 
-*Load an fib file and a trk file. Set the view from the top and save the rendering image as 1.jpg.*
+*Load an fib file and a tract file. Set the view from the top and save the rendering image as 1.jpg.*
 ```
-dsi_studio --action=vis --source=test.fib.gz --track="whole_brain.tt.gz" --cmd="set_view,2+save_image,1.jpg,1024 800"
+dsi_studio --action=vis --source=test.fib.gz --track=whole_brain.tt.gz --cmd="set_view,2+save_image,1.jpg,1024 800"
 ```
 
 *Load an FIB file and keep GUI open:*
 ```
-dsi_studio --action=vis --source=test.fib.gz --cmd=" " --stay_open=1
+dsi_studio --action=vis --source=test.fib.gz --stay_open=1
 ```
 
 *Load multiple TRK files and keep GUI open:*
