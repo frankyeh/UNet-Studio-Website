@@ -16,12 +16,17 @@ dsi_studio --action=rec --source=*.src.gz --method=4 --param0=1.25 --output=/fib
 dsi_studio --action=rec --source=subject1.src.gz --rev_pe=subject1.rev_b0.nii.gz --method=4 --param0=1.25
 ```
 
-*Reconstruct *.src.gz file after TOPUP/EDDY correction using reverse-phase encoding b0 stored in *.rev_b0.nii.gz.*
+*Reconstruct SRC file after TOPUP/EDDY correction using reverse-phase encoding b0 stored in the nifti file.*
 
 ```
 dsi_studio --action=rec --source=*.src.gz --rev_pe=*.rev_b0.nii.gz --method=4 --param0=1.25
 ```
 
+*Apply TOPUP/EDDY to the src file using the corresponding reverse PE image and save the preprocessed data to a new SRC file (no reconstruction done).*
+
+```
+dsi_studio --action=rec --source=*_s04_dMRI_dir258_1_HDFT.src.gz --motion_correction=1 --rev_pe=*_s09_dMRI_dir258_2_HDFT.nii.gz --save_src=*_proc.src.gz
+```
 
 *QSDR reconstruction with 1.25 sampling length ratio. The t1w and t2w were also warped with QSDR*
 
