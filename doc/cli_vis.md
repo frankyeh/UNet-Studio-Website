@@ -6,7 +6,7 @@
 
 *Load an fib file and a trk file. Add an isosurface,switch to an axial view, and save the rendering image.*
 ```
-dsi_studio --action=vis --source=test.fib.gz --track="whole_brain.tt.gz" --cmd="add_surface+set_view,2+save_image"
+dsi_studio --action=vis --source=test.fib.gz --track="whole_brain.tt.gz" --cmd="add_surface,Full+set_view,2+save_image"
 ```
 
 *Load an fib file and a trk file. Set the view from the top and save the rendering image as 1.jpg.*
@@ -43,7 +43,7 @@ FOR /F "delims=" %%A in ('dir *.fib.gz /b /on') do (
 
 *The following commands are for controlling the interface:*
 
-- `add_surface`: add an full brain isosurface. To add partial brain isosurface, use "add_surface,1" "add_surface,2" .... "add_surface,6"
+- `add_surface`: add an full brain isosurface (e.g. add_surface,Full). To add partial brain isosurface, replace `Full` by `Left`,`Right`,`Upper`,`Lower`,`Posterior`,`Anterior`
 - `add_slice,t1w.nii.gz`: add t1w.nii.gz as the slice
 - `move_slice,0,20`: move sagittal slice (0) to position 20. To move the sagittal slice, use "move_slice,1,20". To move the axial slice, use "move_slice,2,20"   
 - `slice_on`: make slices visible. To enable only sagittal slice, use "slice_on,0". (0: sagittal, 1: coronal, 2:axial)
