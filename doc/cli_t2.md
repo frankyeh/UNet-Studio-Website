@@ -69,6 +69,11 @@ done
 | check_btable | `1` | specify whether the b-table orientation will be checked and automatically flipped |
 | other_output | `fa,ad,rd,md,nqa,iso,rdi,nrdi` | specify what diffusion metrics to calculate. use `all` to get all of possible metrics |
 | record_odf | `0` | specify whether to output the ODF in the fib file (used in connectometry analysis). |
+
+
+| QSDR Parameters            | Default | Description                                                                 |
+|:-----------------|:--------|:------------------------------------------------------------------------------|
+| qsdr_reso | dwi resolution | specify output resolution for QSDR reconstruction |
 | template | `0` | specify the template for QSDR reconstruction:<br>`0`:ICBM152<br>`1`:CIVM_mouse<br>`2`:INDI_rhesus<br>`3`:Neonate<br>`4`:Pitt_Marmoset<br>`5`:WHS_SD_rat |
 
 
