@@ -92,25 +92,27 @@ The function of each tool is detailed as follows:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZkWBU_qnaKg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+# Modifying Regions (Optional) 
+
+You can modify a region using [Regions Misc][Modify Regions] or [Move Regions]. 
+
+The modifications includes moving the regions in the x, y, or z-direction. Flip x, flip y, or flip z correct the orientation problem. 
+
+There are also morphology operators that can dialte, smooth, or erode the regions.
+
+[All Exclude First] will erase the location of the first region from all other regions.
+[First Excludes All] will erase other regions from the first region.
+[All Intercept First] will intercept all other regions with the first region.
+[All to First] wiill assign regions to the locations of the first region. This is often used in [creating a parcellation](https://twitter.com/FangChengYeh/status/1549549617699868677).
 
 # Step T3d: Tracts
 
 Click on the [Fiber Tracking] button to start fiber tracking. Only the checked regions will affect tracking results.
 
-# (Optional) Modifying Regions
-
-You can modify a region using [Regions Misc][Modify Regions] and [Move Regions]. The modification includes shitting the region in x, y, or z-direction. Flip x, flip y, or flip z correct the orientation problem. There is also an expansion function that expands the current region. Other functions include erosion, smoothing, negating, and defragment.
-
-[All Exclude First] will erase the location of the first region from all other regions.
-[First Excludes All] will erase other regions from the first region.
-[All Intercept First] will intercept all other regions with the first region.
-
 # (Optional) Region-Based Analysis 
 
 DSI Studio can export metrics associated with a region (e.g. size, location, FA, ADC, ...etc).
 [Regions][Statistics]. The exported information is a text file including the coordinates and the corresponding values for the indices.
-
-
 
 # (Optional) ROI files to FSL
 
