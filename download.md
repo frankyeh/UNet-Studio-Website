@@ -8,6 +8,8 @@ DSI Studio has a high version turning rate, and occasionally the computation out
 
 ## DSI Studio
 
+***[NOTICE (2020/08/02): Major revision on QA after August 2nd, 2022](https://groups.google.com/g/dsi-studio/c/t-kSFxXrGFU)***
+
 ***Download and unzip to run the executive. No installation needed***
 
 | OS      | File     | Note      |
