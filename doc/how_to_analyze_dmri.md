@@ -1,4 +1,18 @@
-# Introduction
+# How to analyze dMRI
+
+![image](https://user-images.githubusercontent.com/275569/182761132-9bd68015-509a-4e11-9b11-c1f4c63ddcd6.png)
+
+
+The following are common preprocessing steps for almost all analysis in DSI Studio.
+
+1. [Create SRC files from diffusion data (DICOM files or NIFTI)](/doc/gui_t1.html).
+
+2. [SRC file quality control](/doc/gui_t1.html#step-t1a-quality-control-optional)(/doc/gui_t1.html#batch-quality-control) to exclude problematic data.
+
+3. [Reconstruct FIB files from SRC files](/doc/gui_t2.html) using GQI (native space) or QSDR(template space) to get a FIB file.
+
+
+# Choices of Analytical Approaches
 
 ![image](https://user-images.githubusercontent.com/275569/147861653-6f86b49c-143f-4297-a304-6b28680c1691.png)
 
@@ -6,18 +20,10 @@ The following introduces the analysis methods provided by DSI Studio, starting f
 
 I would also recommend checking out the [citation page](/citation.html) to see how other studies have used DSI Studio in their analysis.
 
-# Common Preprocessing Steps
 
-The following are common preprocessing steps for almost all analysis in DSI Studio.
+The followings are protocols for each analytical approaches
 
-1. [Create SRC file from diffusion data (DICOM files or NIFTI)](/doc/gui_t1.html).
-
-2. [SRC file quality control](/doc/gui_t1.html#step-t1a-quality-control-optional)(/doc/gui_t1.html#batch-quality-control) to exclude problematic data.
-
-3. [Reconstruct SRC file(s)](/doc/gui_t2.html) using GQI (native space) or QSDR(template space) to get a FIB file.
-
-
-# Region-Based Analysis
+## Region-Based Analysis
 
 ![image](https://user-images.githubusercontent.com/275569/147855916-ccd9a41d-fbfa-4011-9df9-92c4213e2fa3.png)
 
@@ -35,7 +41,7 @@ The simplest way to analyze diffusion data is to assign a region in the brain (e
 
 2. Open the database file in Step T3, and follow the above-mentioned steps 3 to 6. Please note that this db.fib.gz file is already in the MNI space, and the regions should be MNI regions.
 
-# Tractometry
+## Tractometry
 
 Example studies: <https://www.nature.com/articles/nn.3870>
 
@@ -55,7 +61,7 @@ Another way to do region-based analysis is to reconstruct/normalize all data in 
 
 2. Open the database file in Step T3, and follow the above-mentioned steps 3 to 5. Please note that this db.fib.gz file is already in the MNI space, and the regions should be MNI regions.
 
-# Connectivity matrix and graph theoretical analysis
+## Connectivity matrix and graph theoretical analysis
 
 Example studies: <https://scholar.google.com/scholar?hl=en&as_sdt=0%2C39&q=Bassett+dsi+studio&btnG=>
 
@@ -66,7 +72,7 @@ The following list is the steps for generating a connectivity matrix.
 1. Run graph analysis: <http://dsi-studio.labsolver.org/Manual/tract-specific-analysis#TOC-Connectivity-matrix-and-graph-analysis>
 
 
-# Differential Tractography
+## Differential Tractography
 
 Example study: <https://pubmed.ncbi.nlm.nih.gov/31472253/>
 
@@ -78,7 +84,7 @@ The following is the steps
 
 *Individual connectometry* aims to find the difference between the longitudinal study of a single subject. The method tracks the deviate pathways of an individual by comparing the subject with a normal population, an atlas, or the subject's previous scan. It is a powerful tool to map the tracks that are damaged. The steps to get the group or individual connectometry is described in the following documentation:
 
-# Correlational Tractography
+## Correlational Tractography
 
 Example studies: ([1](https://academic.oup.com/brain/article-abstract/143/8/2532/5875734))[(](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C39&q=Rahmani+connectometry&btnG=)[2](https://www.sciencedirect.com/science/article/pii/S2213158220301571#b0275))([3](https://www.sciencedirect.com/science/article/pii/S1875957218301797))
 
