@@ -16,12 +16,9 @@ The following are common preprocessing steps for almost all analysis in DSI Stud
 
 ![image](https://user-images.githubusercontent.com/275569/147861653-6f86b49c-143f-4297-a304-6b28680c1691.png)
 
-The following introduces the analysis methods provided by DSI Studio, starting from the simplest approach to more recent connectome analysis, I am listing a step-by-step workflow in the following sections.
-
 I would also recommend checking out the [citation page](/citation.html) to see how other studies have used DSI Studio in their analysis.
 
-
-The followings are protocols for each analytical approaches
+The followings are steps for each analytical approaches:
 
 ## Region-Based Analysis
 
