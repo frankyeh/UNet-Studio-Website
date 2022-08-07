@@ -126,8 +126,4 @@ done
 |:-----------------|:--------|:------------------------------------------------------------------------------|
 | thread_count | system thread | number of multi-thread used to conduct reconstruction |
 | dti_no_high_b | `1` for human data, `0` for animal data |  specify whether the construction of DTI should ignore high b-value (b>1500) |
-| odf_order | `8` | specify the tessellation number of the odf. Supported values include 4, 5, 6, 8, 10, 12, 16, 20.|
-| num_fiber | `5` | the maximum number of the resolving fibers for each voxel
-| scheme_balance | `1` for shell scheme | specify whether the shell will be resampled to ensure balance. |
-| half_sphere | `1` for grid scheme | specify whether the grid scheme samples half-sphere |
 | r2_weighted | `0` | specify whether GQI and QSDR uses r2-weighted to calculate SDF |
