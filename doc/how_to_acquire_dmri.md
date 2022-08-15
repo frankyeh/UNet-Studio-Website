@@ -2,13 +2,8 @@
 
 Multi-shell acquisition, especially the HCP-style 3-shell acquisition, is currently the most popular choice for "beyond-DTI" acquisition. The HCP-style multishell acquisition samples three b-values with 90-90-90 directions. However, the HCP acquisition has two issues:
 
-- Suboptimal sampling scheme:
-
-The 90 directions at the low b-value shell are over-sampled because most of the 90 DWI signals are redundant and can be readily interpolated by neighboring DWIs in the same shell. On the other hand, the high b-value shell does not have enough sampling directions. The correlation between the neighboring DWI is much lower, and more directions can be added. **An optimal setting should have the same redundancy for each shell**, which means high b-value shells should have more sampling directions, whereas the low b-value should have fewer directions.
-
-- Orientation bias: 
-
-The 90 directions of each shell is not equally distributed on the sphere. Consequently, the acquisition has a substantial orientational bias, and the reproducibility will be lower if head orientation is different. The problem is that the original HCP directions tried to avoid the same direction at different shells, but it is unnecessary because each shell can be viewed as different "bandwidth" for differentiating fast and slow diffusion. A sampling direction with good rotation invariance is essential for achieving good reproducibility and low rotation variance. 
+- **Suboptimal sampling scheme:** The 90 directions at the low b-value shell are over-sampled because most of the 90 DWI signals are redundant and can be readily interpolated by neighboring DWIs in the same shell. On the other hand, the high b-value shell does not have enough sampling directions. The correlation between the neighboring DWI is much lower, and more directions can be added. **An optimal setting should have the same redundancy for each shell**, which means high b-value shells should have more sampling directions, whereas the low b-value should have fewer directions.
+- **Orientation bias:** The 90 directions of each shell is not equally distributed on the sphere. Consequently, the acquisition has a substantial orientational bias, and the reproducibility will be lower if head orientation is different. The problem is that the original HCP directions tried to avoid the same direction at different shells, but it is unnecessary because each shell can be viewed as different "bandwidth" for differentiating fast and slow diffusion. A sampling direction with good rotation invariance is essential for achieving good reproducibility and low rotation variance. 
 
 ## My recommendation: 23 b-values with b-max=4,000 at 258 directions
 
