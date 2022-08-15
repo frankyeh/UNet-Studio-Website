@@ -22,12 +22,8 @@ This grid scheme addresses the issues of the HCP-style acquisition mentioned abo
 - It captures a continuous range of diffusion patterns from non-restricted diffusion to restricted diffusion. The grid scheme can capture all possible diffusion changes due to edematous tissue or cell infiltration for clinical studies. In comparison, multishell only acquire 2 or 3 b-values. Its ability to differentiate complex restricted diffusion is not as good as 23 b-value acquisition.
 
 *There are limitations with the grid sampling scheme:*
-- A bipolar-encoding pulse is needed to handle eddy current at the sequence level. 
-
-FSL's *eddy* need enough redundancy at each shell to "interpolate" or correct DWI singals. The grid-258 turns out does not have this redundancy. Each of the acquired signals is much more unique and cannot be interpolated by the neighboring DWI signals. The eddy current distortion needs sequence-level correction.
-
-- Methods using spherical harmonics cannot use grid scheme data.
-
+- A bipolar-encoding pulse is needed to handle eddy current at the sequence level: FSL's *eddy* need enough redundancy at each shell to "interpolate" or correct DWI singals. The grid-258 turns out does not have this redundancy. Each of the acquired signals is much more unique and cannot be interpolated by the neighboring DWI signals. The eddy current distortion needs sequence-level correction.
+- Spherical harmonics methods (e.g. CSD, MSMT-CSD) cannot use grid scheme data.
 
 ## Steps to install the 12-min q-space scheme on Siemens scanners
 
