@@ -15,17 +15,15 @@ A connectometry database aggregates multiple FIB files into a common template sp
 
 You will need FIB files generated from [Step T2: Reconstruction](https://dsi-studio.labsolver.org/doc/gui_t2.html) or MNI-space NIFTI files.
 
-The FIB file can be reconstructed using the default setting (e.g. GQI method with 1.25 sample legnth ratio).
+The FIB file can be reconstructed using [Step T2b(1)][QSDR](**recommended**) or [Step T2b(1)][GQI] with the default setting. (1.25 sample legnth ratio for in-vivo and 0.6 for ex-vivo).
 
 **After 2022 June versions, DSI Studio can use all kinds of FIB files (not limited to QSDR FIB with ODF) to construct connectometry database.
 
-## 1. Connectometry Dialog
-
 Click on [Correlational Tractography][Step C1: Create a Connectometry Database] to bring up the following database dialog.
 
-![image](https://user-images.githubusercontent.com/275569/171328050-0ee9b886-01b0-48f7-97ec-3bc98501b574.png)
+![image](https://user-images.githubusercontent.com/275569/185491410-1aa4a295-748d-4a04-ad1a-b1f23ebdd98b.png)
 
-## 2. Open FIB or NIFTI files
+## Step C1a: Open FIB or NIFTI files
 
 Use [Search in Directory] or [Add] button to load FIB files or MNI-space NIFTI files.
 
@@ -33,42 +31,23 @@ You may need to make sure that the file orders match that of your demographic re
 
 If you are going to study the change in a longitudinal study, make sure that you place baseline and follow-up scans of the same subject together.
 
-## 3. Specify the template file
+## Step C1b: Select analysis metric and template
 
-The default atlas is HCP1065 2-mm atlas provided in the DSI Studio package, which is loaded as default.
+The FIB file contains many diffusion metrics. The default choice is "QA" known as the quantitative anisotropy. You can also study other diffusion measures such as FA, AD, RD, MD, RDI, NRDI. Each metric will need its dedicated connectometry database file. To know more about their differences, refer to [here](\doc\how_to_interpret_dmri.html)
 
-If your DWI were acquired at a high resolution (e.g. 1.4mm), QSDR will reconstruct data to 1-mm MNI space, and you may consider using [HCP1065 1-mm template](https://brain.labsolver.org)
+If you use QSDR FIB files, DSI Studio will assign the corresponding template. If you use GQI FIB file, you may need to select the correct template.
 
-For animal or pediatric studies, you may need to create a group averaged template as the template file. The function is located at [**Tools**][**P1:Create Template/Skeleton**]. Select all fib files created using Step C1, and DSI Studio will generate a group-averaged template FIB file.
+## Step C1c: Create connecometry database
 
-## 4. Choose index of interest
-
-The FIB file contains many diffusion metrics. The default choice is "QA" known as the quantitative anisotropy. You can also study other diffusion measures such as FA, AD, RD, MD, RDI, NRDI. Each metric will need its dedicated connectometry database file.
-
-The QA here is the SDF values sampled at fiber orientations, and the fiber orientations here are defined by the template in the previous steps. The sampled values are similar to QA defined in the native space, but there are differences. QA in the native space is defined on the peaks of SDF, but here the QA values are extracted at the template fiber orientations. The physical meaning is the same, but their evaluation approach is different.
-
-## 5. Specify the output file name
-
-Please assign the file extension as *.db.fib.gz
-
-## 6. Create connecometry database
+Confirm the output file name and make sure to use file extension db.fib.gz
 
 Click the "Create Database" button to create the connectometry database as a db.fib.gz file. You can add or remove subjects from the database using [Diffusion MRI Connectometry][Edit Connectometry Database]
 
 At the End of this step, you will have a connectometry database, which is a file name with the extension db.fib.gz
 
-**Optional: Create a population average template**
+# [Optional] Step C2: View/Modify a Connecometry Database 
 
-The FIB files created from Step C1 can be averaged into a population average template using the following steps:
-
-1. Click [**Tools**][**O8: Create template/skeleton**]
-
-2. Add in all FIB files and specify the output file name. This dialog outputs two fib files, one without and one with the averaged ODFs. The one without the ODFs can be used as the template for creating a connectometry database.
-
-
-# Step C2: View/Modify a Connecometry Database (Optional)
-
-After creating the database file, you can check the alignment of the database or add/remove subjects to/from the database using [**Step C2a**:**Modify a Connecometry Database**]. ***A quick visual checking on the database is highly recommended.***
+After creating the database file, you can check the alignment of the database or add/remove subjects to/from the database using [**Step C2a**:**Modify a Connecometry Database**]. ***A quick visual checking on the database is recommended.***
 
 ## Additional processing for longitudinal studies
 
@@ -344,4 +323,13 @@ Table: Effect of X, Y, Z on network topology measures
 Get SDF values along the track
 
 Once you get tracks that show significant difference or correlation. You can open the connectometry db at [STEP 3 Fiber tracking] and load the resulting tracks. Click on track statistics and you will get SDF values along the tracks for "each subject". This allows you to plot the difference between the groups.
+
+
+**[Optional] Create a population-average template**
+
+The QSDR FIB files can be averaged into a population average template using the following steps:
+
+1. Click [**Tools**][**O8: Create template/skeleton**]
+
+2. Add in all FIB files and specify the output file name. This dialog outputs two fib files, one without and one with the averaged ODFs. The one without the ODFs can be used as the template for creating a connectometry database.
 
