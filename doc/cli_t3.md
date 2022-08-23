@@ -117,9 +117,10 @@ The following settings are also included in `--parameter_id` but  usually the de
 
 | Parameters            | Description                                                                 |
 |:-----------------|:------------------------------------------------------------------------------|
-| other_slices     |  specify the NIFTI file of slices to be inserted for differential tractography (e.g., --other_slices=pre.nii.gz,post.nii.gz) |
-| dt_threshold_index | specify the metrics for differential tracking (e.g., --dt_threshold_index=post-pre)  |
+| other_slices     | [option 1] specify the NIFTI file or to be inserted for differential tractography (e.g., --other_slices=pre.nii.gz,post.nii.gz)<br> [option 2]  specify a connectometry database with built-in demographics and specify subject's demographics using --subject_demo (e.g., --other_slices=study.db.fib.gz --subject_demo=62,1) |
 | dt_threshold | assign percentage threshold for differential tractography. assign --dt_threshold=0.1 to detect more than 10% change. |
+| dt_threshold_index | specify the metrics for differential tracking (e.g., --dt_threshold_index=post-pre)  |
+| dt_threshold_type | specify the calculation of the differences. 0: (m1-m2)/m1 1:(m1-m2) | 
 
 > To load slices as "MNI images", please include "mni" in the file name
 ```
