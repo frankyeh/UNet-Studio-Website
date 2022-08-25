@@ -37,6 +37,12 @@ The FIB file contains many diffusion metrics. The default choice is "QA" known a
 
 If you use QSDR FIB files, DSI Studio will assign the corresponding template. If you use GQI FIB file, you may need to select the correct template.
 
+***IMPORTANT***
+The anisotropy values in **ex-vivo** tissue are substantially affected by the fixation duration
+
+<img src="https://user-images.githubusercontent.com/275569/186562036-63224440-a77e-4931-8b78-7d99e2cb53c4.png" width=400>
+source: Allan Johnson G, Wang N, Anderson RJ, Chen M, Cofer GP, Gee JC, Pratson F, Tustison N, White LE. Whole mouse brain connectomics. Journal of Comparative Neurology. 2019 Sep 1;527(13):2146-57.
+
 ## Step C1c: Create connecometry database
 
 Confirm the output file name and make sure to use file extension db.fib.gz
@@ -47,11 +53,16 @@ At the End of this step, you will have a connectometry database, which is a file
 
 # [Optional] Step C2: View/Modify a Connecometry Database 
 
-After creating the database file, you can check the alignment of the database or add/remove subjects to/from the database using [**Step C2a**:**Modify a Connecometry Database**]. ***A quick visual checking on the database is recommended.***
+After creating the database file, you can check the alignment of the database or add/remove subjects to/from the database using [**Step C2a**:**Modify a Connecometry Database**]. 
+
+***TIP***
+You can store demographic values with the connectometry DB file:
+1. Open the .db.fib.gz in [Step C2: View/Modify a Connectometry Database]. 
+2. Load the demographic using [Files][Open Demographics]
+3. Overwrite the .db.fib.gz file by [File][Save DB as...]
+
 
 ## Additional processing for longitudinal studies
-
-If you are going to study the change in a longitudinal study, use [**Step C2a**:**Modify a Connecometry Database**] to calculate the difference between baseline scan and follow-up scan for each subject (e.g. base of s#1, follow-up of #1, base of s#2, followup of s#2...etc.) and save a new database.
 
 Skipping this if your study is a cross-sectional study (has no repeat scans of the same subjects).
 
@@ -85,9 +96,9 @@ If a dialog prompts a warning about poor image quality (low R2), you may need to
 
 ![](https://sites.google.com/a/labsolver.org/dsi-studio/_/rsrc/1487609216505/Manual/diffusion-mri-connectometry/cnt_gui.png?height=236&width=400)
 
-## 3a: Load demographics
+## Step C3a: Load demographics
 
-The demographic file can be space-separated, tab-separated, or comma-separated values (.csv). The file should record any variables you would like to include in the regression model. The first row should be the name of the scalar values. The second row is the value for the first subject, and the rest follows. If there is any missing data, leave the field empty. DSI Studio will ignore subjects with missing data.
+The demographic file can be space-separated, tab-separated (.tsv), or comma-separated values (.csv)(recommended). The file should record any variables you would like to include in the regression model. The first row should be the name of the scalar values. The second row is the value for the first subject, and the rest follows. If there is any missing data, leave the field empty. DSI Studio will ignore subjects with missing data.
 
 Example:
 ```
@@ -99,26 +110,28 @@ SUB04,36,0
 SUB05,35,1
 SUB06,27,1
 ```
+***IMPORTANT***
+Make sure the subject order is identical to the list in the connectometry database.
 
-TIP: To save demographic into the connectometry DB file, open the .db.fib.gz in [Step C2: View/Modify a Connectometry Database]. Load the demographic using [Files][Open Demographics] and overwrite the .db.fib.gz file by [File][Save DB as...].
 
 Click on the button labeled "open subjects demographics". Load the text file that records all the scalar values that will be included in the regression model. 
 
 *If your data are from a longitudinal study and only want to look at longitudinal differences without considering any other variable, go directly to [Step C3d: Parameters].
 
-## 3b: Select variables
+## Step C3b: Select variables
 
-Please choose the variables to be considered. This can include all covariates to be considered such as sex and age and also your target study variable. 
+Choose the variables to be considered. This can include all covariates to be considered such as sex and age and also your target study variable. 
 
 DSI Studio will use linear regression to eliminate the effect of covariates from the diffusion measures.
 
 There are several tips in choosing the variables in the model:
 
-*TIPS: *If you have multiple study variables, including too many of them in the model may lead to over-fitting unless you have enough sample size. Otherwise, include basic variables like the sex and age with the one study variable at a time.
+***TIPS***
+If you have multiple study variables, including too many of them in the model may lead to over-fitting unless you have enough sample size. Otherwise, include basic variables like the sex and age with the one study variable at a time.
 
-*TIPS: *If your study variables are highly correlated to each other, consider using a PCA to get the principal components. (see <https://www.sciencedirect.com/science/article/pii/S1875957218301797>). You will need to interpret the meaning of each principal component by checking its coefficient.
+If your study variables are highly correlated to each other, consider using a PCA to get the principal components. (see <https://www.sciencedirect.com/science/article/pii/S1875957218301797>). You will need to interpret the meaning of each principal component by checking its coefficient.
 
-## 3c: Study variable
+## Step C3c: Study variable
 
 Choose the target variable to study, and DSI Studio will find any tracks correlated with this variable. The effect of other covariates selected in C3b will be regressed out.
 
@@ -134,7 +147,7 @@ If you choose "age" for Step C3b and choose "Intercept" for Step C3c?. This will
 
 If you choose "age" for Step C3b and choose "age" for Step C3c? This will show tracks with changes that are significantly correlated with age. A positive correlation means when age increases, the tracks show increased anisotropy.
 
-## 3d: Parameters
+## Step C3d: Parameters
 
 | Parameters | Descriptions |
 |:-----------|:-------------|
@@ -164,9 +177,8 @@ You can include/exclude a particular group of subjects in/from the analysis. Cli
 |:-----------|:-------------|
 | Permutation count |  determines the total number of permutations applied to the FDR analysis. Higher values give a smoother and more accurate estimation of FDR curves, but it requires more computation time |
 | Pruning | helps remove noisy findings. Higher values may improve FDR with the expense of sensitivity. |
-| Normalize QA | Check this to homogenize data for potential scanner or site differences. <br>If your data contains scans acquired from different protocols (e.g. b-value, resolution ...etc.), you will need to check "Normalize QA" to homogenize the data |
 
-## 3e: Run connectometry and report the results
+## Step C3e: Run connectometry and report the results
 
 Click on the [**Step C3d: Run connectometry**] button and wait until the computation is finished.
 
@@ -192,24 +204,19 @@ Results for positive correlation: ( negative correlation will have *neg_corr* in
 | bmi.t2.pos_corr.jpg | figure showing the tracks in four different views. |
 
 
-**TIPS**
+***TIPS***
 
-1. To change how DSI Studio visualizes tracks, open any FIB file in [Step T3 Fiber Tracking] and change [Step T3(c) Option]. After closing the fiber tracking window, DSI Studio will memorize the setting and apply it.**
+1. To change how DSI Studio visualizes tracks, open any FIB file in [Step T3 Fiber Tracking] and change [Step T3(c) Option]. After closing the fiber tracking window, DSI Studio will memorize the setting and apply it.
 
 2. There are several ways to improve the FDR, with the expense of losing sensitivity. You may increase the length threshold (e.g. 30 mm), increase the T threshold, increase pruning iterations in the advanced options.
 
 
-**Troubleshooting**
+***Troubleshooting***
 
-1. If the direction of the correlation is wrong, try checking/unchecking "normalize QA" to fix the problem.
-
-2. If you have very different FDR results at different permutation counts, increase the permutation count until the FDR converges. 
-
-3. If the finding only shows very short tracks, try lowing the T threshold 
-
-4. If the finding only contains very few tracks, please increase the permutation count in the advance option (may need more computation time).
-
-5. If the finding has many short fragments, consider increasing the length threshold or pruning count.
+1. If you have very different FDR results at different permutation counts, increase the permutation count until the FDR converges. 
+2. If the finding only shows very short tracks, try lowing the T threshold 
+3. If the finding only contains very few tracks, please increase the permutation count in the advance option (may need more computation time).
+4. If the finding has many short fragments, consider increasing the length threshold or pruning count.
 
 ## Report Connectometry Results
 
@@ -260,76 +267,14 @@ The QA value can be copied to the clipboard and pasted into an Excel sheet. We c
 The finding can be visualized in slices using the following steps:
 
 1. Switch slice image to "T1w".
-
 2. In the main menu, add tracks to ROI by [Tracks][Tracks to ROI]
-
 3. In the Options window (right upper corner), under the "Region Window" node. Change the slice layout to Mosaic 2
-
 4. Change the contrast of the slices using the slider on the top of the region window to enhance the tracks regions.
 
 [![](https://sites.google.com/a/labsolver.org/dsi-studio/_/rsrc/1468760876407/Manual/diffusion-mri-connectometry/sleep4.jpg)](https://sites.google.com/a/labsolver.org/dsi-studio/Manual/diffusion-mri-connectometry/sleep4.jpg?attredirects=0)
 
-## 5. Network Property Analysis for Connectometry Findings
 
-The connectometry findings usually present a group of fiber bundles, and how these bundles affect the network topology can be further analyzed to better present the results.\
-The following are steps to carry out this analysis:
-
-1. After group connectometry analysis finishes, click on the "View Results in 3D" button or open the trk file in STEP3 Fiber Tracking. Alternatively, you can open the FIB file generated within the demographic folder in Step T3 Fiber Tracking, and load the trk files generated by group connectometry.
-
-2. Remove the all tracks using [Tracts][Delete Tracts][Delect all].
-
-3. Run whole-brain fiber tracking (No ROI or seed) to get a total of 100,000 tracks using default tracking settings ([Option][Restore Tracking Settings]).
-
-4. Click [Tracts][Connectivity matrix] to bring up the connectivity dialog. 
-
-5. Select "FreesurferDKT_Cortical" as the parcellation atlas. 
-
-6. Switch to the "Network measures" tab and copy the content (e.g. density, ...etc.) to the Excel sheet.
-
-7. Close the connectivity dialog. 
-
-8. Load the group connectometry tracks (trk files). There should be one file for positive correlation and one for the negative correlation after group connectometry finishes (unless there is no finding). Load the one you want to study using [Tracts][Open Tracts]
-
-9. Select the loaded tracks, and transform it into a region using [Tracts][Tract to ROI]. The region will appear on the left. Change region's type from "ROI" to "ROA". Remove the connectometry tracks after the conversion.
-
-10. Filter whole-brain tracks (generated in 4.) using the [Tracts][Filter Tracts by ROI/ROA/END. You should find some tracks being deleted using the connectometry regions.
-
-11. Now repeat 5. 6. 7. to get network measures, and you can then compare the difference between these two sets of measures 
-
-12. Calculate the value differences as a percentage change in 
-
-  - clustering_coeff_average(binary)
-
-  - network_characteristic_path_length(binary)
-
-  - small-worldness(binary)
-
-  - global_efficiency(binary)
-
-  - local_efficiency(binary).
-
-13. If the change of clustering_coeff_average(binary) is +5% and the finding is from a positive/negative correlation of a study factor X, then you may report: "The network topology analysis on connectometry results show that X increase/decrease 5% of clustering coefficient in the network topology." Repeat the same reporting format for other network measures.
-
-14. Provide a table summarizing the results using the following:
-
-Table: Effect of X, Y, Z on network topology measures
-
-| Study  Variable | Clustering Coefficient (%) | Network Characteristic Path Length (%) | Global Efficiency (%) | Local Efficiency (%) | Small Worldness (%) |
-|:---|:---|:---|:---|:---|:---|
-| X | -0.30 | -5.38 | 3.35 | 4.60 | 5.08 |
-| Y | 62.27 | -7.95 | 6.88 | 57.90 | 66.91 |
-| Z | -18.65 | -10.57 | 8.11 | -7.47 | -8.24 |
-
-Get SDF values along the track
+## 5. Get SDF values along the track
 
 Once you get tracks that show significant difference or correlation. You can open the connectometry db at [STEP 3 Fiber tracking] and load the resulting tracks. Click on track statistics and you will get SDF values along the tracks for "each subject". This allows you to plot the difference between the groups.
-
-
-**[Optional] Create a population-average template**
-
-The QSDR FIB files can be averaged into a population average template using the following steps:
-
-1. Click [**Tools**][**O8: Create template/skeleton**]
-
-2. Add in all FIB files and specify the output file name. This dialog outputs two fib files, one without and one with the averaged ODFs. The one without the ODFs can be used as the template for creating a connectometry database.
 
