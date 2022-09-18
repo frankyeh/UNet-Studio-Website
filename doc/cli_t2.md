@@ -25,7 +25,7 @@ dsi_studio --action=rec --source=*.src.gz --rev_pe=*.rev_b0.nii.gz --method=4 --
 *Apply TOPUP/EDDY to the src file using the corresponding reverse PE image and save the preprocessed data to a new SRC file (no reconstruction done).*
 
 ```
-dsi_studio --action=rec --source=*_s04_dMRI_dir258_1_HDFT.src.gz --motion_correction=1 --rev_pe=*_s09_dMRI_dir258_2_HDFT.nii.gz --save_src=*_proc.src.gz
+dsi_studio --action=rec --source=*_s04_dMRI_dir258_1_HDFT.src.gz --rev_pe=*_s09_dMRI_dir258_2_HDFT.nii.gz --save_src=*_proc.src.gz
 ```
 
 *QSDR reconstruction with 1.25 sampling length ratio. The t1w and t2w were also warped with QSDR*
@@ -87,6 +87,7 @@ done
 | align_to  | specify a T1W or T2W for DSI Studio to use affine transform to its space. (including scaling or shearing) |
 | other_image  | assign other image volumes (e.g., T1W, T2W image) to be wrapped with QSDR. --other_image=<label>:<file path>,<label>:<file path> |
 | save_src | save preprocessed images to a new SRC file |
+| motion_correction | apply rigid-body transformation to align DWI volumes. The b-table is also rotated accordingly |     
 | cmd  | specify any of the following commands for preprocessing. Use "+" to combine commands, and use "=" to assign value/parameters (e.g. --cmd="[Step T2][Corrections][EDDY]+[Step T2][Edit][Overwrite Voxel Size]=1.0" |
            
      [Step T2][File][Save 4D NIFTI]
