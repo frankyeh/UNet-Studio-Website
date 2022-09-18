@@ -10,10 +10,10 @@
 dsi_studio --action=rec --source=*.src.gz --method=4 --param0=1.25 --output=/fib/
 ```
 
-*Reconstruct SRC file after TOPUP/EDDY correction using reverse-phase encoding b0.*
+*Reconstruct all SRC files after EDDY correction 
 
 ```
-dsi_studio --action=rec --source=subject1.src.gz --rev_pe=subject1.rev_b0.nii.gz --method=4 --param0=1.25
+dsi_studio --action=rec --source=subject1.src.gz --cmd="[Step T2][Corrections][EDDY]" --method=4 --param0=1.25
 ```
 
 *Reconstruct SRC file after TOPUP/EDDY correction using reverse-phase encoding b0 stored in the nifti file.*
@@ -87,7 +87,7 @@ done
 | align_to  | specify a T1W or T2W for DSI Studio to use affine transform to its space. (including scaling or shearing) |
 | other_image  | assign other image volumes (e.g., T1W, T2W image) to be wrapped with QSDR. --other_image=<label>:<file path>,<label>:<file path> |
 | save_src | save preprocessed images to a new SRC file |
-| cmd  | specify any of the following commands for preprocessing. Use "+" to combine commands, and use "=" to assign value/parameters |
+| cmd  | specify any of the following commands for preprocessing. Use "+" to combine commands, and use "=" to assign value/parameters (e.g. --cmd="[Step T2][Corrections][EDDY]+[Step T2][Edit][Overwrite Voxel Size]=1.0" |
            
      [Step T2][File][Save 4D NIFTI]
      [Step T2][File][Save Src File]
