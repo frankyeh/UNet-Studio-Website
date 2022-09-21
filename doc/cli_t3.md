@@ -149,7 +149,8 @@ The following settings are also included in `--parameter_id` but  usually the de
 | connectivity_threshold | `0.001` | specify the threshold ( in relative ratio to the max value) for calculating binarized graph measures and connectivity values. This means if the maximum connectivity count is 1000 tracks in the connectivity matrix, then at least 1000 x 0.001 = 1 track is needed to pass the threshold. Otherwise, the values will be set to zero.|
 | connectivity_type | `pass` | specify whether to use "pass" or "end" to count the tracks. |
 | connectivity_value | `count` | specify the way to calculate the matrix value. `count` outputs the number of tracks passing/ending in the regions. `ncount` outputs the number of tracks normalized by the median length. `mean_length` outputs the mean length of the tracks. `trk` outputs a trk file each connectivity matrix entry. `dti_fa` outputs mean FA  `qa` outputs mean QA. You can output any metrics or even metrics added using --other_slice. You can output multiple results by separating the parameters with ",". (e.g. `--connectivity_value=count,ncount,trk`) |
-
+| connectivity_output | `matrix,connectogram,measure` | specify whether to output connectivity matrix (`matrix`), `connectogram`, or network measures (`measure`) |
+   
 > If you would like to use the built-in atlas, please specify the atlas name.
 ```
 --connectivity=FreeSurferDKT_cortical,HCP-MMP
