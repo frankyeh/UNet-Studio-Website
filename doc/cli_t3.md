@@ -101,7 +101,7 @@ The following settings are also included in `--parameter_id` but  usually the de
 
 > An ROI (and also other region types) can be modified by the following action code: "smoothing", "erosion", "dilation",  "defragment", "negate", "flipx", "flipy", "flipz", "shiftx" (shift the roi by 1 in x direction), "shiftnx" (shift the roi by -1 in x direction), "shifty", "shiftny", "shiftz", "shiftnz".
 ```
---roi=region.nii.gz, dilate,dilate, smoothing   #This dilates the region in the region.nii.gz file twice and smooth it
+--roi=region.nii.gz,dilation,dilation,smoothing   #This dilates the region in the region.nii.gz file twice and smooth it
 ```
 > You can assign the region value to be loaded
 ```
