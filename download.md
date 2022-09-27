@@ -21,8 +21,6 @@ DSI Studio has a high version turning rate, and occasionally the computation out
 
 # Containers
 
-<a href="https://hub.docker.com/repository/docker/dsistudio/dsistudio"><img src="https://img.shields.io/docker/cloud/build/dsistudio/dsistudio"></a>
-
 **Docker**
 
 ```
