@@ -37,6 +37,7 @@ dsi_studio --action=atk --source=*.fib.gz --export_template_trk=1
 For small bundles (e.g. right arcuate), a larger value may cause a large computation burden. |
 | default_mask | `0` | Specify whether default mask is used. |
 | overwrite | `0` | Specify whether to overwrite existing files. |
+| output | the directory of the source file | Specify the output directory. |  
 | export_stat | `1` | Specify whether to output track statistics. |
 | export_trk | `1` | Specify whether to output tractography file. |
 | export_template_trk | `0` | Specify whether to output tractography in the template space. |
