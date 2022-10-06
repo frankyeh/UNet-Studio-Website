@@ -41,4 +41,4 @@ For small bundles (e.g. right arcuate), a larger value may cause a large computa
 | export_stat | `1` | Specify whether to output track statistics. |
 | export_trk | `1` | Specify whether to output tractography file. |
 | export_template_trk | `0` | Specify whether to output tractography in the template space. |
-
+| trk_format | `tt.gz` | Specifythe output format of the tractography. Supported formats include tt.gz trk trk.gz tck txt mat |
