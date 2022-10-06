@@ -38,9 +38,14 @@ $ singularity exec dsistudio_latest.sif dsi_studio --action=rec --source=my.src.
 
 # License
 
-DSI Studio is free for research purposes (including research conducted within business entities). 
+DSI Studio is free for academic or research purposes under the following general license:
 
-Unless required by applicable law or agreed to in writing, DSI Studio program and source code are distributed under [Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). Including any part of DSI Studio in a commercial product would require both copyright and patent licensing.
+```
+Unless required by applicable law or agreed to in writing, DSI Studio program and source code are distributed under [Attribution-***NonCommercial***-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). 
+```
+
+***Commercial usage***
+DSI Studio's general license prohibits commercial use because the package include components that are either under different parties/licenses (e.g. TinyFSL under the FSL license or some atlases owned by different entities) or patents. This requires licensing from different parties, depending on the functions and resources involved. To avoid possible copyright or patent infringement, please consult Frank Yeh about the strategies.
 
 # Hardware recommendation:
 
