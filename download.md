@@ -44,8 +44,13 @@ DSI Studio is free for academic or research purposes under the following general
 Unless required by applicable law or agreed to in writing, DSI Studio program and source code are distributed under [Attribution-***NonCommercial***-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). 
 ```
 
-***Commercial usage***
-DSI Studio's general license prohibits commercial use because the package include components that are either under different parties/licenses (e.g. TinyFSL under the FSL license or some atlases owned by different entities) or patents. This requires licensing from different parties, depending on the functions and resources involved. To avoid possible copyright or patent infringement, please consult Frank Yeh about the strategies.
+# Commercial Use
+
+DSI Studio's general license prohibits commercial use because the package include components that are either under different parties/licenses (e.g. TinyFSL under the FSL license or some atlases owned by different entities) or patents. Commercial use thus requires licensing from different parties, depending on the functions and resources involved. To avoid possible copyright or patent infringement, please consult Frank Yeh about the strategies.
+
+A list of known components with a different license:
+1. [TinyFSL](https://github.com/frankyeh/TinyFSL): [FSL License](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Licence).
+2. [Alases](https://github.com/frankyeh/DSI-Studio-atlas): each atlas includes its own license or usage agreement.
 
 # Hardware recommendation:
 
