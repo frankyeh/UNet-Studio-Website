@@ -40,7 +40,7 @@ dsi_studio --action=trk --source=subject001.fib.gz --other_slices=./other/*.nii.
 ```
 *Perform differential tractography by comparing MNI-space FA map (include MNI in the file name) and subject's fa and tracking the decreased FA at 10%*
 ```
-dsi_studio --action=trk --source=subject001.fib.gz --other_slices=template_qa.nii.gz --dt_threshold_index=template_qa-qa --dt_threshold=0.2 --seed_count=1000000 --min_length=30 --output=tracks.tt.gz
+dsi_studio --action=trk --source=subject001.fib.gz --other_slices=template_qa.nii.gz --dt_metric1=follow_up_qa --dt_meetric2=qa --dt_threshold=0.2 --seed_count=1000000 --min_length=30 --output=tracks.tt.gz
 ```
 *(Windows System) Search for all fib files under the current directory and perform fiber tracking to get the FreeSurferDKT connectivity matrix*
 ```
@@ -119,7 +119,8 @@ The following settings are also included in `--parameter_id` but  usually the de
 |:-----------------|:------------------------------------------------------------------------------|
 | other_slices     | [option 1] specify the NIFTI file or to be inserted for differential tractography (e.g., --other_slices=pre.nii.gz,post.nii.gz)<br> [option 2]  specify a connectometry database with built-in demographics and specify subject's demographics using --subject_demo (e.g., --other_slices=study.db.fib.gz --subject_demo=62,1) |
 | dt_threshold | assign percentage threshold for differential tractography. assign --dt_threshold=0.1 to detect more than 10% change. |
-| dt_threshold_index | specify the metrics for differential tracking (e.g., --dt_threshold_index=post-pre)  |
+| dt_metric1 | specify the first metrics for differential tracking |
+| dt_metric2 | specify the second metrics for differential tracking |
 | dt_threshold_type | specify the calculation of the differences. 0: (m1-m2)/m1 1:(m1-m2) | 
 
 > To load slices as "MNI images", please include "mni" in the file name
