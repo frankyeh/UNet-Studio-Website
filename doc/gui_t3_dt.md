@@ -26,13 +26,11 @@ There are 3 types of differential tractography, and the applicable types depend 
 **Example**: 
 - human subject study with repeated scans before and after treatment
 
-**Steps**: 
-
-|   |    |
+| **Steps**: | Details  |
 |-----------|------------|
 | 1. **Generate GQI FIB Files** |  ```dsi_studio --action=rec --source=*.src.gz``` |
 |  | 1a. [creating SRC files](/doc/gui_t1.html): make sure to have a quality check to make sure the quality is good |
-|  | 1b. [generating FIB files](/doc/gui_t2.html): at Step T2B(1), please use GQI method to get native space FIB file. |
+|  | 1b. [generating FIB files](/doc/gui_t2.html): at Step T2b(1), please use GQI method to get native space FIB file. |
 | 2. **Export Metrics** | ```dsi_studio --action=exp --source=*.fib.gz --export=dti_fa``` |
 |  | 2a. open the FIB file of each **follow-up** scan at **[Step T3: Fiber Tracking]** |
 |  | 2b. use the **[Export]** to save the dti_fa or qa map in a NIFTI file (e.g. sub1.followup.fa.nii.gz). |
@@ -47,9 +45,8 @@ There are 3 types of differential tractography, and the applicable types depend 
 |  | 4b. use **[Slice][Insert Other Images]** and select the NIFTI file of the follow-up scan (e.g. sub1.followup.fa.nii.gz created above). |
 |  | 4c. select dti_fa or qa at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics1]**. This assumes that the anisotropy in the baseline scan is larger than the followup.|
 |  | 4d. select the loaded metric at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics2]** |
-|  | 4e. select the **[Step T3c: Options][Tracking Parameters][Differential Tracking][Threshold Type]**. |
-|  | 4f. adjust thresholds by setting **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.|
-|  | 4g. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
+|  | 4e. adjust thresholds by setting **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences if [Threshold Type] is (m1-m2)/m1. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.|
+|  | 4f. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
 
 
 ## **Type 2: mapping longitudinal change in the template space:**
@@ -60,6 +57,23 @@ There are 3 types of differential tractography, and the applicable types depend 
 **Example**: 
 - animal in-vivo study with repeated scans before and after treatment (DWI not good enough for fiber tracking)
 - human study which DWI data are not good enough for fiber tracking
+
+| **Steps**: | Details  |
+|-----------|------------|
+| 1. **Generate QSDR FIB Files** |  ```dsi_studio --action=rec --source=*.src.gz --method=7``` |
+|  | 1a. [creating SRC files](/doc/gui_t1.html): make sure to have a quality check to make sure the quality is good |
+|  | 1b. [generating FIB files](/doc/gui_t2.html): at Step T2b(1), please use QSDR method to get native space FIB file. |
+| 2. **Export Metrics** | ```dsi_studio --action=exp --source=*.fib.gz --export=dti_fa``` |
+|  | 2a. open the FIB file of **all** scans at **[Step T3: Fiber Tracking]** |
+|  | 2b. use the **[Export]** to save the dti_fa or qa map in a NIFTI file (e.g. sub1.fa.nii.gz). |
+| 3. **Differential Tracking** | ```dsi_studio --action=trk --source=0 --other_slices=sub1_baseline.dti_fa.nii.gz,sub1_followup.dti_fa.nii.gz --dt_metric1=sub1_baseline --dt_metric2=sub1_followup --dt_threshold=0.2 --seed_count=10000000 --min_length=30 --output=*.tt.gz```<br>
+0: ICBM152_adult 1:  |
+|  | 4a. at **[Step T3 Fiber Tracking]**, choose the ICBM153_adult template for human studies and click on the Step T3 button. For animal studies, choose the corresponding animal template. |
+|  | 4b. use **[Slice][Insert Other Images]** and select the NIFTI file of the baseline and follow-up metrics (dti_fa or qa) of a subject |
+|  | 4c. select the baseline metrics at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics1]**. This assumes that the anisotropy in the baseline scan is larger than the followup.|
+|  | 4d. select the follow-up metric at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics2]** |
+|  | 4e. adjust thresholds by setting **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences if [Threshold Type] is (m1-m2)/m1. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.|
+|  | 4f. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
 
 ## **Type 3: mapping cross sectional change in the native space:**
 
