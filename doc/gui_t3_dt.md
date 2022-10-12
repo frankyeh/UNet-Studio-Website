@@ -183,16 +183,13 @@ We usually run differential fiber tracking on FA, QA, RDI, and NRDI, respectivel
 
 One key question for differential tractography is the significance of the findings. For example, if we observe a lot of tracks showing up in differential tractography, how many of them are false positive? A way to quantify this reliability is by calculating the false discovery rate from a group of patients and a group of control subjects. The following steps illustrate how this can be carried out in DSI Studio.
 
-**Example 1: calculate the false discovery rate using control subjects**
+**Example: calculate the false discovery rate using control subjects**
 
-1. Apply **identical** steps and parameters to N patients and N matched controls, respectively. 
-2. Calculate false discovery rate (FDR): if you can get a total of 1000 tracks from 5 patients and 10 tracks from 5 controls, then the false discovery rate of the findings in patients is 10/100 = 10%. An FDR lower than 0.05 can be considered as significant.
+1. Apply **identical** steps and parameters to each patients and matched controls, respectively. 
+2. Estimate the average volume of findings in patients using the [Tracts][Statistics] menu in Step T3
+3. Estimate the average volume of findings in controls
+4. False discovery rate (FDR) = (averaged volume in control)/(averaged volume in patient)
+    
+For example, if there is an average of 1000 mm³ of tracks findings from patients and 10 mm³ tracks findings from controls, then the false discovery rate of the findings in patients is 10/100 = 10%. An FDR lower than 0.05 can be considered as significant.
 
-**Example 2: calculate the false discovery rate without control subjects** 
-
-This is the alternative sham approach described in the original work in Yeh, Neuroimage, 2019.
-
-1. Apply **identical** steps to all subjects. 
-2. Apply **identical** steps to all subjects but with an opposite order metrics 1 and 2 (e.g. switch followup and baseline or switch healthy and patient)
-3. Calculate false discovery rate (FDR): If you can get a total of 1000 tracks from 1. patients and 10 tracks from 2., then the false discovery rate of the findings is 10/100 = 10%. An FDR lower than 0.05 can be considered significant.
 
