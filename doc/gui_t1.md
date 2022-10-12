@@ -1,4 +1,8 @@
-# Step T1: DICOM Files to SRC Files
+# Parsing image files 
+
+DSI Studio accepts major image formats, including DICOM and NIFTI. The followings are steps to convert them to DSI Studio formats.
+
+# Convert DICOM Files to SRC Files
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-J8qBMiHQHk?start=65" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -20,8 +24,7 @@ Click [**Ok**] button to generate an SRC file for further reconstruction.
 
 *TIP: GE, Philips, and Toshiba scanners output numerous DICOM images for dMRI acquisitions. Instead of selecting all files, you can select only one of the DICOM files in [**Step T1: Open Source Images**], and DSI Studio will ask whether you would like to load all other DICOM images. Select yes to specify that you want all DICOM files to be loaded.
 
-# Step T1: NIFTI File to SRC Files
-
+# Convert NIFTI File to SRC Files
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/iuBtgGLohsg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -29,9 +32,12 @@ Click [**Ok**] button to generate an SRC file for further reconstruction.
 
 The NIFTI files include no b-table information, and we will also a bval and a bvec file to create an SRC file.
 
-First, click on [**Step T1: Open Source Images**] in the main window and select the NIFTI file. DSI Studio will try to locate its associated bval and bvec files in the same folder. 
+If your data are stored in BIDS structure, a quick way to convert all NIFTI files to SRC files is [**Batch processing**][**Step B2a: NIFTI to SRC (BIDS)**].
+You may also use [**Batch processing**][**Step B2b: NIFTI to SRC (Single Folder)**] to batch convert NIFTI files to SRC files.
 
-If DSI Studio cannot find bval or bvec file, it will notify users about missing the b-table, and then the files need to be manually loaded using the top menu [**Files**][**Open b-table**] (see below):
+To convert one subject's data, click on [**Step T1: Open Source Images**] in the main window and select the NIFTI file. DSI Studio will try to locate its associated bval and bvec files in the same folder. 
+
+If DSI Studio cannot find bval or bvec file, you may specify them using the top menu [**Files**][**Open bval**] and [**Files**][**Open bvec**] 
 
 ![](/images/t1_mac_menu.png)
 
@@ -48,11 +54,13 @@ DSI Studio also has its own b-table text file format, arranged in bvalue bvecx�
 > 3000    0.963800    -0.245300   -0.104400<br>
 > 3000    0.963800    0.245300    -0.104400<br>
 
+The file can be loaded using the top menu [**Files**][**Open b-table**]
+
+
 DSI Studio will also search under the NIFTI file directory for a file named "grad_dev.nii.gz" to include gradient nonlinearity information and also "nodif_brain_mask.nii.gz" as the brain mask.
 
-You may also use [**Batch processing**][**Step B2a: NIFTI to SRC (BIDS)**] or [**Batch processing**][**Step B2b: NIFTI to SRC (Single Folder)**] to batch convert NIFTI files to SRC files.
 
-# Step T1: Bruker 2dseq Files to SRC Files
+# Convert Bruker 2dseq Files to SRC Files
 
 To read 2dseq file, click [**Step T1: Open Source Images**] in the main window and select the "2dseq" file for creating the SRC file.
 
@@ -60,7 +68,7 @@ Note that DSI Studio will obtain spatial parameters from other accessory files i
 
 Once the image is loaded, the b-table may need addition flipping (e.g. swap x-y, y-z, or x-z). For example, you may need to swap x-y to get the correct result.
 
-# Step T1: Varian and Agilent FDF Files to SRC Files
+# Convert Varian and Agilent FDF Files to SRC Files
 
 Click [**Step T1: Open Source Images**] in the main window and select all fdf files in the folder. DSI Studio will extract b-table information and the DWI from the files.
 
