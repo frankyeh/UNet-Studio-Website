@@ -6,74 +6,78 @@
 
 ---
 
-Differential tractography compares scans to capture neuronal change reflected by a decrease of anisotropy. Compared with conventional tractography, differential integrates the  "tracking-the-difference" paradigm as opposed to the "tracking-the-existence" one used in the conventional setting. It is realized by adding one criterion to track along trajectories only if a decrease of anisotropy is found between repeat scans. This approach greatly increases the sensitivity and specificity of the diffusion metrics by aggregating results along white matter pathways. 
+Differential tractography compares one scan to another to capture neuronal change reflected by a decrease of anisotropy. Differential tractography integrates the  "tracking-the-difference" paradigm as opposed to the "tracking-the-existence" used in the conventional setting. This is realized by adding one criterion to screen if  trajectories have a decrease of anisotropy. Differential tractography greatly increases the sensitivity and specificity of the diffusion metrics by aggregating results along white matter pathways.
 
 ![image](https://user-images.githubusercontent.com/275569/170849962-ef2f90af-748a-4011-8610-508fa8e24645.png)
 
-
-Differential tractography can be applied to DTI data, multi-shell data, and DSI data. In practice, we will use both DTI and GQI metrics to study the neronal change. Each of the metrics has its intepretation. Moreover, we found that higher b-value signals will be more sensitive to early-stage neuronal changes, whereas low b-value signals may include a lot of physiological fluctuations. If data are acquired at a low b-value (e.g., < 3000), then you may expect to have a higher false discovery rate (FDR). In the original study, we used 256-direction grid sampling with b-max=4000 or even up to 7000 to get excellent FDR values lower than 0.05. Using DTI data may increase FDR to 0.2.
-
-## Prepare a FIB file as the tracking framework
-
-**QA is replaced by nQA in versions after Aug, 2022. If you have earlier version of DSI Studio, please consider updating it**
-
-We need a FIB file that will be used as the tracking framework. There are two choices: native FIB and template FIB.
-
-1. **Native FIB:** The recommended approach for human studies. The FIB file is usually constructed from the subject's own scan because of substantial individual differences. To generate the subject's FIB file, please follows steps to get a GQI-reconstructed FIB file, including [creating SRC files](/doc/gui_t1.html) and [generating FIB files](/doc/gui_t2.html). At Step T2B(1), please use GQI method to get native space FIB file.
-2. **Template FIB:** The recommended approach for animal studies. Often the scans are not good enough for tracking, and thus using the template FIB as the "common tracking framework" would be a better choice. DSI Studio (after the August 23 2022 version) provides built-in template FIB for animals. To use them, select the appropriate template FIB at [Step T3 Fiber Tracking][Action] and click on the [Step T3] button.
-
-
-## [Optional but recommended] Quality check using whole-brain tracking
-
-We can use whole brain tracking to check if the fiber tracking framework has good quality for differential tracking.
-
-First, restore default settings using **[Options][Restore Tracking Settings]**. Then in the tracking parameters (right upper window), set **[Terminate if]** to `1,000,000` seeds and click the **[Step T3d: Tracts][Fiber Tracking]** button to see if you can get a good quality whole-brain fiber tracking 
-
-If there are too many noisy fibers, consider increasing the **[Step T3c: Options][Tracking Parameters][Threshold]** or **[Min length]**.
-If missing too many branches, considers lowering the **[Step T3c: Options][Tracking Parameters][Threshold]** or **[Min length]**.
-
-Adjust other parameters until you get a good quality of the whole-brain track. (You may check out [whole brain fiber tracking](/doc/gui_t3_whole_brain.html) to see how to evaluate the tractography quality and adjust parameters)
-
-## Load metrics onto the tracking framework for comparison
-
-The metrics we usually use include DTI's FA and GQI's QA, RDI, NRDI. The following is the implication behind them:
-
-- **FA** decreases during acute neuronal injury or chronic neurodegeneration. It has a moderate sensitivity and is "nonspecific" because the decreases of FA can be due to vasogenic edeam, demyelination, inflammation, axonal loss. We often uses FA as the first-pass screening. 
-- **QA** decreases when there is demyelination or axonal loss. It usually does NOT change at acute axonal injury or edema and thus is much more specific to axonal loss. In acute neuronal injury or inflammation, we may see FA decreasing with QA staying the same, potentially indicNating that the axonal injury is reversible.
-- **RDI** increases when there is cell infiltration, which happens in tumor or during inflammation. You need to have multishell or DSI acquisitions to use this metric.
-- **NRDI** increases when there is tissue edema. You need to have multishell or DSI acquisitions to use this metric.
-
-We usually run differential fiber tracking on FA, QA, RDI, and NRDI, respectively. This will give a comprehensive clinical picture of the neuronal change. For more detailed discussion, please refer to [how to intepret dMRI metrics](/doc/how_to_interpret_dmri.html).
-
-After opening There are several different approaches for differential fiber tracking. Each of them has its own application scenario. Their steps are detailed in the following:
-
-### **Approach 1: mapping neuronal change in longitudinal studies:**
-
-The first approach is applicable to longitudinal studies, such as those with pre- and post- treatment scans. Each subject will have baseline and followup scans at two different time point. The following is the steps to obtain differential tractography based on FA.
-
-1. ***Select tracking framework:*** For native FIB, open baseline scan's FIB file at **[Step T3 Fiber Tracking]** as the tracking framework. For template FIB, select the **built-in template FIB** at [Step T3: Fiber Tracking][Action] and click on the [Step T3: Fiber Tracking].
-2. ***Select metric 1:*** For native FIB, the baseline FIB file has included baseline scan's metrics such as FA, QA, RDI, ...etc. Select the metric you would like to compare at **[Step T3c: Options][Tracking Parameters][Differential Tractography][Metrics1]**. For template FIB, the built-in template FIB does NOT have you scan's metrics. Thus you will need to get them from baseline's FIB file: in a separate window, open the baseline FIB file at **[Step T3 Fiber Tracking]** and export the metrics using the **[Export]** menu on the top. I would save the metrics with a file name such as baseline_fa.nii.gz to avoid confusion. With the metrics available, we can go back to the original FIB file (opened in the previous step), and the exported NIFTI files can then be loaded using **[Slices][Insert Other Images]**
-3. ***Select metric 2:*** For both native and template FIB, we need to export followup scan's metric in a NIFTI file: in a separate window, open the followup FIB file and use the **[Export]** to save the metric map in a file name that clearly marks its origin to avoid confusion (e.g. followup_fa.nii.gz). Now we can go back to the tracking framework and use **[Slice][Insert Other Images]**. The loaded metric will be listed at **[Step T3c: Options][Tracking Parameters][Differential Tractography][Metrics2]** for selection.
-4. ***Adjust thresholds:*** Set **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.
-5. ***Differential fiber tracking:*** Click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.
-
-I would recommend checking a range of [Metric1>Metric2 Threshold] (e.g. 0.1, 0.2, 0.3, 0.4) and eliminate fregments by increasing [Step T3c:Options][Tracking Prameters][Min Length]. The goal is to maximize sensitivity while retaining specificity. 
+Differential tractography can be applied to DTI data, multi-shell data, and DSI data. The anisotropy can be derived from DTI or GQI. Higher b-value signals will be more sensitive to early-stage neuronal changes, whereas low b-value signals may include a lot of physiological fluctuations, and you may expect a higher false discovery rate (FDR). In the [original differential tractography study](https://pubmed.ncbi.nlm.nih.gov/31472253/), we used 256-direction grid sampling with b-max=4000 or even up to 7000 to get excellent FDR values lower than 0.05. Using DTI data may increase FDR to 0.2.
 
 ![image](https://user-images.githubusercontent.com/275569/147860680-74abdce8-81a3-47a6-9d01-3d93be355b0d.png)
 
-### **Approach 2: comparing each human subject scan with a normative value:**
+There are 3 types of differential tractography, and the applicable types depend on the experiment design. 
 
-The second approach compares subject's metrics with normative values and is applicable to study that only acquires one scan for a subject. The steps are mostly identical to Approach 1, except for the ***Select metric 1:*** step, in which we need to get normative values as the baseline metrics. 
+## **Type 1: mapping longitudinal change in the native space:**
 
-There are two ways to get the normative values as the metric 1 in the ***Select metric 1:*** step:
+**Requirements**:
+- repeat scans of the same subject, e.g. before/after treatment
+- the subject's DWI data are good enough for fiber tracking
 
-#### Normative values from control subjects
-If you have a group of control subjects, DSI Studio can use them to create a sex-age-matched normative metric matching each of the study subject. The steps are the following:
-  - ***[Create a connectometry database](https://dsi-studio.labsolver.org/doc/gui_cx.html):*** from your control subjects. 
+**Example**: 
+- human subject study with repeated scans before and after treatment
+
+**Steps using GUI**: 
+
+|   |    |
+|-----------|------------|
+| 1. **Generate FIB Files** |  use the following steps to get a GQI-reconstructed FIB file for each scan, including |
+|  | 1a. [creating SRC files](/doc/gui_t1.html): make sure to have a quality check to make sure the quality is good |
+|  | 1b. [generating FIB files](/doc/gui_t2.html): at Step T2B(1), please use GQI method to get native space FIB file. |
+| 2. **Export Mmetrics** | for each follow-up scan (i.e. 2nd scan), conduct the following: |
+|  | 2a. open the FIB file of follow-up scan at **[Step T3: Fiber Tracking]** |
+|  | 2b. use the **[Export]** to save the dti_fa or qa map in a NIFTI file (e.g. sub1.followup.fa.nii.gz). |
+| 3. **Optimize Tractography** | (optional) using one baseline FIB file from the baseline scan to optimize tracking parameters|
+|  | 3a. open one baseline scan's FIB file at **[Step T3 Fiber Tracking]**  |
+|  | 3b. restore default fiber tracking settings using **[Options][Restore Tracking Settings]**. |
+|  | 3c. set **[Step T3c Options][Tracking Parameters][Terminate if]** to `1,000,000` seeds |
+|  | 3d. click the **[Step T3d: Tracts][Fiber Tracking]** button to see if you can get a good quality whole-brain fiber tracking.<br> If not, check out the troubleshooting section of the [whole brain fiber tracking document](https://dsi-studio.labsolver.org/doc/gui_t3_whole_brain.html).  |
+|  | 3e. find out the best parameters until getting a good quality of the whole-brain track.|
+| 4. **Differential Tracking** | for each subject, carry out the following steps: |
+|  | 4a. open baseline scan's FIB file at **[Step T3 Fiber Tracking]**|
+|  | 4b. use **[Slice][Insert Other Images]** and select the NIFTI file of the follow-up scan (e.g. sub1.followup.fa.nii.gz created above). |
+|  | 4c. select dti_fa or qa at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics1]**. This assumes that the anisotropy in the baseline scan is larger than the followup.|
+|  | 4d. select the loaded metric at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics2]** |
+|  | 4e. select the **[Step T3c: Options][Tracking Parameters][Differential Tracking][Threshold Type]**. |
+|  | 4f. adjust thresholds by setting **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.|
+|  | 4g. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
+
+## **Type 2: mapping longitudinal change in the template space:**
+
+**Requirements**: 
+- repeat scans of the same subject, e.g. before/after treatment 
+
+**Example**: 
+- animal in-vivo study with repeated scans before and after treatment (DWI not good enough for fiber tracking)
+- human study which DWI data are not good enough for fiber tracking
+
+## **Type 3: mapping cross sectional change in the native space:**
+
+**Requirements**: 
+- age-sex-matched controls avilable
+- DWI data good enough for fiber tracking
+
+**Example**: 
+- human case-control studies
+
+
+**Steps**:
+
+1. ***[Create a connectometry database](https://dsi-studio.labsolver.org/doc/gui_cx.html):*** from control subjects. 
   - ***Associate data with demographics:*** Open the conenctometry database file in **[Step C2]** and load control subject's demographics using **[File][Open demographics]**. This step associate demographics with the controls in the database. ***TIP 1*** You can save the db.fib.gz after loading the demographics so that the connectometry database will be imbued with demographics. There is no need to repeat this step again. ***TIP 2*** Before doing this step, I would use **[Step C3]** to open the db.fib.gz file and load the demographics, just to check if there is any mismatch.
   - ***Generated demographic-matched baseline metrics:***. Then in the same Step C2 window, select **[File][Save Matched Image as]** and input the demographics of a subject to be matched. The demographics values need to be separated by a space. If your demographics include age and sex (0: female 1:male), then an example of the input text is **63,1** which will generate a 63-year-old male control subject metric. 
- 
-#### Normative values from existing database
+
+- **Load demographic-imbued connectometry databse in [Slice][Insert Other Image]**: Once the connectometry database is imbued with demographics, you can load it using [Slice][Insert Other Images]. To further tell DSI Studio the age and sex, you can rename the FIB file to inform DSI Studio age and sex of the subject. An example of the filename is **20220808_M029Y_XXXX.src.gz.gqi.fib.gz**, which tells that the subject is a 29-year-old male.
+
+**TIPS**
 If you don't have controls subjects, there are publicly available connectometry database available at https://brain.labsolver.org. However, most dMRI metrics (especially DTI metrics) are very sensitive to acquisition parameters, and likely you will get many false positive results just due to acquisition differences. The following are public available connectometry databases:
   - [HCP Aging](https://pitt-my.sharepoint.com/:f:/g/personal/yehfc_pitt_edu/EvdTx_lhJJBCmek2G0IfNhkBmr7CkGKU79H6JC1OH2aWmA?e=xtSbtb) (age: 36+ y)
   - [HCP Development](https://pitt-my.sharepoint.com/:f:/g/personal/yehfc_pitt_edu/EgTq8mpY5zZEhKhwHhZMbPABMzRLckaiaRnwm4tMWSg3Fw?e=4m95Mf) (age: 5-21 y)
@@ -81,15 +85,37 @@ If you don't have controls subjects, there are publicly available connectometry 
   - HCP young adult (to be constructed)
   - Grid258 (under construction)
 
-## TIPS
 
-- **Load MNI space metric to the native space**: If the NIFTI file is in the template space (presumbly ICBM152 2009) and you are using native FIB, you can insert MNI-space NIFTI using **[Slices][Insert MNI images]**. DSI Studio will apply nonlinear registration to warp the image to subject's native space.
-- **Use filename to avoid confusion**: Make sure to add a prefix or postfix to the NIFTI file name so that after loading them, they will not be confused with the existing metrics 
-- **Add ROA or ROI to limit findings**: You can map the affected pathways that pass through the internal capsule by assigning the internal capsule as the ROI. The number and length of tracks can be compared between patients if other tracking parameters are fixed (be sure to fix the seed count).
-- **Exclude cerebellum**: Add a region from [Atlas][BrainSeg][Cerebellum] and assign it as ROA.
-- **Segment results into bundles**: you can use [Tracts][Miscellaneous][Recognize Track] to recognize the name of the bundles.
-- **Apply smoothing to metrics**: If tracking results change a lot in repeated analyses, it is likely that the image acquisition is not optimal (e.g. too noisy, has very thick slices), and thus registration errors are boosted. To minimize this variance, export both baseline and follow-up NQA images and smooth them using [Tool][O41 View image][Signals][Smoothing] (make sure to update DSI Studio to use this function). Save the smoothed images as new files to run differential tracking. After smoothing, add the smoothed image back using [Slices][Add Other images] and continue with further analysis.
-- **Load demographic-imbued connectometry databse in [Slice][Insert Other Image]**: Once the connectometry database is imbued with demographics, you can load it using [Slice][Insert Other Images]. To further tell DSI Studio the age and sex, you can rename the FIB file to inform DSI Studio age and sex of the subject. An example of the filename is **20220808_M029Y_XXXX.src.gz.gqi.fib.gz**, which tells that the subject is a 29-year-old male.
+## **Type 4: mapping cross sectional change in the template space:**
+
+**Requirements**:
+- age-sex-matched controls avilable
+
+**Example**: 
+- animal in-vivo or ex-vivo study studies where DWI data are not good enough for fiber tracking
+- human case-control studies with DWI not good enough for fiber tracking
+
+
+
+ 
+
+## Advanced Features & Suggestions
+
+- **Reporting**
+I would recommend checking a range of [Metric1>Metric2 Threshold] (e.g. 0.1, 0.2, 0.3, 0.4) and eliminate fregments by increasing [Step T3c:Options][Tracking Prameters][Min Length]. The goal is to maximize sensitivity while retaining specificity. 
+
+- **Add ROA or ROI to limit findings**
+You can map the affected pathways that pass through the internal capsule by assigning the internal capsule as the ROI. The number and length of tracks can be compared between patients if other tracking parameters are fixed (be sure to fix the seed count).
+
+- **Exclude cerebellum**
+Many false results may be generated just because of different slice coverage at the cerebellum. To handle this issue, add a region from [Atlas][BrainSeg][Cerebellum] and assign it as ROA.
+
+- **Segment results into bundles**
+You can use [Tracts][Miscellaneous][Recognize Track] to recognize the name of the bundles.
+
+- **Apply smoothing to metrics**
+If tracking results change a lot in repeated analyses, it is likely that the image acquisition is not optimal (e.g. too noisy, has very thick slices), and thus registration errors are boosted. To minimize this variance, export both baseline and follow-up NQA images and smooth them using [Tool][O41 View image][Signals][Smoothing] (make sure to update DSI Studio to use this function). Save the smoothed images as new files to run differential tracking. After smoothing, add the smoothed image back using [Slices][Add Other images] and continue with further analysis.
+
 
 ## False discovery rate and statistical testing
 
