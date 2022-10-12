@@ -6,7 +6,7 @@
 
 ---
 
-Differential tractography compares one scan to another to capture neuronal change reflected by a decrease of anisotropy. Differential tractography integrates the  "tracking-the-difference" paradigm as opposed to the "tracking-the-existence" used in the conventional setting. This is realized by adding one criterion to screen if  trajectories have a decrease of anisotropy. Differential tractography greatly increases the sensitivity and specificity of the diffusion metrics by aggregating results along white matter pathways.
+Differential tractography compares one scan to another and map capture neuronal change reflected by a decrease of anisotropy. Differential tractography integrates the  "tracking-the-difference" paradigm as opposed to the "tracking-the-existence" used in the conventional setting. This is realized by adding one tracking criterion to screen if trajectories have a decrease of anisotropy. Differential tractography greatly increases the sensitivity and specificity of the diffusion metrics by aggregating results along white matter pathways.
 
 ![image](https://user-images.githubusercontent.com/275569/170849962-ef2f90af-748a-4011-8610-508fa8e24645.png)
 
@@ -20,29 +20,30 @@ There are 3 types of differential tractography, and the applicable types depend 
 
 **Requirements**:
 - repeat scans of the same subject, e.g. before/after treatment
-- the subject's DWI data are good enough for fiber tracking
+- the subject's DWI data are good enough for fiber tracking (if not, choose type 2)
+- no deformation between repeats scans (if not, choose type 2)
 
 **Example**: 
 - human subject study with repeated scans before and after treatment
 
-**Steps using GUI**: 
+**Steps**: 
 
 |   |    |
 |-----------|------------|
-| 1. **Generate FIB Files** |  use the following steps to get a GQI-reconstructed FIB file for each scan, including |
+| 1. **Generate GQI FIB Files** |  ```dsi_studio --action=rec --source=*.src.gz``` |
 |  | 1a. [creating SRC files](/doc/gui_t1.html): make sure to have a quality check to make sure the quality is good |
 |  | 1b. [generating FIB files](/doc/gui_t2.html): at Step T2B(1), please use GQI method to get native space FIB file. |
-| 2. **Export Metrics** | for each follow-up scan (i.e. 2nd scan), conduct the following: |
-|  | 2a. open the FIB file of follow-up scan at **[Step T3: Fiber Tracking]** |
+| 2. **Export Metrics** | ```dsi_studio --action=exp --source=*.fib.gz --export=dti_fa``` |
+|  | 2a. open the FIB file of each **follow-up** scan at **[Step T3: Fiber Tracking]** |
 |  | 2b. use the **[Export]** to save the dti_fa or qa map in a NIFTI file (e.g. sub1.followup.fa.nii.gz). |
-| 3. **Optimize Tractography** | (optional) using one baseline FIB file from the baseline scan to optimize tracking parameters|
+| 3. **Optimize Tractography** | (optional manual checking) |
 |  | 3a. open one baseline scan's FIB file at **[Step T3 Fiber Tracking]**  |
 |  | 3b. restore default fiber tracking settings using **[Options][Restore Tracking Settings]**. |
 |  | 3c. set **[Step T3c Options][Tracking Parameters][Terminate if]** to `1,000,000` seeds |
 |  | 3d. click the **[Step T3d: Tracts][Fiber Tracking]** button to see if you can get a good quality whole-brain fiber tracking.<br> If not, check out the troubleshooting section of the [whole brain fiber tracking document](https://dsi-studio.labsolver.org/doc/gui_t3_whole_brain.html).  |
 |  | 3e. find out the best parameters until getting a good quality of the whole-brain track.|
-| 4. **Differential Tracking** | for each subject, carry out the following steps: |
-|  | 4a. open baseline scan's FIB file at **[Step T3 Fiber Tracking]**|
+| 4. **Differential Tracking** | ```dsi_studio --action=trk --source=*_ses-01_dwi.src.gz.gqi.1.25.fib.gz --other_slices=*_ses-02_dwi.src.gz.gqi.1.25.fib.gz.dti_fa.nii.gz --dt_metric1=dti_fa --dt_metric2=*_ses-02_dwi --dt_threshold=0.2 --seed_count=10000000 --min_length=30 --output=*.tt.gz``` |
+|  | 4a. for each subject, open their baseline scan's FIB file at **[Step T3 Fiber Tracking]**|
 |  | 4b. use **[Slice][Insert Other Images]** and select the NIFTI file of the follow-up scan (e.g. sub1.followup.fa.nii.gz created above). |
 |  | 4c. select dti_fa or qa at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics1]**. This assumes that the anisotropy in the baseline scan is larger than the followup.|
 |  | 4d. select the loaded metric at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics2]** |
@@ -50,25 +51,6 @@ There are 3 types of differential tractography, and the applicable types depend 
 |  | 4f. adjust thresholds by setting **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.|
 |  | 4g. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
 
-**Command line**: 
-
-**Generate FIB Files**
-
-```
-dsi_studio --action=rec --source=*.src.gz
-```
-
-**Export Metrics**
-
-```
-dsi_studio --action=exp --source=*02_dwi*.fib.gz --export=dti_fa
-```
-
-**Differential Tracking**
-
-```
-dsi_studio --action=trk --source=*_ses-01_dwi.src.gz.gqi.1.25.fib.gz --other_slices=*_ses-02_dwi.src.gz.gqi.1.25.fib.gz.dti_fa.nii.gz --dt_metric1=dti_fa --dt_metric2=*_ses-02_dwi --dt_threshold=0.2 --seed_count=10000000 --min_length=30 --output=*.tt.gz
-```
 
 ## **Type 2: mapping longitudinal change in the template space:**
 
