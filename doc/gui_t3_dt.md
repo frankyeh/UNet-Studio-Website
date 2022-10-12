@@ -32,7 +32,7 @@ There are 3 types of differential tractography, and the applicable types depend 
 | 1. **Generate FIB Files** |  use the following steps to get a GQI-reconstructed FIB file for each scan, including |
 |  | 1a. [creating SRC files](/doc/gui_t1.html): make sure to have a quality check to make sure the quality is good |
 |  | 1b. [generating FIB files](/doc/gui_t2.html): at Step T2B(1), please use GQI method to get native space FIB file. |
-| 2. **Export Mmetrics** | for each follow-up scan (i.e. 2nd scan), conduct the following: |
+| 2. **Export Metrics** | for each follow-up scan (i.e. 2nd scan), conduct the following: |
 |  | 2a. open the FIB file of follow-up scan at **[Step T3: Fiber Tracking]** |
 |  | 2b. use the **[Export]** to save the dti_fa or qa map in a NIFTI file (e.g. sub1.followup.fa.nii.gz). |
 | 3. **Optimize Tractography** | (optional) using one baseline FIB file from the baseline scan to optimize tracking parameters|
@@ -49,6 +49,26 @@ There are 3 types of differential tractography, and the applicable types depend 
 |  | 4e. select the **[Step T3c: Options][Tracking Parameters][Differential Tracking][Threshold Type]**. |
 |  | 4f. adjust thresholds by setting **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.|
 |  | 4g. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
+
+**Command line**: 
+
+**Generate FIB Files**
+
+```
+dsi_studio --action=rec --source=*.src.gz
+```
+
+**Export Metrics**
+
+```
+dsi_studio --action=exp --source=*02_dwi*.fib.gz --export=dti_fa
+```
+
+**Differential Tracking**
+
+```
+dsi_studio --action=trk --source=*_ses-01_dwi.src.gz.gqi.1.25.fib.gz --other_slices=*_ses-02_dwi.src.gz.gqi.1.25.fib.gz.dti_fa.nii.gz --dt_metric1=dti_fa --dt_metric2=*_ses-02_dwi --dt_threshold=0.2 --seed_count=10000000 --min_length=30 --output=*.tt.gz
+```
 
 ## **Type 2: mapping longitudinal change in the template space:**
 
