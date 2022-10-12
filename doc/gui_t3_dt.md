@@ -12,7 +12,7 @@ Differential tractography can be applied to DTI data, multi-shell data, and DSI 
 
 ![image](https://user-images.githubusercontent.com/275569/147860680-74abdce8-81a3-47a6-9d01-3d93be355b0d.png)
 
-There are 3 types of differential tractography, and the applicable types depend on the experiment design. 
+There are 4 types of differential tractography, and the applicable types depend on the experiment design. 
 
 # Type 1: mapping longitudinal change in the native space
 
@@ -96,14 +96,14 @@ There are 3 types of differential tractography, and the applicable types depend 
 | 2. **Create Database File for Controls** | ```dsi_studio --action=atl --source=*.control.fib.gz --cmd=db --template=0 --demo=controls_age_sex.txt``` |
 |  | 2a. [Create a database](https://dsi-studio.labsolver.org/doc/gui_cx.html) and inlucde **only controls** |
 |  | 2b. Prepare a demographic file for the contgrols. The file can be space, tab, or comma-separated text file. example:<br>```age sex```<br>```32 1```<br>```29 0```<br>```45 0```<br>```25 0```|
-|  | Associate database with demographics: Open the conenctometry database file in **[Step C2]** and load control subject's demographics using **[File][Open demographics]**. This step associates demographics with the controls in the database. Save the database using the [File] menu. **Before doing this step, I would use **[Step C3]** to open the db.fib.gz file and load the demographics, just to check if there is any mismatch.** |
+|  | 2c. Associate database with demographics: Open the conenctometry database file in **[Step C2]** and load control subject's demographics using **[File][Open demographics]**. This step associates demographics with the controls in the database. Save the database using the [File] menu. **Before doing this step, I would use **[Step C3]** to open the db.fib.gz file and load the demographics, just to check if there is any mismatch.** |
 | 3. **Differential Tracking** | ```dsi_studio --action=trk --source=*_ses-01_dwi.src.gz.gqi.1.25.fib.gz --other_slices=sub-control_only.dti_fa.db.fib.gz --dt_metric1=sub-control_only --dt_metric2=dti_fa --subject_demo=patient_age_sex.txt --dt_threshold=0.2 --seed_count=10000000 --min_length=30 --tip_iteration=16 --output=*.cross_sectional.tt.gz```<br>**patient_age_sex.txt is patients demographics file with an additional first column stroing FIB files's partial filename** |
-|  | 4a. for each subject, open their baseline scan's FIB file at **[Step T3 Fiber Tracking]**|
-|  | 4b. click **[Slice][Insert Other Images]** and select the database file created in the previous step. enter the patient's age and sex (e.g. 36 1 ). You may rename the FIB file to inform DSI Studio the age and sex of the subject. For example, 20220808_M029Y_XXXX.src.gz.gqi.fib.gz will inform DSI Studio that the subject is a 29-year-old male |
-|  | 4c. select dti_fa or qa at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics1]**. This assumes that the anisotropy in the baseline scan is larger than the followup.|
-|  | 4d. select the database metric at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics2]** |
-|  | 4e. adjust thresholds by setting **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences if [Threshold Type] is (m1-m2)/m1. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.|
-|  | 4f. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
+|  | 3a. for each subject, open their baseline scan's FIB file at **[Step T3 Fiber Tracking]**|
+|  | 3b. click **[Slice][Insert Other Images]** and select the database file created in the previous step. enter the patient's age and sex (e.g. 36 1 ). You may rename the FIB file to inform DSI Studio the age and sex of the subject. For example, 20220808_M029Y_XXXX.src.gz.gqi.fib.gz will inform DSI Studio that the subject is a 29-year-old male |
+|  | 3c. select dti_fa or qa at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics1]**. This assumes that the anisotropy in the baseline scan is larger than the followup.|
+|  | 3d. select the database metric at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics2]** |
+|  | 3e. adjust thresholds by setting **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences if [Threshold Type] is (m1-m2)/m1. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.|
+|  | 3f. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
 
 
 **TIPS**
@@ -122,6 +122,29 @@ If you don't have controls subjects, there are publicly available connectometry 
 **Example:** 
 - animal in-vivo or ex-vivo study studies
 - human case-control studies with DWI not good enough for fiber tracking
+
+**Steps:**
+
+| **Steps** | Details  |
+|-----------|------------|
+| 1. **Generate QSDR FIB Files** |  ```dsi_studio --action=rec --method=7 --source=*.controls.src.gz ``` |
+|  | 1a. [creating SRC files](/doc/gui_t1.html): make sure to have a quality check to make sure the quality is good |
+|  | 1b. [generating FIB files](/doc/gui_t2.html): at Step T2b(1), choose QSDR |
+| 2. **Export Metrics** | ```dsi_studio --action=exp --source=*.patient.fib.gz --export=dti_fa``` |
+|  | 2a. open each FIB file of **patient** scans at **[Step T3: Fiber Tracking]** |
+|  | 2b. use the **[Export]** to save the dti_fa or qa map in a NIFTI file (e.g. sub1.fa.nii.gz). |
+| 3. **Create Database File for Controls** | ```dsi_studio --action=atl --source=*.control.fib.gz --cmd=db --template=0 --demo=controls_age_sex.txt``` |
+|  | 3a. [Create a database](https://dsi-studio.labsolver.org/doc/gui_cx.html) and inlucde **only controls** |
+|  | 3b. Prepare a demographic file for the contgrols. The file can be space, tab, or comma-separated text file. example:<br>```age sex```<br>```32 1```<br>```29 0```<br>```45 0```<br>```25 0```|
+|  | 3c. Associate database with demographics: Open the conenctometry database file in **[Step C2]** and load control subject's demographics using **[File][Open demographics]**. This step associates demographics with the controls in the database. Save the database using the [File] menu. **Before doing this step, I would use **[Step C3]** to open the db.fib.gz file and load the demographics, just to check if there is any mismatch.** |
+| 4. **Differential Tracking** | ```dsi_studio --action=trk --source=0 --other_slices=patient.dti_fa.nii.gz,control.dti_fa.db.fib.gz --dt_metric1=control --dt_metric2=patient --dt_threshold=0.2 --seed_count=10000000 --min_length=30 --output=*.tt.gz```<br>0: ICBM152_adult<br>1: C57BL6_mouse<br>2: dHCP_neonate<br>3: INDI_rhesus<br>4: Pitt_marmoset<br>5: WHS_SD_rat |
+|  | 4a. at **[Step T3 Fiber Tracking]**, choose the ICBM153_adult template for human studies and click on the Step T3 button. For animal studies, choose the corresponding animal template. |
+|  | 4b. use **[Slice][Insert Other Images]** and select a patient's dti_fa or qa NIFTI file generated from 2. |
+|  | 4c. click **[Slice][Insert Other Images]** and select the control subjects database file created in the previous step. enter the patient's age and sex (e.g. 36 1 ). |
+|  | 4d. select controls metrics at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics1]**. This assumes that the anisotropy in the control is larger than the patient.|
+|  | 4e. select patient's metric at **[Step T3c: Options][Tracking Parameters][Differential Tracking][Metrics2]** |
+|  | 4f. adjust thresholds by setting **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences if [Threshold Type] is (m1-m2)/m1. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.|
+|  | 4g. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
 
 ## Advanced Features & Suggestions
 
