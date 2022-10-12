@@ -1,4 +1,4 @@
-# Parsing image files 
+# Parsing Images
 
 DSI Studio accepts major image formats, including DICOM and NIFTI. The followings are steps to convert them to DSI Studio formats.
 
