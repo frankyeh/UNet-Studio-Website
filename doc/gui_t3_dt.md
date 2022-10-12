@@ -18,11 +18,13 @@ There are 3 types of differential tractography, and the applicable types depend 
 
 **Requirements**:
 - repeat scans of the same subject, e.g. before/after treatment
-- the subject's DWI data are good enough for fiber tracking (if not, choose type 2)
+- good DWI data for fiber tracking (if not, choose type 2)
 - no deformation between repeats scans (if not, choose type 2)
 
 **Example**: 
 - human subject study with repeated scans before and after treatment
+
+**Steps**: 
 
 | **Steps** | Details  |
 |-----------|------------|
@@ -49,12 +51,15 @@ There are 3 types of differential tractography, and the applicable types depend 
 
 # Type 2: mapping longitudinal change in the template space
 
-**Requirements**: 
-- repeat scans of the same subject, e.g. before/after treatment 
+**Requirements:**
+- repeat scans of the same subject, e.g. before/after treatment
 
-**Example**: 
-- animal in-vivo study with repeated scans before and after treatment (DWI not good enough for fiber tracking)
+**Example:**
+- animal in-vivo study with repeated scans before and after treatment
 - human study which DWI data are not good enough for fiber tracking
+
+
+**Steps:**
 
 | **Steps** | Details  |
 |-----------|------------|
@@ -74,12 +79,14 @@ There are 3 types of differential tractography, and the applicable types depend 
 
 # Type 3: mapping cross sectional change in the native space
 
-**Requirements**: 
-- age-sex-matched controls avilable
+**Requirements:**
+- age-sex-matched controls
 - DWI data good enough for fiber tracking
 
-**Example**: 
+**Example:** 
 - human case-control studies
+
+**Steps:**
 
 | **Steps** | Details  |
 |-----------|------------|
@@ -109,33 +116,37 @@ If you don't have controls subjects, there are publicly available connectometry 
 
 # Type 4: mapping cross sectional change in the template space
 
-**Requirements**:
-- age-sex-matched controls avilable
+**Requirements:**
+- age-sex-matched controls
 
-**Example**: 
-- animal in-vivo or ex-vivo study studies where DWI data are not good enough for fiber tracking
+**Example:** 
+- animal in-vivo or ex-vivo study studies
 - human case-control studies with DWI not good enough for fiber tracking
 
 ## Advanced Features & Suggestions
 
-- **Reporting**
+**Reporting**
+
 I would recommend checking a range of [Metric1>Metric2 Threshold] (e.g. 0.1, 0.2, 0.3, 0.4) and eliminate fregments by increasing [Step T3c:Options][Tracking Prameters][Min Length]. The goal is to maximize sensitivity while retaining specificity. 
 
-- **Add ROA or ROI to limit findings**
+**Add ROA or ROI to limit findings**
+
 You can map the affected pathways that pass through the internal capsule by assigning the internal capsule as the ROI. The number and length of tracks can be compared between patients if other tracking parameters are fixed (be sure to fix the seed count).
 
-- **Exclude cerebellum**
+**Exclude cerebellum**
+
 Many false results may be generated just because of different slice coverage at the cerebellum. To handle this issue, add a region from [Atlas][BrainSeg][Cerebellum] and assign it as ROA.
 
-- **Segment results into bundles**
+**Segment results into bundles**
+
 You can use [Tracts][Miscellaneous][Recognize Track] to recognize the name of the bundles.
 
-- **Apply smoothing to metrics**
+**Apply smoothing to metrics**
+
 If tracking results change a lot in repeated analyses, it is likely that the image acquisition is not optimal (e.g. too noisy, has very thick slices), and thus registration errors are boosted. To minimize this variance, export both baseline and follow-up NQA images and smooth them using [Tool][O41 View image][Signals][Smoothing] (make sure to update DSI Studio to use this function). Save the smoothed images as new files to run differential tracking. After smoothing, add the smoothed image back using [Slices][Add Other images] and continue with further analysis.
 
 
-- **Multi-metrics analysis**
-
+**Multi-metrics analysis**
 The metrics we usually use include DTI's FA and GQI's QA, RDI, NRDI (see [interpretations](https://dsi-studio.labsolver.org/doc/how_to_interpret_dmri.html)). The following is the implication behind them:
 
 - **FA** decreases during acute neuronal injury or chronic neurodegeneration. It has high sensitivity and low specificity because the decreases of FA can be due to vasogenic edeam, demyelination, inflammation, axonal loss. We often uses FA as the first-pass screening. 
