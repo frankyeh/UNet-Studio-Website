@@ -16,7 +16,7 @@ Differential tractography can be applied to DTI data, multi-shell data, and DSI 
 
 There are 3 types of differential tractography, and the applicable types depend on the experiment design. 
 
-## **Type 1: mapping longitudinal change in the native space:**
+# Type 1: mapping longitudinal change in the native space
 
 **Requirements**:
 - repeat scans of the same subject, e.g. before/after treatment
@@ -26,7 +26,7 @@ There are 3 types of differential tractography, and the applicable types depend 
 **Example**: 
 - human subject study with repeated scans before and after treatment
 
-| **Steps**: | Details  |
+| **Steps** | Details  |
 |-----------|------------|
 | 1. **Generate GQI FIB Files** |  ```dsi_studio --action=rec --source=*.src.gz``` |
 |  | 1a. [creating SRC files](/doc/gui_t1.html): make sure to have a quality check to make sure the quality is good |
@@ -49,7 +49,7 @@ There are 3 types of differential tractography, and the applicable types depend 
 |  | 4f. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
 
 
-## **Type 2: mapping longitudinal change in the template space:**
+# Type 2: mapping longitudinal change in the template space
 
 **Requirements**: 
 - repeat scans of the same subject, e.g. before/after treatment 
@@ -58,7 +58,7 @@ There are 3 types of differential tractography, and the applicable types depend 
 - animal in-vivo study with repeated scans before and after treatment (DWI not good enough for fiber tracking)
 - human study which DWI data are not good enough for fiber tracking
 
-| **Steps**: | Details  |
+| **Steps** | Details  |
 |-----------|------------|
 | 1. **Generate QSDR FIB Files** |  ```dsi_studio --action=rec --source=*.src.gz --method=7``` |
 |  | 1a. [creating SRC files](/doc/gui_t1.html): make sure to have a quality check to make sure the quality is good |
@@ -74,7 +74,7 @@ There are 3 types of differential tractography, and the applicable types depend 
 |  | 4e. adjust thresholds by setting **[Differential Tracking][Metric1>Metric2 Threshold]=0.1, 0.2, or 0.3**, which specify 10%, 20%, and 30% differences if [Threshold Type] is (m1-m2)/m1. For most metrics, the normal individual differences are around 10~20%. Higher threshold gives more specific results against individual variations. To use absolute value as the threshold, set the [Threshold Type] to **m1-m2**.|
 |  | 4f. click on **[Step T3d Tracts][Fiber Tracking]** to get differential tractography.|
 
-## **Type 3: mapping cross sectional change in the native space:**
+# Type 3: mapping cross sectional change in the native space
 
 **Requirements**: 
 - age-sex-matched controls avilable
@@ -83,9 +83,7 @@ There are 3 types of differential tractography, and the applicable types depend 
 **Example**: 
 - human case-control studies
 
-**Steps**:
-
-| **Steps**: | Details  |
+| **Steps** | Details  |
 |-----------|------------|
 | 1. **Generate FIB Files** |  ```dsi_studio --action=rec --source=*.patients.src.gz ```<br> ```dsi_studio --action=rec --method=7 --source=*.controls.src.gz ``` |
 |  | 1a. [creating SRC files](/doc/gui_t1.html): make sure to have a quality check to make sure the quality is good |
@@ -111,7 +109,7 @@ If you don't have controls subjects, there are publicly available connectometry 
   - HCP young adult (to be constructed)
   - Grid258 (under construction)
 
-## **Type 4: mapping cross sectional change in the template space:**
+# Type 4: mapping cross sectional change in the template space
 
 **Requirements**:
 - age-sex-matched controls avilable
