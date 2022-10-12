@@ -17,10 +17,9 @@ Troubleshooting:
 
 Examples of poor-quality whole-brain tractography:
 
-![image](https://user-images.githubusercontent.com/275569/147860570-f12b4cae-5725-4d34-ac9e-9a4078d664b2.png)
+<img src="https://user-images.githubusercontent.com/275569/195244541-d6b033f4-d50f-4563-985d-8a2cdd3c14cd.png" width=200><img src="https://user-images.githubusercontent.com/275569/195244700-4ef138e2-2538-4d73-ad4e-740b97831839.png" width=200>![image](https://user-images.githubusercontent.com/275569/147860570-f12b4cae-5725-4d34-ac9e-9a4078d664b2.png)
 
-[Tracking Threshold] is too low (left) or too high (right). 
-
+b-table flipped (left 1), motion or eddy distortion problem (left 2), [Tracking Threshold] is too low (left 3), or too high (left 4). 
 
 ## Fine-Tuning Parameters
 
