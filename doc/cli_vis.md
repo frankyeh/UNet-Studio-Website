@@ -6,12 +6,12 @@
 
 *Load all fib file and its correponding tract file. Add an isosurface,and save the rendering image in horizontal layout.*
 ```
-dsi_studio --action=vis --source=sub001.fib.gz --track=sub001.tt.gz --cmd="set_zoom,1.0+restore_rendering+add_surface,Full+save_h3view_image,sub001.png"
+dsi_studio --action=vis --source=sub001.fib.gz --tract=sub001.tt.gz --cmd="set_zoom,1.0+restore_rendering+add_surface,Full+save_h3view_image,sub001.png"
 ```
 
 *Load an fib file and a tract file. Set the view from the top and save the rendering image as 1.jpg.*
 ```
-dsi_studio --action=vis --source=test.fib.gz --track=whole_brain.tt.gz --cmd="set_view,2+save_image,1.jpg,1024 800"
+dsi_studio --action=vis --source=test.fib.gz --tract=whole_brain.tt.gz --cmd="set_view,2+save_image,1.jpg,1024 800"
 ```
 
 *Load an FIB file and keep GUI open:*
@@ -22,13 +22,13 @@ dsi_studio --action=vis --source=test.fib.gz --stay_open=1
 *Load multiple TRK files and keep GUI open:*
 
 ```
-dsi_studio --action=vis --source=test.fib.gz --track="TRACK1.tt.gz,TRACK2.tt.gz" --cmd=" " --stay_open=1
+dsi_studio --action=vis --source=test.fib.gz --tract="TRACK1.tt.gz,TRACK2.tt.gz" --cmd=" " --stay_open=1
 ```
 *Load trk and fib files to rendering their 3D images (Windows batch script)*
 ```
 path=C:\Users\frank\Documents\GitHub\DSI-Studio-WIN64\dsi_studio_64
 FOR /F "delims=" %%A in ('dir *.fib.gz /b /on') do (
-    call dsi_studio.exe --action=vis --source=%%A --track=%%A.tt.gz --cmd="add_surface,0,0+slice_off+save_h3view_image,%%A.jpg+save_h3view_image,%%A.jpg" > %%A_.txt
+    call dsi_studio.exe --action=vis --source=%%A --tract=%%A.tt.gz --cmd="add_surface,0,0+slice_off+save_h3view_image,%%A.jpg+save_h3view_image,%%A.jpg" > %%A_.txt
 )
 ```
  
@@ -38,7 +38,7 @@ FOR /F "delims=" %%A in ('dir *.fib.gz /b /on') do (
 |:-----------------|:--------|:------------------------------------------------------------------------------|
 | source |  | specify the fib.gz file for automatic bundle tracking.  |
 | stay_open | `0` | assign "--stay_open=1" to allow GUI to stay open after the command line |
-| track |  | (optional) specify the track files to open. To load multiple files, use "," to separate multiple track files. |
+| tract |  | (optional) specify the track files to open. To load multiple files, use "," to separate multiple track files. |
 | cmd |  | specify the function to execute. Multiple commands can be combined using "+" as the separator (e.g. --cmd="add_surface+save_image") |
 
 *The following commands are for controlling the interface:*
