@@ -79,7 +79,8 @@ You may specify the file name. For example "add_surface+save_image,file_name.jpg
 - `load_tracking_setting,file.ini`: load tracking setting to the file specified
 - `restore_rendering` : restore all rendering settings
 - `run_tracking`: run tracking using the current parameters
-- `load_track_color,my_track_color_file.txt`: load the track color from the specified file.
+- `load_track_color,my_track_color_file.txt`: load the color for current tract from a text file.
+- `load_cluster_color,clutser_colors.txt`: load the color for all loaded tracts from a text RGB file.
 - `cut_by_slice`: cut tracks by the current slice position. Specify slice orientation by 0:sagittal 1:coronal, 2:axial. and direction by 0:lesser 1:greater. For example,  `--cut_by_slice,2,1` cut tracks at Z+
 
 
