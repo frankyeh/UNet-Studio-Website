@@ -6,7 +6,6 @@
 
 [*Correlational tractography*](https://www.sciencedirect.com/science/article/pii/S1053811921009241#sec0038) tracks the tract segments that have anisotropy correlated with a study variable in the group studies, and [connectometry](/ref/Connectometry.pdf) is the statical method that uses a permutation test to get statistical inference for correlational tractography. 
 
-
 This documentation introduces the steps to create a connectometry database for generating correlational tractography and testing its significance. 
 
 # Step C1: Create a connectometry database
