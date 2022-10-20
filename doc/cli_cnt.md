@@ -33,20 +33,18 @@ dsi_studio --action=cnt --source=connectometry.sdf.db.fib.gz --demo=PANSS.csv --
 | source |  specify the db.fib.gz file  |
 | demo |  assign the path to the demographic CSV or Text file. |
 | variable_list | assign the study variables to be included in the regression model. use comma to include multiple variables. <br> For example, use --variable_list=0,1,2 to include the first, second, and third variable.|
-| voi | specify variable of interest (used only in multiple regression). <br> --foi=0 will analyze the "first" variable listed in the demographic file, <br> --foi=1 will analyze the second one. |
+| voi | specify variable of interest (used only in multiple regression). <br> --foi=0 will analyze the "first" variable listed in the demographic file, <br> --foi=1 will analyze the second one. To test the longitudinal change, specify --foi=longitudinal |
 
 ## Parameters 
 
 | Parameters | Default  | Description                                                                 |
 |:-----------|:------|:------------------------------------------------------------------------------|
-|nonparametric | `1` | specify whether to use nonparametric correlation. The default is on. |
 |t_threshold | `2.5`   | assign the t threshold for correlational tracking.  |
 |length_threshold | `20` voxel distance | assign the length threshold for correlational tracking. |
 |fdr_threshold | `0`  | assign a nonzero FDR threshold (e.g. 0.05) to enable FDR control. |
 |permutation | `2000`   | assign the number of permutation used in the connectometry analysis. |
 |thread_count | hardware max  | assign the number of threads used in the computation. |
-|tip | `4`   | assign the number of pruning applied to remove noisy results. |
-|normalize_qa |  `1` if qa is used <br> `0` otherwise  | specify whether to normalize QA. For metrics other than QA, do not enable normalization. |
+|tip_iteration | `16`   | assign the number of pruning applied to remove noisy results. |
 |exclude_cb | `1`  | assign --exclude_cb=1 to exclude cerebellum. |
 |no_tractogram |  `1`  | specify 1 to signal DSI Studio NOT to output 3D tractogram pictures. The analysis will still output tractography files, which can be used later to generate tractogram separately. |
 | output | path to the demographics file name | the file prefix for output all analysis results. The default will be the path to demographics file adding the name of the studying variable. | 
