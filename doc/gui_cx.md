@@ -28,7 +28,7 @@ Use [Search in Directory] or [Add] button to load FIB files or MNI-space NIFTI f
 
 You may need to make sure that the file orders match that of your demographic records. Use the "sort" function to sort the files.
 
-If you are going to study the change in a longitudinal study, make sure that you place baseline and follow-up scans of the same subject together.
+If you are going to study the longitudinal change, make sure that you place baseline and follow-up scans of the same subject together (e.g. subject1_scan1, subject1_sca2, subject2_scan1, subject2_scan2 ...etc.).
 
 ## Step C1b: Select analysis metric and template
 
@@ -50,36 +50,32 @@ Click the "Create Database" button to create the connectometry database as a db.
 
 At the End of this step, you will have a connectometry database, which is a file name with the extension db.fib.gz
 
-# [Optional] Step C2: View/Modify a Connecometry Database 
-
 After creating the database file, you can check the alignment of the database or add/remove subjects to/from the database using [**Step C2a**:**Modify a Connecometry Database**]. 
-
 ***TIP***
 You can store demographic values with the connectometry DB file:
 1. Open the .db.fib.gz in [Step C2: View/Modify a Connectometry Database]. 
 2. Load the demographic using [Files][Open Demographics]
 3. Overwrite the .db.fib.gz file by [File][Save DB as...]
 
+# Step C2: Comppute longitudinal change (skip this step in cross-sectional studies)
 
-## Additional processing for longitudinal studies
+Skip this step if your study is a cross-sectional study (has no repeat scans of the same subjects).
 
-Skipping this if your study is a cross-sectional study (has no repeat scans of the same subjects).
+1. In the main window, click [**Step C2a**:**Modify a Connecometry Database**] and select the database.
 
-If your study is a longitudinal study (e.g. comparing pre- and post-treatment of the same subject), then the scans of the same individuals need to be matched to calculate their difference. The following are the steps:
+Make sure that the baseline and follow-up scans of the same subject are stored consecutively in the database (e.g. subject1_scan1, subject1_sca2, subject2_scan1, subject2_scan2 ...etc.). See the following example:
 
-1. In the main window, click [**Step C2a**:**Modify a Connecometry Database**] and select the database:
+![image](https://user-images.githubusercontent.com/275569/197028837-454ebb39-ca9c-4fa0-96de-0d32c5074083.png)
 
-![](https://sites.google.com/a/labsolver.org/dsi-studio/_/rsrc/1499737014649/Manual/diffusion-mri-connectometry/db_longitudinal.jpg?height=291&width=320)
+2. In the top menu, select [Tools][Longitudinal scans...] to bring up the subject matching window:
 
-2. In the top menu, select [Tools][Longitudinal scans...] to bring up the subject match window:
+![image](https://user-images.githubusercontent.com/275569/197028970-1ea713e2-cb7a-4331-8472-d70b83a2c664.png)
 
-![](https://sites.google.com/a/labsolver.org/dsi-studio/_/rsrc/1473869717248/Manual/diffusion-mri-connectometry/cnt_change3.png?height=178&width=320)
+Double-check to make sure the scans of the same subject are matched.
 
-Click on the "Match consecutive scans" button to match scan 0 (base) and scan 1 (study), 2 and 3, 4 and 5, throughout the entire database.
+You may also use a text file to match scans. The text file should be the consecutive numbers of the matching pairs. The first number will be used as the baseline, and the second number will be the study scans. For example, a text file with "0 1 2 3 4 5" will match scan 0 (base) and scan 1(study), scan 2 and scan 3, scan 4 and scan 5. Please note that the first scan in the database is labeled by 0, not 1.
 
-Alternatively, you can use a text file to match scans. The text file should be the consecutive numbers of the matching pairs. The first number will be used as the baseline, and the second number will be the study scans. For example, a text file with "0 1 2 3 4 5" will match scan 0 (base) and scan 1(study), scan 2 and scan 3, scan 4 and scan 5. Please note that the first scan in the database is labeled by 0, not 1.
-
-The "metric" group box allows you to define how the difference is calculated. "a-b" calculates the absolute difference (recommended) by "the study scan (a) - the baseline (b)", whereas "(a-b)/(a+b)" calculates the difference as a ratio. "a-b" is recommended here. If your data were acquired from different scanners or sites, you may need to check "Normalize QA".
+The "metric" group box allows you to define how the difference is calculated. "scan2-scan1" calculates the difference (recommended), whereas "(scan2-scan1)/scan1" calculates the difference as a percentage of the first scan.
 
 Click "Ok" to calculate the difference between scans and go back to the database window.
 
