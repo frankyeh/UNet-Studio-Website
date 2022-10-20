@@ -6,6 +6,8 @@
 
 [*Correlational tractography*](https://www.sciencedirect.com/science/article/pii/S1053811921009241#sec0038) tracks the tract segments that have anisotropy correlated with a study variable in the group studies, and [connectometry](/ref/Connectometry.pdf) is the statical method that uses a permutation test to get statistical inference for correlational tractography. 
 
+The implementation in DSI Studio use Spearman rank-based correlation to consider the nonlinear effect between the study variable and the diffusion measure. The other covariates will be considered using a linear regression model, and the diffusion metrics will be adjusted using partial correlation.
+
 This documentation introduces the steps to create a connectometry database for generating correlational tractography and testing its significance. 
 
 # Step C1: Create a connectometry database
@@ -57,7 +59,7 @@ You can store demographic values with the connectometry DB file:
 2. Load the demographic using [Files][Open Demographics]
 3. Overwrite the .db.fib.gz file by [File][Save DB as...]
 
-# Step C2: Comppute longitudinal change (skip this step in cross-sectional studies)
+# Step C2: Compute longitudinal change (skip this step in cross-sectional studies)
 
 Skip this step if your study is a cross-sectional study (has no repeat scans of the same subjects).
 
@@ -108,16 +110,11 @@ SUB06,27,1
 ***IMPORTANT***
 Make sure the subject order is identical to the list in the connectometry database.
 
-
 Click on the button labeled "open subjects demographics". Load the text file that records all the scalar values that will be included in the regression model. 
 
-*If your data are from a longitudinal study and only want to look at longitudinal differences without considering any other variable, go directly to [Step C3d: Parameters].
+## Step C3b: Select covariates
 
-## Step C3b: Select variables
-
-Choose the variables to be considered. This can include all covariates to be considered such as sex and age and also your target study variable. 
-
-DSI Studio will use linear regression to eliminate the effect of covariates from the diffusion measures.
+Choose the variables to be considered such as sex and age. DSI Studio will use linear regression to eliminate the effect of covariates from the diffusion measures.
 
 There are several tips in choosing the variables in the model:
 
@@ -128,19 +125,12 @@ If your study variables are highly correlated to each other, consider using a PC
 
 ## Step C3c: Study variable
 
+
 Choose the target variable to study, and DSI Studio will find any tracks correlated with this variable. The effect of other covariates selected in C3b will be regressed out.
 
-[Nonparametric] will use Spearman rank-based correlation to consider the nonlinear effect between the study variable and the diffusion measure. The other covariates will still be regressed using a linear regression model.
+If your data are from a longitudinal study and want to look at longitudinal differences after considering variables selected in the previous step, choose "Longitudinal change" as the study variable.
+If your data are from a longitudinal study including controls/patients and want to compare longitudinal differences between controls and patients, after considering variables selected in the previous step, choose the group id of control/patient as the study variable.
 
-If your data are from a longitudinal study and want to look at longitudinal differences after considering variables selected in the previous step, choose "Intercept".
-
-For example:
-
-If you have a longitudinal connectometry database with "age", and you don't select anything for Step C3b and select "Intercept" Step C3c. This will show tracks with significant changes in the longitudinal study.
-
-If you choose "age" for Step C3b and choose "Intercept" for Step C3c?. This will show tracks with significant changes in the longitudinal study, and the effect of age on the change will be eliminated.
-
-If you choose "age" for Step C3b and choose "age" for Step C3c? This will show tracks with changes that are significantly correlated with age. A positive correlation means when age increases, the tracks show increased anisotropy.
 
 ## Step C3d: Parameters
 
