@@ -125,8 +125,7 @@ If your study variables are highly correlated to each other, consider using a PC
 
 ## Step C3c: Study variable
 
-
-Choose the target variable to study, and DSI Studio will find any tracks correlated with this variable. The effect of other covariates selected in C3b will be regressed out.
+Choose the target variable to study, and DSI Studio will find any tracks with diffusion metrics correlated with this variable. The effect of other covariates selected in C3b will be regressed out.
 
 If your data are from a longitudinal study and want to look at longitudinal differences after considering variables selected in the previous step, choose "Longitudinal change" as the study variable.
 If your data are from a longitudinal study including controls/patients and want to compare longitudinal differences between controls and patients, after considering variables selected in the previous step, choose the group id of control/patient as the study variable.
@@ -175,18 +174,18 @@ Results for T-statistics is stored in a FIB file:
 
 | Output Files | Descriptions |
 |:------------|:-------------|
-| bmi.t_statistics.fib.gz | A FIB file storing the t-statistics and can be opened in [Step T3:fiber tracking] to visualize T-statistics with tracks. The T statistics for positive correction is stored as "inc_t", whereas negative correlation is stored as "dec_t" |
+| bmi.t_statistics.fib.gz | A FIB file storing the t-statistics and can be opened in [Step T3:fiber tracking] to visualize T-statistics with tracks. The T statistics for increased metrics is stored as "inc_t", whereas decreased metrics is stored as "dec_t" |
 | bmi.t2.fdr.jpg | the FDR with respect to tracking length. |
 | bmi.t2.fdr_dist.values.txt | the FDR values with respect to length. |
 | demo.txt.length40.bmi.t20.report.html | HTML file reporting the connectometry results |
 
-Results for positive correlation: ( negative correlation will have *neg_corr* in the file name)
+Results for increased metrics associated with study variable will be saved with "inc" (for decreased metrics, "dec"):
 
 | Output Files | Descriptions |
 |:------------|:-------------|
-| bmi.t2.pos_corr.dist.jpg | shows the histogram of track length.|
-| bmi.t2.pos_corr.tt.gz | tractography file stores tracks that are positively correlated with the study variable. It can be open with the t-statistics FIB file |
-| bmi.t2.pos_corr.jpg | figure showing the tracks in four different views. |
+| bmi.t2.inc.dist.jpg | shows the histogram of track length.|
+| bmi.t2.inc.tt.gz | tractography file stores tracks that are increased metrics correlated with the study variable. It can be open with the t-statistics FIB file |
+| bmi.t2.inc.jpg | figure showing the tracks in four different views. |
 
 
 ***TIPS***
@@ -231,17 +230,17 @@ I would recommend checking [Tract Misc][Recognize and Cluster] and fine-tuning i
 
 The FDR in report.html is for the overall results, but findings with a longer distance will have a lower FDR than the others. You can report the FDR of each bundle based on its length.
 
-To do this, first, open the 3D interface at Step C4f or open *.t_statistics.fib.gz in Step T3 and load *_corr.tt.gz files.
+To do this, first, open the 3D interface at Step C4f or open *.t_statistics.fib.gz in Step T3 and load the inc.tt.gz or dec.tt.gz files.
 
 Segment findings into bundles as mentioned above. Get the length using [Tracts][Statistics]. If the length is 60mm, then the voxel distance is 30.
 
-Last, check the FDR values in *.fdr_dist.values.txt and look up the row with voxel distance=30 to get the FDR values. There is one FDR for positive correlation and one for negative. Make sure you get the right one.
+Last, check the FDR values in *.fdr_dist.values.txt and look up the row with voxel distance=30 to get the FDR values. There is one FDR for increased metrics and one for decreased. Make sure you get the right one.
 
 ## 3. Scatter plots of bundle statistics and study variable
 
 We can further plot a scatter plot between the study variable and the diffusion variable (e.g. QA or nQA) averaged from the bundle.
 
-To do this, open the connectometry database (*.db.fib.gz) in [Step T3: Fiber Tracking] and load the tracks from *.**pos_corr****.tt.gz **(track positively correlated with the study variable)or ***.****neg_corr****.tt.gz** (tracks negatively correlated) using [Tracts][Open Tracts]. Then use [Tracts][Statistics] to get along tracks metrics for each subject in the connectometry database. The metric (here, use QA as an example) has raw QA or normalized QA (used if you check [normalize QA] in the advance option). This step will take a while.
+To do this, open the connectometry database (*.db.fib.gz) in [Step T3: Fiber Tracking] and load the tracks from *.**inc****.tt.gz **(track with increased metrics associated with the study variable)or ***.****dec****.tt.gz** (tracks with decreased metrics) using [Tracts][Open Tracts]. Then use [Tracts][Statistics] to get along tracks metrics for each subject in the connectometry database. The metric (here, use QA as an example) has raw QA or normalized QA (used if you check [normalize QA] in the advance option). This step will take a while.
 
 The QA value can be copied to the clipboard and pasted into an Excel sheet. We can place them with the demographics values in and plot a scatter plot.
 
