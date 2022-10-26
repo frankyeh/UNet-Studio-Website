@@ -4,19 +4,9 @@
 
 ---
 
-DSI Studio is able to render cortical surface and assist localization of the fiber tracts, and the cortical surface can be added using the following steps:
+DSI Studio is able to render cortical surface and assist localization of the fiber tracts, and the cortical surface can be added by [Slices][Add Isosurface][Full]. You may try different thresholds to the best surface rendering. A higher threshold often results in the smaller surface object, while the lower threshold may lose structural detail. You may need to repeat this step several times until you get a satisfactory result.
 
-**If your data are templates or reconstructed by QSDR:**
-
-1. Switch slice from [qa] to [icbm_wm] at the top of the 3D window.
-2. [Slices][Add Isosurface][Full] try different thresholds to the best surface rendering. A higher threshold often results in the smaller surface object, while the lower threshold may lose structural detail. You may need to repeat this step several times until you get a satisfactory result.
-
-**If your data are reconstructed by GQI:**
-
-DSI Studio can visulize cortical surface using either subject's T1W or using ICBM-152 white matter map transformed to subject's space. The following are steps:
-
-1. Insert ICBM152.WM.nii.gz using [Slices][Insert MNI images] or insert subject's T1W using [Slices][Insert T1W/T2W images]. ICBM152.WM is included in DSI Studio pacakge at dsi_studio_folder\atlas\ICBM152 (Windows). On Mac OS, it is inside dsi_studio app package (right click on dsi_studio.app to show content). If subject's T1W is used, DSI Studio will register the image with MNI-space T1W and ask users for confirmation. This registration allows DSI Studio to remove the skull. 
-2. [Slices][Add Isosurface][Full]. DSI Studio will ask for the confirmation of a registration result to remove the skull. After then, it will ask for the threshold for creating an isosurface. A higher threshold often results in the smaller surface object, while the lower threshold may lose structural detail. You may need to repeat this step several times until you get a satisfactory result.
+To use T1W as the surface, insert the T1W NIFTI file using [Slices][Insert Other images]. DSI Studio will register the image with MNI-space T1W and ask users for confirmation. If the registration is not perfect, you may adjust it using [Slice][Adjust Registration]. After registration, add the surface using [Slices][Add Isosurface][Full]. DSI Studio will ask for the confirmation of a registration result to remove the skull. After then, it will ask for the threshold for creating an isosurface. A higher threshold often results in the smaller surface object, while the lower threshold may lose structural detail. You may need to repeat this step several times until you get a satisfactory result.
 
 *The opacity of the isosurface can be adjusted in the [Surface Rendering] option in the right-upper window.*
 
