@@ -1,4 +1,4 @@
-# Surface Visualization
+# Surface visualization
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PdjfjRW7bLw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -13,7 +13,7 @@ To use T1W as the surface, insert the T1W NIFTI file using [Slices][Insert Other
 *You may create a cross-section of the surface by selecting the drop-down list on the top of the 3D window. The level of the cross-section is determined by the slice position. The rendering color and opacity can also be changed using the options under the item named "Surface".*
 
 
-# Region Visualization
+# Region visualization
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RdUgv9PFrks" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -31,11 +31,11 @@ DSI Studio provides line-art for coronal sections of regions using the following
 
 5. On the middle top toolbar, select the region and change background color to white and foreground color to red/yellow, check overlay
 
-# Slice Visualization
+# Slice visualization
 
-Select [Slices][Insert T1W/T2W Images] and assign DICOM or NIFTI files to provide the source data. Image registration will be conducted in the background. Once you load the structural images, DSI Studio starts a background registration. You may need to wait for a while until it reaches a good registration.
+Select [Slices][Insert Other Images] and assign DICOM or NIFTI files to provide the source data. Image registration will be conducted in the background. Once you load the structural images, DSI Studio starts a background registration. You may need to wait for a while until it reaches a good registration.
 
-To save the transformation matrix, select [Slices][Save registration]. The transformation matrix can be exported to a text file. You may also load an external transformation matrix in text format by [Slices][Load mapping]. This will stop the background registration and overwrite it.
+To save the transformation matrix, select [Slices][Save Registration]. The transformation matrix can be exported to a text file. You may also load an external transformation matrix in text format by [Slices][Load Mapping]. This will stop the background registration and overwrite it.
 
 
 If the alignment is not good, you can manually adjust it using [Slices][Adjust Registration]. Use the "switch view" button to check the alignment.
@@ -44,17 +44,7 @@ If the alignment is not good, you can manually adjust it using [Slices][Adjust R
 
 To visualize images in different color maps, click [Slices][Load Color Map] and select the PET_RGB.txt file.
 
-
-**Mark tracts or regions on T1W/T2W slices for DBS, focused ultrasound, or surgical navigation**
-
-Make sure that the current slice is the T1W DICOM you loaded, and then use [Slices][Mark Tracts on T1W/T2W] to create bright spots on the slices. You can also mark the region on T1W/T2W using [Slices][Mark Regions on T1W/T2W]. 
-
-![image](https://user-images.githubusercontent.com/275569/147839247-2d07edb1-88c9-4c06-a75a-7a60d451031c.png)
-
-To save slices back to the original DICOM, use [Slices][Save Slices to DICOM] and select the original DICOM images. DSI Studio will output new DICOM files with "mod" in the prefix of the file name.
-
-
-**slice overlay**
+## Slice overlay
 
 ![image](https://user-images.githubusercontent.com/275569/147838851-2a802ca0-600c-4e6b-a35d-489b8667f654.png)
 
@@ -68,20 +58,31 @@ The following steps create an overlay from the added image:
 
   The mosaic overlay can be created by changing the [region window][slice layout] in the Options Window to the right
  
-# Device Visualization
+
+# "Burn" tracts/regions on DICOM files for clinical navigation systems
+
+First, use [Slices][Insert Other Images] and assign DICOM or NIFTI files to provide the source data.
+
+Make sure that the current slice is the T1W DICOM you loaded, and then use [Slices][Mark Tracts on Slices] to create bright spots on the slices. You can also mark the region on T1W/T2W using [Slices][Mark Regions on Slices]. 
+
+![image](https://user-images.githubusercontent.com/275569/147839247-2d07edb1-88c9-4c06-a75a-7a60d451031c.png)
+
+To save slices back to the original DICOM, use [Slices][Save Slices to DICOM] and select the original DICOM images. DSI Studio will output new DICOM files with "mod" in the prefix of the file name.
+
+# Device visualization
 
 ![image](https://user-images.githubusercontent.com/275569/147839140-127aedcb-e626-422a-8a3b-c1f7749d24d5.png)
 
 DSI Studio can visualize SEEG electrodes, DBS lead, probes, or an obturator in the 3D space with tractography.
 
 
-**automatic electrode detection using CT images**
+## automatic electrode detection using CT images
 
 Insert CT images using [Slices][Insert T1W/T2W images] and wait until DSI Studio registers them with MRI. The detection needs isotropic resolution CT images. If your CT image is not isotropic, you can make it isotropic by using [Tools][O4 View Images][Edit][Make Isotropic]. After inserting the CT images, then the electrode can be detected using [Devices][Dertect electrodes]. The default parameters (value in millimeters) should work for most of the cases.
 
 The location of the contacts will be captured as "regions," and the electrodes will be visualized, as shown in the Figure.
 
-**manual adding devices**
+## manual adding devices
 
 A new device can be added using [Device][New Device] on the top menu.
 
@@ -103,15 +104,13 @@ To change its orientation, press Ctrl+A OR Cmd+A and left-click on the shaft to 
 
 The slice location can also be dragged using Ctrl+A.
 
-**save devices**
-
+## save devices
 
 The location of the devices can be saved as a CSV file. The file will include the following fields:
 
 [Name],[Type],[Location in voxel space],[Orientation in voxel space],[Length],[Color in 32bit integer]
 
-
-**adding customized devices**
+## adding customized devices
 
 DSI Studio currently supports the following devices:
 
@@ -145,7 +144,6 @@ The last row is the radius in mm.
 Once a new device is added, save device.txt back and restart DSI Studio to see if it takes effect.
 
 If you would like to suggest a new type of segment, please feel free to contact me at frank.yeh@gmail.com
-
 
 # Saving/Loading Workspace
 
