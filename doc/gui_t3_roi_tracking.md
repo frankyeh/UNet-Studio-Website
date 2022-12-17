@@ -141,13 +141,13 @@ An ISO map is optional, but having an ISO template with the QA template will gre
 
 If you only have a T1W template (e.g. child or elder population), then you can warp ICBM152 QA and ISO template to your template space using the following procedure:
 
-1. [O6: Linear registration box] select "\atlas\ICBM152\ICBM152.QA.nii.gz" as the subject image and "\mni_icbm152_t1_tal_nlin_asym_09c.nii.gz" (provided in DSI Studio package, windows version) as the reference image. 
+1. [O6: Linear registration box] select "\atlas\ICBM152\ICBM152.QA.nii.gz" as the subject image and "\atlas\ICBM152\ICBM152.T1W.nii.gz" (provided in DSI Studio package, windows version) as the reference image. 
 
 2. Click on [Save Warped Image] and save it as a new file. Let's name it new.QA.nii.gz
 
 3. Repeat steps 1 and 2 but select "\atlas\ICBM152\ICBM152.ISO.nii.gz" to create new.ISO.nii.gz
 
-4. [07: Nonlinear registration box], [Open Subject]->"\mni_icbm152_t1_tal_nlin_asym_09c.nii.gz" and [Open Reference]->your new t1w template. I would suggest using smoothness=1.0 or higher to avoid over-distorted results. Click [Run]. You may experiment with different smoothness values to get the best result.
+4. [07: Nonlinear registration box], [Open Subject]->"\atlas\ICBM152\ICBM152.T1W.nii.gz" and [Open Reference]->your new t1w template. I would suggest using smoothness=1.0 or higher to avoid over-distorted results. Click [Run]. You may experiment with different smoothness values to get the best result.
 
 5. After registration, select the top menu [File][Apply Warpping]->new.QA.nii.gz and overwrite it.
 
