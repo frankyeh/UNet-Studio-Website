@@ -27,7 +27,7 @@ This grid scheme addresses the issues of the HCP-style acquisition mentioned abo
 
 ## Steps to install the 12-min q-space scheme on Siemens scanners
 
-The following steps will help set up the grid-258 sampling scheme on an MRI scanner. They were tested on Siemens Prisma scanners, and a similar protocol can be implemented in other manufacturers. If scanning time is an issue, consider 5-minute grid-101 ([b-table here](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/EUFLViycNvFJjitO0pM2pg4BRHdXc9LSjICBtuAgiBk_4A?e=ztSaxy))
+The following steps will help set up the [12-min grid-258 sampling scheme](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/EbkO7omk2s9MiKSoc-ygI0sB00yc1k0CIInIabXeJ1v7Bw?e=aIHR8y) on an MRI scanner. They were tested on Siemens Prisma scanners, and a similar protocol can be implemented in other manufacturers. If scanning time is an issue, consider 5-minute grid-101 ([b-table here](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/EUFLViycNvFJjitO0pM2pg4BRHdXc9LSjICBtuAgiBk_4A?e=ztSaxy))
 
 For a Siemens Prisma or Skyra scanner, a C2P agreement is needed (get it from Siemens representative) to install the CMRR multiband sequence:
 http://www.cmrr.umn.edu/multiband/. Additional licenses include Siemens SMS EPI license (for MB imaging), Siemens DTI package license (for diffusion table), High-performance gradient (HCP) that is installed in Prisma (for high bandwidth readout).
