@@ -36,7 +36,8 @@ Then setup the sequence using the exar file:
 
 - [exar](/files/QSI258.exar1)
 - [exar-journal](/files/QSI258.exar1-journal)
-- [QSI_258dir.pdf](/files/QSI258.pdf)
+- [QSI_258dir.pdf (CMRR)](/files/QSI258.pdf)
+- [QSI_258dir.pdf (Siemens SMS)](/files/QSI258_SMS.pdf)
 
 Please use the "dMRI_dir258_1" sequence and add its opposite phase encoding b0 acquisition "dMRI_dir258_2" (take only a few seconds).
 
