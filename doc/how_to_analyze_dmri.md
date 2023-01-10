@@ -40,6 +40,8 @@ The simplest way to analyze diffusion data is to assign a region in the brain (e
 
 ## Tractometry
 
+Tractometry is a term that refers to the study and analysis of white matter tracts in the brain. White matter tracts are made up of axons (long, thin fibers) that connect different areas of the brain and facilitate communication between neurons. Tractometry involves using techniques such as diffusion tensor imaging (DTI) to visualize and quantify these white matter tracts in the brain. This can be used to study the structure and function of the brain, as well as to identify abnormalities or changes in the white matter tracts that may be associated with various neurological conditions.
+
 Example studies: <https://www.nature.com/articles/nn.3870>
 
 The tractography-based analysis, a.k.a. tractometry, uses diffusion fiber tracking (manual or automatic) to define the trajectories of fiber pathways and extract tract-associated metrics. The advantage of tractography-based analysis is that it is fiber specific, whereas region-based analysis does not specify which fiber pathways to be analyzed. The following list is the steps for tractography-based analysis.
