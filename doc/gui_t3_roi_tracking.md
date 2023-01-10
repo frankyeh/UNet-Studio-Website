@@ -1,6 +1,7 @@
 # ROI-based Fiber Tracking
 
-ROI-based fiber tracking uses a combination of brain regions to filter fiber tracking results. 
+Region-based fiber tracking is a fiber tracking approach for mapping white matter tracts in the brain using user-defined regions. It involves identifying specific regions of interest (ROIs) in the brain and then tracking the connections between these ROIs to understand the structural organization of the brain.
+
 Example protocol for different pathways can be found in the [TrackEM project](https://my.vanderbilt.edu/tractem/protocol/) and recent [TRACULA update](https://www.biorxiv.org/content/10.1101/2021.06.28.450265v2.full)
 
 
