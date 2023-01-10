@@ -13,7 +13,7 @@ making the entire acquisition much more efficient. Moreover, the scheme reaches 
 
 This grid scheme addresses the issues of the HCP-style acquisition mentioned above.
 
-> **Using a multiband sequence (e.g., CMRR) with an MB factor of 4, this 2-mm 258-direction dMRI acquisition can be completed in 12 minutes.**  
+> **Using a multiband sequence (e.g., Siemens SMS or CMRR) with an MB factor of 4, this 2-mm 258-direction dMRI acquisition can be completed in 12 minutes.**  
 
 *The grid sampling has several benefits:*
 - It has uniformly distributed density in the diffusion encoding space (i.e., q-space) and does not have the sampling homogeneity problem in the shell acquisitions. 
@@ -29,17 +29,15 @@ This grid scheme addresses the issues of the HCP-style acquisition mentioned abo
 
 The following steps will help set up the [12-min grid-258 sampling scheme](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/EbkO7omk2s9MiKSoc-ygI0sB00yc1k0CIInIabXeJ1v7Bw?e=aIHR8y) on an MRI scanner. They were tested on Siemens Prisma scanners, and a similar protocol can be implemented in other manufacturers. If scanning time is an issue, consider 5-minute grid-101 ([b-table here](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/EUFLViycNvFJjitO0pM2pg4BRHdXc9LSjICBtuAgiBk_4A?e=ztSaxy))
 
-For a Siemens Prisma or Skyra scanner, a C2P agreement is needed (get it from Siemens representative) to install the CMRR multiband sequence:
-http://www.cmrr.umn.edu/multiband/. Additional licenses include Siemens SMS EPI license (for MB imaging), Siemens DTI package license (for diffusion table), High-performance gradient (HCP) that is installed in Prisma (for high bandwidth readout).
-
 Then setup the sequence using the exar file:
 
 - [exar](/files/QSI258.exar1)
 - [exar-journal](/files/QSI258.exar1-journal)
-- [QSI_258dir.pdf (CMRR)](/files/QSI258.pdf)
-- [QSI_258dir.pdf (Siemens SMS)](/files/QSI258_SMS.pdf)
+- [QSI_258dir.pdf (select the two Siemens SMS sequences)](/files/QSI258_SMS.pdf) or [QSI_258dir.pdf (CMRR)](/files/QSI258.pdf)
 
-Please use the "dMRI_dir258_1" sequence and add its opposite phase encoding b0 acquisition "dMRI_dir258_2" (take only a few seconds).
+Please use the "dMRI_dir258_1_Siemens" sequence and also its opposite phase encoding b0 acquisition "dMRI_dir258_2_Siemens" for distortion correction (the second scan onl takes only a few seconds).
+
+On a Siemens Prisma or Skyra scanner, you may need licenses such as Siemens SMS EPI license (for MB imaging), Siemens DTI package license (for diffusion table), High-performance gradient (HCP) that is installed in Prisma (for high bandwidth readout).
 
 In the diffusion tab of the sequence, switch "MDDW" to "Free" mode and load the [grid-258 b-table](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/ER8JurqNeGhAnn6k11tKAkEBZoGwPtuPCTnJK3ateCeAjg?e=yqUuIf).
 The grid-258 text file should be placed under C:\MedCom\MriCustomer\seq\. You may need to rename the current DiffusionVectors.txt file to another name first and then copy the grid-258 table to DiffusionVectors.txt.
