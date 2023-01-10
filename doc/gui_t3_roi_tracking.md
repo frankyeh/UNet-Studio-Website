@@ -4,10 +4,9 @@ Region-based fiber tracking is a fiber tracking approach for mapping white matte
 
 Example protocol for different pathways can be found in the [TrackEM project](https://my.vanderbilt.edu/tractem/protocol/) and recent [TRACULA update](https://www.biorxiv.org/content/10.1101/2021.06.28.450265v2.full)
 
+# Step T3a: Assign Regions
 
 First, open the main window and click a button named [**Step T3: Fiber Tracking**] to select a FIB file generated from Step T1-T2. DSI Studio will bring up the tracking window.
-
-# Step T3a: Assign Regions
 
 ![image](https://user-images.githubusercontent.com/275569/147854254-70bd8cf7-9a47-485e-bab2-d38bfa19a2c6.png)
 
