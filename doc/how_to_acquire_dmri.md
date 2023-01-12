@@ -25,30 +25,27 @@ This grid scheme addresses the issues of the HCP-style acquisition mentioned abo
 - A bipolar-encoding pulse is needed to handle eddy current at the sequence level: FSL's *eddy* need enough redundancy at each shell to "interpolate" or correct DWI singals. The grid-258 turns out does not have this redundancy. Each of the acquired signals is much more unique and cannot be interpolated by the neighboring DWI signals. The eddy current distortion needs sequence-level correction.
 - Spherical harmonics methods (e.g. CSD, MSMT-CSD) cannot use grid scheme data.
 
-## Steps to install the 12-min q-space scheme on Siemens scanners
+## Steps to install the 12-min q-space scheme on Siemens Prisma scanners
 
-The following steps will help set up the [12-min grid-258 sampling scheme](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/EbkO7omk2s9MiKSoc-ygI0sB00yc1k0CIInIabXeJ1v7Bw?e=aIHR8y) on an MRI scanner. They were tested on Siemens Prisma scanners, and a similar protocol can be implemented in other manufacturers. If scanning time is an issue, consider 5-minute grid-101 ([b-table here](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/EUFLViycNvFJjitO0pM2pg4BRHdXc9LSjICBtuAgiBk_4A?e=ztSaxy))
-
-Then setup the sequence using the exar file:
+The following files can be used to set up the 12-min 258-direction scan on the SIEMENS Prisma scanners. If scanning time is an issue, consider 5-minute 101-direction scan.
 
 - [exar](/files/QSI258.exar1)
 - [exar-journal](/files/QSI258.exar1-journal)
 - [QSI_258dir.pdf (select the two Siemens SMS sequences)](/files/QSI258_SMS.pdf) or [QSI_258dir.pdf (CMRR)](/files/QSI258.pdf)
+- [grid-258 b-table](/files/GRID258_VECTOR_TABLE.txt)(recommended) or [grid-101 b-table here](/files/GRID101_VECTOR_TABLE.txt)
 
-Please use the "dMRI_dir258_1_Siemens" sequence and also its opposite phase encoding b0 acquisition "dMRI_dir258_2_Siemens" for distortion correction (the second scan onl takes only a few seconds).
+You will need to acquire both "dMRI_dir258_1_Siemens" (full 258-direction DWI) and also its opposite phase encoding b0 acquisition "dMRI_dir258_2_Siemens" (only the b0), which is for distortion correction.
 
-On a Siemens Prisma or Skyra scanner, you may need licenses such as Siemens SMS EPI license (for MB imaging), Siemens DTI package license (for diffusion table), High-performance gradient (HCP) that is installed in Prisma (for high bandwidth readout).
+You may need licenses such as Siemens SMS EPI license (for MB imaging), Siemens DTI package license (for diffusion table), High-performance gradient (HCP) that is installed in Prisma (for high bandwidth readout).
 
-In the diffusion tab of the sequence, switch "MDDW" to "Free" mode and load the [grid-258 b-table](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/ER8JurqNeGhAnn6k11tKAkEBZoGwPtuPCTnJK3ateCeAjg?e=yqUuIf).
-The grid-258 text file should be placed under C:\MedCom\MriCustomer\seq\. You may need to rename the current DiffusionVectors.txt file to another name first and then copy the grid-258 table to DiffusionVectors.txt.
+In the diffusion tab of the sequence, switch "MDDW" to "Free" mode and load the grid-258 b-table. The table should be placed under C:\MedCom\MriCustomer\seq\. You may need to rename the current DiffusionVectors.txt file to another name first and then copy the grid-258 table to DiffusionVectors.txt.
 Then set b-value1=0 and b-value2=4000
 
 For other scanners, please follow the following instruction.
 
 ## Steps to install the 12-min q-space scheme on Other scanners
 
-Convert the [grid-258 b-table](https://pitt-my.sharepoint.com/:t:/g/personal/yehfc_pitt_edu/ER8JurqNeGhAnn6k11tKAkEBZoGwPtuPCTnJK3ateCeAjg?e=yqUuIf)
-to its compatible format.
+Convert the [grid-258 b-table](/files/GRID258_BVAL_BVEC.txt) to its compatible format.
 
 The following are acquisition parameters:
 
