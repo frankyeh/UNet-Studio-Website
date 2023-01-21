@@ -87,6 +87,7 @@ done
 | align_to  | specify a T1W or T2W for DSI Studio to use affine transform to its space. (including scaling or shearing) |
 | other_image  | assign other image volumes (e.g., T1W, T2W image) to be wrapped with QSDR. --other_image=<label>:<file path>,<label>:<file path> |
 | save_src | save preprocessed images to a new SRC file |
+| save_nii | save preprocessed images back to 4d NIFTI file |
 | motion_correction | apply rigid-body transformation to align DWI volumes. The b-table is also rotated accordingly |     
 | cmd  | specify any of the following commands for preprocessing. Use "+" to combine commands, and use "=" to assign value/parameters (e.g. --cmd="[Step T2][Corrections][EDDY]+[Step T2][Edit][Overwrite Voxel Size]=1.0" |
            
