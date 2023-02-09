@@ -156,7 +156,7 @@ Check this option if you are using a shell acquisition to make sure that the ori
 
 ***Advanced Options: No high b for DTI***
 
-Check this if your tensor estimation uses only b-values lower than 4,000.
+Check this if your tensor estimation uses only b-values lower than 1,500.
 
 ***Advanced Options: Other output metrics***
 
