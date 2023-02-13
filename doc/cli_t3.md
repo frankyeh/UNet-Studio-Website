@@ -121,7 +121,7 @@ The following settings are also included in `--parameter_id` but  usually the de
 | dt_threshold | assign percentage threshold for differential tractography. assign --dt_threshold=0.1 to detect more than 10% change. |
 | dt_metric1 | specify the first metrics for differential tracking |
 | dt_metric2 | specify the second metrics for differential tracking |
-| dt_threshold_type | specify the calculation of the differences. 0: (m1-m2)/m1 1:(m1-m2) | 
+| dt_threshold_type | specify the calculation of the differences. 0: (m1-m2)/m1 1: (m1-m2)/m2 2:(m1-m2) | 
 
 > To load slices as "MNI images", please include "mni" in the file name
 ```
