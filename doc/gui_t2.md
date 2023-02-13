@@ -59,6 +59,8 @@ You can open/save the mask to a txt file or nifti file.
 2. DSI Studio will call FSL's eddy to handle susceptibility artifact and eddy current distortion.
 
 **This preprocessing may take a long time (in hours)**
+**After the correction, it is recommended to save a new SRC file**
+**When a user load the SRC file, DSI Studio will check if there are previous TOPUP/EDDY correction results and will load them if users request the TOPUP/EDDY again**
 
 # Preprocessing (Animal Data)
 
