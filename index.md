@@ -1,4 +1,4 @@
-# UNet-Studio: A Brain Segmentation Software Tool using UNet
+# UNet-Studio: A Brain Segmentation Software Tool 
  
 <img src="https://user-images.githubusercontent.com/275569/233228920-b0bee64b-8bc1-4d56-b139-0dea185f8777.png" width="800"/>
 
