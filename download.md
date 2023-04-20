@@ -1,14 +1,15 @@
 
 # Packages
 
-## UNet Studio
+## UNet Studio Pre-release
 
-**Currently only Windows version is available for testing
+**Currently, only Windows version is available for testing**
 
 | OS      | File     | Note      |
 |---------|----------|-----------|
-|  Windows (7+)  |   | Download the zip file and unzip it to a folder. Click install_win.bat to install pytorch DLLs (~3GB) and CUDA toolkit (~2gb)|
+|  Windows (7+)  |   | (1) download the zip file and unzip it to a folder. <br> (2) run install_win.bat to install pytorch DLLs (~3GB) and CUDA toolkit (~2gb)|
 
+**To update U-Net Studio, just replace the .exe file.**
 
 # License
 
