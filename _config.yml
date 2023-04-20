@@ -1,7 +1,7 @@
 theme: jekyll-theme-minimal
-title: DSI Studio Documentation
-description: Documentation and Tutorials for DSI Studio
-google_analytics: UA-532890-5
+title: U-Net Studio Documentation
+description: Documentation and Tutorials for U-Net Studio
+google_analytics: 
 defaults:
   - scope:
       path: "doc"
