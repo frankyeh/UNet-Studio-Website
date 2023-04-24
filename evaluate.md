@@ -1,7 +1,7 @@
 Segment Brain Images using Built-in Models
 ------------------------------------------
 
-![Examples of segmented brain images](https://chat.openai.com/images/examples2.png)
+![Examples of segmented brain images](https://github.com/frankyeh/UNet-Studio-Website/blob/main/images/examples2.png)
 
 This documentation describes the steps to segment brain images using the built-in models in the program. Follow the instructions below to segment your animal data.
 
