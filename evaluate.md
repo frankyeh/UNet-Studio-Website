@@ -1,7 +1,7 @@
 Segment Brain Images using Built-in Models
 ------------------------------------------
 
-![Examples of segmented brain images](https://github.com/frankyeh/UNet-Studio-Website/blob/main/images/examples2.png)
+![Examples of segmented brain images](images/examples2.png)
 
 This documentation describes the steps to segment brain images using the built-in models in the program. Follow the instructions below to segment your animal data.
 
@@ -11,7 +11,7 @@ This documentation describes the steps to segment brain images using the built-i
 
 Select the NIFTI files (.nii, .nii.gz) of the animal data as the input for the program. Make sure the images are axial images of the brain, as shown in the example images below for rhesus and rodent brains.
 
-![Example axial images for rhesus and rodent brains](https://github.com/frankyeh/UNet-Studio-Website/blob/main/images/t2_default_template.png)
+![Example axial images for rhesus and rodent brains](images/t2_default_template.png)
 
 Ensure that the orientation is correct, or the segmentation may fail.
 
