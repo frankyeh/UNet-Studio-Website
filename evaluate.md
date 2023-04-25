@@ -1,29 +1,29 @@
 Segment Brain Images using Built-in Models
 ------------------------------------------
 
-![Examples of segmented brain images](images/examples2.png)
+<img src="images/examples2.png" width="800"/>
 
 This documentation describes the steps to segment brain images using the built-in models in the program. Follow the instructions below to segment your animal data.
 
 ### Step 1: Specify Input
 
-![Select NIFTI files of the animal data](https://user-images.githubusercontent.com/275569/234067989-b087a252-8197-4756-95b4-5d363becf043.png)
+<img src="https://user-images.githubusercontent.com/275569/234067989-b087a252-8197-4756-95b4-5d363becf043.png" width="200"/>
 
 Select the NIFTI files (.nii, .nii.gz) of the animal data as the input for the program. Make sure the images are axial images of the brain, as shown in the example images below for rhesus and rodent brains.
 
-![Example axial images for rhesus and rodent brains](images/t2_default_template.png)
+<img src="images/t2_default_template.png" width="400"/>
 
 Ensure that the orientation is correct, or the segmentation may fail.
 
 ### Step 2: Configure Network
 
-![Select a built-in model or load a model file](https://user-images.githubusercontent.com/275569/234068134-0c5adfa7-6766-4bdf-bef8-032471e410f3.png)
+<img src="https://user-images.githubusercontent.com/275569/234068134-0c5adfa7-6766-4bdf-bef8-032471e410f3.png" width="200"/>
 
 Choose a built-in model from the droplist or load a model file using the folder button. The built-in models are stored as .net.gz files in the *network* folder of the program.
 
 ### Step 3: Evaluate
 
-![Choose pre and post processing options](https://user-images.githubusercontent.com/275569/234068755-d976e1bd-4e20-410a-8854-c365b9b33e13.png)
+<img src="https://user-images.githubusercontent.com/275569/234068755-d976e1bd-4e20-410a-8854-c365b9b33e13.png" width="200"/>
 
 After configuring the network, specify the pre-processing and post-processing options:
 
