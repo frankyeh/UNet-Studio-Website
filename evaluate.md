@@ -23,15 +23,20 @@ Choose a built-in model from the droplist or load a model file using the folder 
 
 ### Step 3: Evaluate
 
-<img src="https://user-images.githubusercontent.com/275569/234068755-d976e1bd-4e20-410a-8854-c365b9b33e13.png" width="200"/>
+![image](https://github.com/frankyeh/UNet-Studio-Website/assets/275569/512360c7-fbc2-441c-b2cd-b997b5eb5de6)
 
 After configuring the network, specify the pre-processing and post-processing options:
 
--   Pre Processing: The input image will be regridded or padded using different strategies. Choose "match voxel size" to regrid the image volume so that it matches the training data, "match image size" to scale the image so that the image width/height/depth will be similar to that of the training data, or "original size" to use the original size of the image.
+-   Pre Processing: 
+    If match resolution is checked, the input image will be regridded so that the input resolution will be the same as the training data.
+    If match FOV is checked, the input image will be cropped or zero-padded so that the mm length at image width/height/depth will be the same of the training data
 
--   Post Processing: The output image can be a "3d label", which uses softmax to get voxel-based labels from the output, "4d prob maps", which outputs a 4D probabilistic volume, or "direct output", which is the direct output from the model.
-
--   Prob Threshold: The threshold used in thresholding the probability when creating the 3D labels.
+-   Prob Threshold: The threshold used in thresholding the probability when creating the segmentation labels.
+-   Output: 
+    1. 3D Labels: this outputs one 3D Volume of voxel-wise segmentation.
+    2. 4D probability: this outputs 4D tissue probability map. The fourther dimension represent 0:white matter, 1:gray matter (including amygdala and hippocampus), 2:cerebellum cortex, 3: basal basal ganglia, 4: others (CSF...etc.).
+    3. Skull Strip: output the skull-stripped image using the tissue probability maps.
+    4. U-Net Output
 
 -   Device: Specify whether CPU or GPU is used.
 
