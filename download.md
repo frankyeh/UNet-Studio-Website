@@ -9,7 +9,10 @@ U-Net Studio is a standard alone executive program written in C++. The only depe
 
 | OS      | File     | Install      |
 |---------|----------|-----------|
-|  Windows (7+)  |  [link](https://www.dropbox.com/s/ojvkei8tvgrtz9j/unet_studio_win.zip?dl=1) | (1) download the zip file and unzip it to a folder. <br> (2) run install_win.bat to install pytorch DLLs (~3GB) and CUDA toolkit (~2gb)|
+|  Windows (7+)  |  [Dropbox link](https://www.dropbox.com/s/baamvd0fvbwdfor/unet_studio_win.zip?dl=1) | (1) download the zip file and unzip it to a folder. <br> (2) run install_win.bat to install pytorch DLLs (~3GB) and CUDA toolkit (~2gb)|
+|  Mac version | pending |  |
+|  Ubuntu version | pending |  |
+
 
 To update U-Net Studio, just replace the .exe file and the models stored under the network folder.
 
