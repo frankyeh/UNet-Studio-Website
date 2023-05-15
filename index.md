@@ -1,11 +1,10 @@
-# UNet-Studio: A Brain Segmentation Software Tool 
+# UNet-Studio: A Brain Segmentation Software Tool for Human and Animal
  
-<img src="https://user-images.githubusercontent.com/275569/233228920-b0bee64b-8bc1-4d56-b139-0dea185f8777.png" width="400"/>
-
+<img src="https://github.com/frankyeh/UNet-Studio-Website/assets/275569/163820f1-bfe5-4fba-8d5f-dc3bcf2e910f" width="400"/>
 
 ## Introduction
 
-U-Net Studio is a brain tissue segmentation tool for  human and animal images. It devices a unique data augmentation method that uses only one template image to train a 3D U-Net from scratches.
+U-Net Studio is a tissue segmentation tool for human and animal brain images. It devices a unique data augmentation method that allows for using only **one template image** to train a 3D U-Net from scratches.
 
 U-Net Studio provides highly segmentation models for mouse, rat, marmosets, rhesus monkeys, and human. These models are easily adaptable and retrainable for various imaging modalities, streamlining the segmentation process and reducing the need for manual annotation.
 
