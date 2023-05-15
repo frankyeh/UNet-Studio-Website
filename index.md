@@ -23,6 +23,7 @@ Currently available models and training data used
 | Model Name | Modality | Source |
 |------------|----------|--------|
 | human.t1w.seg5.net.gz      | t1w      | [ICBM152 2009a t1w template](https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009) | 
+| human.t1w.lesion.seg5.net.gz      | t1w (the same as above, no lesion image used)  | [ICBM152 2009a t1w template](https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009) | 
 | human.t2w.seg5.net.gz      | t2w      | [ICBM152 2009a t2w template](https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009) | 
 | rhesus.t1w.seg5.net.gz     | t1w      | [ONPRC18 t1w template](https://pubmed.ncbi.nlm.nih.gov/33137475/) | 
 | rhesus.t2w.seg5.net.gz     | t2w      | [ONPRC18 t2w template](https://pubmed.ncbi.nlm.nih.gov/33137475/) | 
