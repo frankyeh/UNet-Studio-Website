@@ -18,8 +18,5 @@ To update U-Net Studio, just replace the .exe file and the models stored under t
 
 # License
 
-U-Net Studio is free for academic or research purposes under the following general license:
+U-Net Studio is free for academic or research purposes under the [Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). 
 
-```
-Unless required by applicable law or agreed to in writing, U-Net Studio program and source code are distributed under [Attribution-***NonCommercial***-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). 
-```
