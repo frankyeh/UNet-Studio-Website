@@ -10,7 +10,7 @@ U-Net Studio is a standard alone executive program written in C++. The only depe
 | OS      | File     | Install      |
 |---------|----------|-----------|
 |  Windows (7+)  |  [ZIP File](https://github.com/frankyeh/UNet-Studio/releases/download/2023.04.17/unet_studio_win.zip) | (1) download the zip file and unzip it to a folder. <br> (2) run install_win.bat to install pytorch DLLs (~3GB) and CUDA toolkit (~2gb)|
-|  MacOS 12 | [App Package](https://github.com/frankyeh/UNet-Studio/releases/download/2023.04.17/unet_studio_macos-12.zip) | To run it, you need to [enable permission](http://mac-how-to.wonderhowto.com/how-to/open-third-party-apps-from-unidentified-developers-mac-os-x-0158095/). |
+|  MacOS | [MacOS 12](https://github.com/frankyeh/UNet-Studio/releases/download/2023.04.17/unet_studio_macos-12.zip) <p>[MacOS 11](https://github.com/frankyeh/UNet-Studio/releases/download/2023.04.17/unet_studio_macos-11.zip) | To run it, you need to [enable permission](http://mac-how-to.wonderhowto.com/how-to/open-third-party-apps-from-unidentified-developers-mac-os-x-0158095/). |
 |  Ubuntu version | pending |  |
 
 
