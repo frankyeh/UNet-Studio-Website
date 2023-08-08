@@ -17,7 +17,7 @@ To update U-Net Studio, just replace the .exe file and the models stored under t
 
 # Citation
 
-FC Yeh, Brain MRI Segmentation using Template-Based Training and Visual Perception Augmentation, 	arXiv:2308.02363, 2023.
+`FC Yeh, "Brain MRI Segmentation using Template-Based Training and Visual Perception Augmentation", arXiv:2308.02363, 2023.`
 
 # License
 
