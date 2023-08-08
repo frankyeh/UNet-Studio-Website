@@ -13,9 +13,11 @@ U-Net Studio is a standard alone executive program written in C++. The only depe
 |  [MacOS 12](https://github.com/frankyeh/UNet-Studio/releases/download/2023.04.17/unet_studio_macos-12.zip) <br> [MacOS 11](https://github.com/frankyeh/UNet-Studio/releases/download/2023.04.17/unet_studio_macos-11.zip) | To run it, you need to [enable permission](http://mac-how-to.wonderhowto.com/how-to/open-third-party-apps-from-unidentified-developers-mac-os-x-0158095/). |
 |  [Ubuntu 22.04 cuda](https://github.com/frankyeh/UNet-Studio/releases/download/2023.04.17/unet_studio_ubuntu2204.zip) | Need CUDA 11.8 and Pytorch installed  |
 
-
-
 To update U-Net Studio, just replace the .exe file and the models stored under the network folder.
+
+# Citation
+
+FC Yeh, Brain MRI Segmentation using Template-Based Training and Visual Perception Augmentation, 	arXiv:2308.02363, 2023.
 
 # License
 
