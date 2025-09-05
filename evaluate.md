@@ -59,13 +59,24 @@ Segment all NIFTI files using the t2w marmoset model and save output as skull st
 unet-studio --action=evaluate --source=*.nii.gz --network=marmoset.t2w.seg5 --output_format=2  
 ```
 
+**main input parameters**
 
 | parameters | values |
 |---|----|
 |action| specify `evaluate` for evaluation use of the model|
 |source| specify input image files, support wildcard like `*` |
 |network| specify the network to be used. A list of available network can be found at the `network` folder|
-|output_format| `0`: 3D voxel wise labels `1`: 4D probability map `2`: skull stripped images `3`: brain mask only|
+
+**optional input parameters**
+| parameters | default value | function | 
+|---|----|
+|output_format| `0` | `0`: 3D voxel wise labels `1`: 4D probability map `2`: skull stripped images `3`: brain mask only|
+| prob_threshold | `0.5` | probability threshold |
+| match_resolution | `1` | whether to resample input image to match the resolution of the network | 
+| match_fov | `0` | whether to crop input images to match the input dimension of the network | 
+    
+
+
 
 
 
