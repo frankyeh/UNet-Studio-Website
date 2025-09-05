@@ -47,3 +47,26 @@ Click on the disk button to save the output.
 You may check out the results for each input data 
 
 If you experience errors or issues, please feel free to upload data using the private upload link on the website. We will modify the software to fix the problems.
+
+## Command line interface
+
+
+*example:*
+
+
+Segment all NIFTI files using the t2w marmoset model and save output as skull stripped images.
+```
+unet-studio --action=evaluate --source=*.nii.gz --network=marmoset.t2w.seg5 --output_format=2  
+```
+
+
+| parameters | values |
+|---|----|
+|action| specify `evaluate` for evaluation use of the model|
+|source| specify input image files, support wildcard like `*` |
+|network| specify the network to be used. A list of available network can be found at the `network` folder|
+|output_format| `0`: 3D voxel wise labels `1`: 4D probability map `2`: skull stripped images `3`: brain mask only|
+
+
+
+
