@@ -1,3 +1,6 @@
+---
+layout: home
+---
 # UNet-Studio: A Brain MRI Tissue Segmentation Software Tool for Human, Rhesus Monkey, Marmoset, and Rodents
  
 <img src="https://github.com/frankyeh/UNet-Studio-Website/assets/275569/163820f1-bfe5-4fba-8d5f-dc3bcf2e910f" width="400"/>

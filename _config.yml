@@ -1,10 +1,11 @@
-theme: jekyll-theme-minimal
 title: U-Net Studio Documentation
 description: Documentation and Tutorials for U-Net Studio
+url: https://unet-studio.labsolver.org
+baseurl: ""
 google_analytics: 
 defaults:
   - scope:
-      path: "doc"
+      path: ""
       type: pages
     values:
       layout: default

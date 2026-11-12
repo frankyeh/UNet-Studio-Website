@@ -8,50 +8,155 @@
     {% endif %}
 {% seo %}
     <link rel="shortcut icon" type="image/x-icon" href="/unet studio.16.png">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    {% include head-custom.html %}
   </head>
   <body>
-    <header class="page-header" role="banner">
-      <img src="/images/unet_studio_logo.jpg" width="250" alt="UNet Studio">
-      <h3><a href="/download.html">Download</a></h3>
-      <h3>User Support</h3>
-      <h4><a href="https://groups.google.com/g/unet-studio" target="_blank">Discussion Forum</a></h4>
-      <h4><a href="https://www.dropbox.com/request/W0hJkAIVC2keWAjqtqvU" target="_blank">Data Upload</a></h4>
-      
-      <br>
-      
-      <h3>Documentation</h3>
-      <h4><a href="/evaluate.html">Segment Images</a></h4>
-      
-      <br>
-      <p>Fang-Cheng (Frank) Yeh<br>
-          <a href="https://www.dropbox.com/s/ej2ujl6fmcvwx8f/Frank_CV.pdf?dl=0">CV</a>, <a href="http://scholar.google.com/citations?user=QdfsoJ4AAAAJ&hl=en">Google Citation</a>, <a href="https://www.webofscience.com/wos/author/record/101404">Researcher Profile</a><br>
-          <a href="https://twitter.com/intent/follow?screen_name=FangChengYeh"><img src="https://img.shields.io/twitter/follow/FangChengYeh?style=social&logo=twitter" alt="follow on Twitter"></a><a href="https://www.youtube.com/c/FrankYeh"><img src="https://img.shields.io/youtube/channel/subscribers/UCN6gohY_zeBpK6SwJ7hnz1Q?style=social"></a>
-      <p></p>
-      <p>Collaborations: frank.yeh@gmail.com</p>
-      <p></p>
-      <p><a href="https://github.com/frankyeh/UNet-Studio-Website/">.</a></p>  
-      <script>
-      var c = document.getElementsByClassName("collapsible");
-      for (var i = 0; i < c.length; i++) 
-          c[i].addEventListener("click", function(){
-          this.classList.toggle("active");
-          this.nextElementSibling.style.maxHeight = (this.nextElementSibling.style.maxHeight) ? null : "500px";});
-      {% if page.url contains 'gui' %}c[0].click();{% endif %}
-      {% if page.url contains 'cli' %}c[1].click();{% endif %}
-      </script>
+    <a class="skip-link" href="#content">Skip to main content</a>
+    <header class="topbar">
+      <div class="dec"></div>
+      <div class="bar">
+        <a class="brand" href="/"><img src="/images/unet_studio_logo.jpg" alt="U-Net Studio"></a>
+        <nav class="nav" aria-label="Primary">
+          <a href="/evaluate.html"{% if page.url == '/evaluate.html' %} class="on"{% endif %}>Segment images</a>
+          <a href="/#available-models">Models</a>
+          <a href="/download.html"{% if page.url == '/download.html' %} class="on"{% endif %}>Download</a>
+          <a href="/download.html#citation">Citation</a>
+          <div class="nav-dd sup-dd">
+            <a class="nav-item" id="support" href="https://groups.google.com/g/unet-studio">Support<span class="caret">▾</span></a>
+            <div class="sup-menu" id="sup-menu">
+              <a href="https://groups.google.com/g/unet-studio">Discussion forum</a>
+              <a href="https://www.dropbox.com/request/W0hJkAIVC2keWAjqtqvU">Data upload</a>
+            </div>
+          </div>
+        </nav>
+        <a class="cta" href="/download.html">Download</a>
+        <a class="burger" href="#sheet" aria-label="Menu">☰</a>
+      </div>
     </header>
+    <nav class="sheet" id="sheet" aria-label="Mobile menu">
+      <details open>
+        <summary>Documentation</summary>
+        <a href="/evaluate.html"{% if page.url == '/evaluate.html' %} class="cur"{% endif %}>Segment images</a>
+        <a href="/evaluate.html#command-line-interface">Command line</a>
+      </details>
+      <a href="/#available-models">Models</a>
+      <a href="/download.html"{% if page.url == '/download.html' %} class="cur"{% endif %}>Download</a>
+      <a href="/download.html#citation">Citation</a>
+      <details>
+        <summary>Support</summary>
+        <a href="https://groups.google.com/g/unet-studio">Discussion forum</a>
+        <a href="https://www.dropbox.com/request/W0hJkAIVC2keWAjqtqvU">Data upload</a>
+      </details>
+      <a class="cta" href="/download.html">Download</a>
+    </nav>
 
-    <main id="content" class="main-content" role="main" >
-      {{ content }}
-      <footer class="site-footer">
-      </footer>
-    </main>
+{%- if page.layout == 'home' -%}
+    {{ content }}
+{%- else -%}
+    <div class="page-shell" id="page-shell">
+      <article id="content" class="page">
+        {{ content }}
+      </article>
+      <nav class="toc" id="toc" aria-label="On this page"></nav>
+    </div>
+{%- endif -%}
+
+    <footer class="foot">
+      <div class="foot-in">
+        <div>
+          <h6>Author</h6>
+          <p><b style="color:#16181d">Fang-Cheng (Frank) Yeh</b></p>
+          <p>Collaborations: frank.yeh@gmail.com</p>
+          <p><a style="display:inline" href="https://www.dropbox.com/s/ej2ujl6fmcvwx8f/Frank_CV.pdf?dl=0">CV</a> · <a style="display:inline" href="http://scholar.google.com/citations?user=QdfsoJ4AAAAJ&amp;hl=en">Google Scholar</a> · <a style="display:inline" href="https://www.webofscience.com/wos/author/record/101404">Web of Science</a></p>
+        </div>
+        <div>
+          <h6>Software</h6>
+          <a href="/download.html">Download</a>
+          <a href="/#available-models">Models</a>
+          <a href="/download.html#license">License</a>
+          <a href="/download.html#citation">Citation</a>
+        </div>
+        <div>
+          <h6>Learn</h6>
+          <a href="/evaluate.html">Segment images</a>
+          <a href="/evaluate.html#command-line-interface">Command line</a>
+          <a href="/#output">Output</a>
+        </div>
+        <div>
+          <h6>Community</h6>
+          <a href="https://groups.google.com/g/unet-studio">Discussion forum</a>
+          <a href="https://www.dropbox.com/request/W0hJkAIVC2keWAjqtqvU">Data upload</a>
+          <a href="https://dsi-studio.labsolver.org">DSI Studio</a>
+        </div>
+      </div>
+      <div class="cite">Cite: FC Yeh, "Brain MRI Segmentation using Template-Based Training and Visual Perception Augmentation", arXiv:2308.02363, 2023. &nbsp;<a class="dot" href="https://github.com/frankyeh/UNet-Studio-Website/">.</a></div>
+    </footer>
+    <script>
+      (function() {
+        var q = location.search;
+        var supMenu = document.getElementById("sup-menu");
+        var sheet = document.getElementById("sheet");
+        var supBtn = document.getElementById("support");
+        var burger = document.querySelector(".burger");
+
+        if (q.indexOf("menu") !== -1 && sheet) sheet.classList.add("open");
+
+        if (supBtn && supMenu) {
+          supBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            supMenu.classList.toggle("open");
+          });
+        }
+        function toggleSheet(e) {
+          e.preventDefault();
+          if (!sheet) return;
+          if (location.hash === "#sheet") {
+            history.replaceState(null, "", location.pathname + location.search);
+            sheet.classList.remove("open");
+          } else {
+            sheet.classList.toggle("open");
+          }
+        }
+        if (burger) burger.addEventListener("click", toggleSheet);
+
+        document.addEventListener("click", function(e) {
+          if (supMenu && !e.target.closest(".sup-dd")) supMenu.classList.remove("open");
+        });
+        document.addEventListener("keydown", function(e) {
+          if (e.key === "Escape") {
+            if (supMenu) supMenu.classList.remove("open");
+            if (sheet) sheet.classList.remove("open");
+          }
+        });
+        if (sheet) {
+          sheet.addEventListener("click", function(e) {
+            if (e.target.tagName === "A") sheet.classList.remove("open");
+          });
+        }
+
+        var toc = document.getElementById("toc");
+        var shell = document.getElementById("page-shell");
+        var article = document.getElementById("content");
+        if (toc && shell && article) {
+          var hs = article.querySelectorAll("h2[id], h3[id]");
+          if (hs.length > 0) {
+            shell.classList.add("has-toc");
+            var html = '<h6 style="margin:0 0 10px;font-size:11.5px;letter-spacing:.08em;color:#5b616e">ON THIS PAGE</h6>';
+            html += '<a class="cur" href="#">Overview</a>';
+            for (var i = 0; i < hs.length; i++) {
+              var id = hs[i].getAttribute("id");
+              var cls = hs[i].tagName === "H3" ? ' class="toc-h3"' : '';
+              html += '<a' + cls + ' href="#' + id + '"></a>';
+            }
+            toc.innerHTML = html;
+            var links = toc.querySelectorAll("a");
+            for (var j = 0; j < hs.length; j++) {
+              links[j + 1].textContent = hs[j].textContent;
+            }
+          }
+        }
+      })();
+    </script>
   </body>
 </html>

@@ -1,0 +1,110 @@
+---
+layout: default
+---
+    <main class="wrap">
+      <section class="hero">
+        <div>
+          <a class="paper" href="/download.html#citation"><b>arXiv 2023</b>Template-based training paper →</a>
+          <h1>Brain segmentation from a single template.</h1>
+          <p class="lead">U-Net Studio trains a 3D U-Net from one template image with visual-perception augmentation, then skull-strips and segments brain MRI of humans, rhesus monkeys, marmosets, rats and mice. A standalone C++ program, sister tool to DSI Studio.</p>
+          <div class="btns">
+            <a class="btn primary" href="/download.html">Download</a>
+            <a class="btn" href="/evaluate.html">Segment images</a>
+            <a class="btn" href="#available-models">Available models</a>
+          </div>
+          <div class="release">Pre-release 2023.04.17 · Windows · macOS · Ubuntu · free for academic use (CC BY-NC-SA 4.0)</div>
+        </div>
+        <figure class="band" style="margin:0">
+          <img src="/images/examples.png" alt="U-Net Studio segmentation of mouse, marmoset and rhesus MRI">
+          <figcaption>Input MRI and U-Net Studio labels for mouse, marmoset and rhesus</figcaption>
+        </figure>
+      </section>
+
+      <section class="stats">
+        <div><b>5</b><span>species: human, rhesus, marmoset, rat, mouse</span></div>
+        <div><b>9</b><span>pretrained models</span></div>
+        <div><b>1</b><span>template image per model</span></div>
+        <div><b>T1w · T2w</b><span>modalities</span></div>
+      </section>
+
+      <section class="doors">
+        <div class="door">
+          <h3>Segment</h3>
+          <p>Four steps: input, network, evaluate, output.</p>
+          <ul>
+            <li><a href="/evaluate.html#step-1-specify-input">Step 1: specify input</a></li>
+            <li><a href="/evaluate.html#step-2-configure-network">Step 2: configure network</a></li>
+            <li><a href="/evaluate.html#step-3-evaluate">Step 3–4: evaluate &amp; output</a></li>
+            <li><a href="/evaluate.html#command-line-interface">Command line interface →</a></li>
+          </ul>
+        </div>
+        <div class="door">
+          <h3>Output</h3>
+          <p>3D labels or 4D probabilistic maps.</p>
+          <ul>
+            <li><a href="#output">White matter</a></li>
+            <li><a href="#output">Gray matter</a></li>
+            <li><a href="#output">Basal ganglia</a></li>
+            <li><a href="/evaluate.html#step-3-evaluate">Skull stripping</a></li>
+          </ul>
+        </div>
+        <div class="door">
+          <h3>Support</h3>
+          <p>Questions and data for troubleshooting.</p>
+          <ul>
+            <li><a href="https://groups.google.com/g/unet-studio">Discussion forum</a></li>
+            <li><a href="https://www.dropbox.com/request/W0hJkAIVC2keWAjqtqvU">Upload data</a></li>
+            <li><a href="/data/100206.T1W.1mm.nii.gz">Sample data (HCP 100206 T1w)</a></li>
+            <li><a href="https://dsi-studio.labsolver.org">DSI Studio →</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <h2 class="sec">Available models</h2>
+      <p class="sub">Model files and the template each was trained from; the full table stays on the page below.</p>
+      <section class="org">
+        <div class="door">
+          <h3>Human</h3>
+          <p>template: ICBM152 2009a</p>
+          <ul>
+            <li><a href="#available-models">human.t1w.seg5.net.gz</a></li>
+            <li><a href="#available-models">human.t1w.lesion.seg5.net.gz</a></li>
+            <li><a href="#available-models">human.t2w.seg5.net.gz</a></li>
+          </ul>
+        </div>
+        <div class="door">
+          <h3>Rhesus</h3>
+          <p>template: ONPRC18</p>
+          <ul>
+            <li><a href="#available-models">rhesus.t1w.seg5.net.gz</a></li>
+            <li><a href="#available-models">rhesus.t2w.seg5.net.gz</a></li>
+          </ul>
+        </div>
+        <div class="door">
+          <h3>Marmoset</h3>
+          <p>template: Marmoset Brain Mapping v3.0</p>
+          <ul>
+            <li><a href="#available-models">marmoset.t1w.seg5.net.gz</a></li>
+            <li><a href="#available-models">marmoset.t2w.seg5.net.gz</a></li>
+          </ul>
+        </div>
+        <div class="door">
+          <h3>Rat</h3>
+          <p>template: SIGMA Wistar</p>
+          <ul>
+            <li><a href="#available-models">rat.t2w.seg4.net.gz</a></li>
+          </ul>
+        </div>
+        <div class="door">
+          <h3>Mouse</h3>
+          <p>template: Hikishima</p>
+          <ul>
+            <li><a href="#available-models">mouse.t2w.seg5.net.gz</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <article id="content" class="page">
+      {{ content }}
+    </article>
