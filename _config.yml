@@ -3,6 +3,8 @@ description: Documentation and Tutorials for U-Net Studio
 url: https://unet-studio.labsolver.org
 baseurl: ""
 google_analytics: 
+exclude:
+  - tools
 defaults:
   - scope:
       path: ""

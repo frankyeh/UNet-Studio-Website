@@ -16,10 +16,10 @@
     <header class="topbar">
       <div class="dec"></div>
       <div class="bar">
-        <a class="brand" href="/"><img src="/images/unet_studio_logo.jpg" alt="U-Net Studio"></a>
+        <a class="brand" href="/"><img src="/images/unet_studio.svg" alt="" height="30"><span class="brandtxt">U-Net Studio</span></a>
         <nav class="nav" aria-label="Primary">
           <a href="/evaluate.html"{% if page.url == '/evaluate.html' %} class="on"{% endif %}>Segment images</a>
-          <a href="/#available-models">Models</a>
+          <a href="/models.html"{% if page.url == '/models.html' %} class="on"{% endif %}>Models</a>
           <a href="/download.html"{% if page.url == '/download.html' %} class="on"{% endif %}>Download</a>
           <a href="/download.html#citation">Citation</a>
           <div class="nav-dd sup-dd">
@@ -40,7 +40,7 @@
         <a href="/evaluate.html"{% if page.url == '/evaluate.html' %} class="cur"{% endif %}>Segment images</a>
         <a href="/evaluate.html#command-line-interface">Command line</a>
       </details>
-      <a href="/#available-models">Models</a>
+      <a href="/models.html"{% if page.url == '/models.html' %} class="cur"{% endif %}>Models</a>
       <a href="/download.html"{% if page.url == '/download.html' %} class="cur"{% endif %}>Download</a>
       <a href="/download.html#citation">Citation</a>
       <details>
@@ -73,7 +73,7 @@
         <div>
           <h6>Software</h6>
           <a href="/download.html">Download</a>
-          <a href="/#available-models">Models</a>
+          <a href="/models.html">Models</a>
           <a href="/download.html#license">License</a>
           <a href="/download.html#citation">Citation</a>
         </div>

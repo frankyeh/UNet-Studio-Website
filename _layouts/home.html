@@ -1,8 +1,12 @@
 ---
 layout: default
 ---
-    <style>article.page > h1:first-child { display: none; }</style>
-    <main class="wrap">
+    <script>
+      if (location.hash === "#available-models") {
+        location.replace("/models.html#available-models");
+      }
+    </script>
+    <main id="content" class="wrap">
       <section class="hero">
         <div>
           <a class="paper" href="/download.html#citation"><b>arXiv 2023</b>Template-based training paper →</a>
@@ -11,7 +15,7 @@ layout: default
           <div class="btns">
             <a class="btn primary" href="/download.html">Download</a>
             <a class="btn" href="/evaluate.html">Segment images</a>
-            <a class="btn" href="#available-models">Available models</a>
+            <a class="btn" href="/models.html">Available models</a>
           </div>
           <div class="release">Pre-release 2023.04.17 · Windows · macOS · Ubuntu · free for academic use (CC BY-NC-SA 4.0)</div>
         </div>
@@ -60,8 +64,6 @@ layout: default
           </ul>
         </div>
       </section>
-    </main>
 
-    <article id="content" class="page">
-      {{ content }}
-    </article>
+{{ content }}
+    </main>
